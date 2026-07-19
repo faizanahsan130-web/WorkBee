@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Posted Projects | WorkBee</title>
+
+<link rel="stylesheet" href="Css folder/my-posted-projects.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+
+        <h1>📁 My Posted Projects</h1>
+
+        <p>Manage all your posted projects.</p>
+
+    </div>
+
+    <div class="toolbar">
+
+        <input
+        type="text"
+        id="searchProject"
+        placeholder="Search project...">
+
+        <select id="statusFilter">
+
+            <option value="All">All Status</option>
+            <option value="Open">Open</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Closed">Closed</option>
+
+        </select>
+
+        <button id="newProjectBtn">
+
+            ➕ Post New Project
+
+        </button>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <h3>Total Projects</h3>
+
+            <h2 id="totalProjects">0</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>Open</h3>
+
+            <h2 id="openProjects">0</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>Completed</h3>
+
+            <h2 id="completedProjects">0</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>Total Proposals</h3>
+
+            <h2 id="proposalCount">0</h2>
+
+        </div>
+
+    </div>
+
+    <div id="projectContainer">
+
+        Loading Projects...
+
+    </div>
+
+</div>
+
+<script type="module" src="Js folder/my-posted-projects.js"></script>
+
+</body>
+
+</html>

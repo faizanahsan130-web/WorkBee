@@ -1,0 +1,276 @@
+/* =========================================
+   WorkBee - My Projects
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:#f5f7fb;
+
+    color:#333;
+
+}
+
+/* Header */
+
+header{
+
+    background:#1f2937;
+
+    color:white;
+
+    padding:20px 50px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+}
+
+header h1{
+
+    font-size:30px;
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    background:#f5a623;
+
+}
+
+/* Main */
+
+main{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:40px auto;
+
+}
+
+main h2{
+
+    margin-bottom:30px;
+
+    text-align:center;
+
+    color:#1f2937;
+
+}
+
+/* Project Cards */
+
+#projectsContainer{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+
+}
+
+/* Card */
+
+.card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card h3{
+
+    color:#f5a623;
+
+    margin-bottom:15px;
+
+}
+
+.card p{
+
+    margin:10px 0;
+
+    color:#555;
+
+    line-height:1.6;
+
+}
+
+.status{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    background:#d1fae5;
+
+    color:#065f46;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    margin-top:10px;
+
+}
+
+/* Buttons */
+
+.buttons{
+
+    margin-top:20px;
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+}
+
+button{
+
+    flex:1;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.view{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+.view:hover{
+
+    background:#1d4ed8;
+
+}
+
+.edit{
+
+    background:#10b981;
+
+    color:white;
+
+}
+
+.edit:hover{
+
+    background:#059669;
+
+}
+
+.delete{
+
+    background:#ef4444;
+
+    color:white;
+
+}
+
+.delete:hover{
+
+    background:#dc2626;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    header{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        text-align:center;
+
+    }
+
+    nav{
+
+        justify-content:center;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .buttons{
+
+        flex-direction:column;
+
+    }
+
+}

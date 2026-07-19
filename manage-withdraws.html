@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Withdraw Requests | WorkBee Admin</title>
+
+    <link rel="stylesheet" href="Css folder/manage-withdraws.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>🐝 WorkBee</h2>
+
+        <ul>
+
+            <li><a href="admin-dashboard.html">📊 Dashboard</a></li>
+
+            <li><a href="manage-users.html">👥 Manage Users</a></li>
+
+            <li><a href="manage-projects.html">💼 Manage Projects</a></li>
+
+            <li><a href="manage-applications.html">📄 Applications</a></li>
+
+            <li><a href="manage-payments.html">💳 Payments</a></li>
+
+            <li><a href="manage-withdraws.html" class="active">💸 Withdraw Requests</a></li>
+
+            <li><a href="manage-reviews.html">⭐ Reviews</a></li>
+
+            <li><a href="settings.html">⚙️ Settings</a></li>
+
+            <li><a href="index.html">🚪 Logout</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>💸 Manage Withdraw Requests</h1>
+
+            <input
+                type="text"
+                id="searchWithdraw"
+                placeholder="Search by email..."
+            >
+
+        </div>
+
+        <!-- Summary Cards -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Total Requests</h3>
+
+                <h2 id="totalRequests">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Pending</h3>
+
+                <h2 id="pendingRequests">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Approved</h3>
+
+                <h2 id="approvedRequests">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Total Amount</h3>
+
+                <h2 id="totalAmount">$0</h2>
+
+            </div>
+
+        </div>
+
+        <!-- Withdraw Table -->
+
+        <div class="table-box">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Freelancer</th>
+
+                        <th>Method</th>
+
+                        <th>Account</th>
+
+                        <th>Amount</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="withdrawTable">
+
+                    <tr>
+
+                        <td colspan="6" style="text-align:center;">
+
+                            Loading Withdraw Requests...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script type="module" src="Js folder/manage-withdraws.js"></script>
+
+</body>
+
+</html>

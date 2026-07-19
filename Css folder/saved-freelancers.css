@@ -1,0 +1,236 @@
+/* ==========================================
+   WorkBee - Saved Freelancers
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+    min-height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:1300px;
+    margin:40px auto;
+}
+
+/* Header */
+
+.container h1{
+    text-align:center;
+    font-size:36px;
+    color:#1f2937;
+    margin-bottom:10px;
+}
+
+.container p{
+    text-align:center;
+    color:#666;
+    margin-bottom:35px;
+}
+
+/* Toolbar */
+
+.toolbar{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.toolbar input,
+.toolbar select{
+    flex:1;
+    min-width:220px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    background:#fff;
+    font-size:15px;
+}
+
+.toolbar input:focus,
+.toolbar select:focus{
+    outline:none;
+    border-color:#f59e0b;
+}
+
+/* Freelancer Grid */
+
+#savedContainer{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+/* Freelancer Card */
+
+.freelancer-card{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.freelancer-card:hover{
+    transform:translateY(-6px);
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.profile img{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #f59e0b;
+}
+
+.profile-info h2{
+    font-size:22px;
+    color:#1f2937;
+}
+
+.profile-info p{
+    color:#777;
+    margin-top:4px;
+}
+
+.details{
+    margin:15px 0;
+}
+
+.details p{
+    margin-bottom:10px;
+    color:#555;
+}
+
+.rating{
+    color:#f59e0b;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:15px;
+}
+
+.skill{
+    background:#eef2ff;
+    color:#2563eb;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+/* Buttons */
+
+.actions{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+
+.actions button{
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+    color:#fff;
+    font-size:14px;
+    transition:.3s;
+}
+
+.profile-btn{
+    background:#2563eb;
+}
+
+.chat-btn{
+    background:#16a34a;
+}
+
+.hire-btn{
+    background:#7c3aed;
+}
+
+.remove-btn{
+    background:#dc2626;
+}
+
+.actions button:hover{
+    opacity:.9;
+    transform:translateY(-2px);
+}
+
+/* Empty State */
+
+.empty{
+    grid-column:1/-1;
+    background:#fff;
+    padding:50px;
+    border-radius:15px;
+    text-align:center;
+    color:#777;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .container{
+        width:95%;
+    }
+
+    .toolbar{
+        flex-direction:column;
+    }
+
+    .actions{
+        grid-template-columns:1fr;
+    }
+
+    .container h1{
+        font-size:30px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .container h1{
+        font-size:26px;
+    }
+
+    .freelancer-card{
+        padding:18px;
+    }
+
+    .profile{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .profile img{
+        width:90px;
+        height:90px;
+    }
+
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Orders | WorkBee</title>
+
+<link rel="stylesheet" href="Css folder/orders.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<h1>📦 My Orders</h1>
+
+<p>Manage all your freelance orders</p>
+
+</header>
+
+<div class="stats">
+
+<div class="stat-card">
+<h3>Active</h3>
+<h2 id="activeCount">0</h2>
+</div>
+
+<div class="stat-card">
+<h3>Completed</h3>
+<h2 id="completedCount">0</h2>
+</div>
+
+<div class="stat-card">
+<h3>Cancelled</h3>
+<h2 id="cancelledCount">0</h2>
+</div>
+
+</div>
+
+<div class="filters">
+
+<select id="statusFilter">
+
+<option value="All">All Orders</option>
+
+<option value="Active">Active</option>
+
+<option value="Completed">Completed</option>
+
+<option value="Cancelled">Cancelled</option>
+
+</select>
+
+<input
+type="text"
+id="searchOrder"
+placeholder="Search Project..."
+>
+
+</div>
+
+<div id="ordersContainer">
+
+Loading Orders...
+
+</div>
+
+</div>
+
+<script type="module"
+src="Js folder/orders.js"></script>
+
+</body>
+
+</html>

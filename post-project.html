@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Project - WorkBee</title>
+
+    <link rel="stylesheet" href="Css folder/post-project.css">
+
+    <script type="module" src="Js folder/post-project.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="project-box">
+
+        <h1>🐝 WorkBee</h1>
+
+        <h2>Post a New Project</h2>
+
+        <form id="projectForm">
+
+            <label>Project Title</label>
+            <input
+                type="text"
+                id="projectTitle"
+                placeholder="Enter project title"
+                required
+            >
+
+            <label>Project Description</label>
+            <textarea
+                id="projectDescription"
+                rows="6"
+                placeholder="Describe your project..."
+                required
+            ></textarea>
+
+            <label>Category</label>
+
+            <select id="projectCategory" required>
+
+                <option value="">Select Category</option>
+
+                <option>Web Development</option>
+
+                <option>Mobile App Development</option>
+
+                <option>Graphic Design</option>
+
+                <option>UI/UX Design</option>
+
+                <option>AI Chatbot</option>
+
+                <option>Automation</option>
+
+                <option>Digital Marketing</option>
+
+            </select>
+
+            <label>Budget ($)</label>
+
+            <input
+                type="number"
+                id="projectBudget"
+                placeholder="500"
+                required
+            >
+
+            <label>Deadline</label>
+
+            <input
+                type="date"
+                id="projectDeadline"
+                required
+            >
+
+            <button type="submit">
+
+                🚀 Post Project
+
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="client-dashboard.html">
+
+            ⬅ Back to Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

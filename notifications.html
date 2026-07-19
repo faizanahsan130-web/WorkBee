@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications | WorkBee</title>
+
+    <link rel="stylesheet"
+          href="Css folder/notifications.css">
+
+</head>
+
+<body>
+
+<!-- ======================================
+Top Navigation
+====================================== -->
+
+<header class="topbar">
+
+    <div class="logo">
+
+        🐝 <strong>WorkBee</strong>
+
+    </div>
+
+    <nav>
+
+        <a href="client-dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="my-projects.html">
+            My Projects
+        </a>
+
+        <a href="proposal.html">
+            Proposals
+        </a>
+
+        <a href="chat.html">
+            Messages
+        </a>
+
+        <a href="notifications.html"
+           class="active">
+
+            Notifications
+
+        </a>
+
+        <a href="profile.html">
+            Profile
+        </a>
+
+        <a href="index.html">
+            Logout
+        </a>
+
+    </nav>
+
+</header>
+
+<!-- ======================================
+Main Container
+====================================== -->
+
+<div class="container">
+
+    <!-- ======================================
+    Page Header
+    ====================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>
+                🔔 Notifications
+            </h1>
+
+            <p>
+
+                Stay updated with proposals,
+                messages, payments,
+                reviews and projects.
+
+            </p>
+
+        </div>
+
+        <div class="notification-summary">
+
+            <div class="summary-card">
+
+                <h3 id="totalNotifications">
+
+                    0
+
+                </h3>
+
+                <span>
+
+                    Total
+
+                </span>
+
+            </div>
+
+            <div class="summary-card unread">
+
+                <h3 id="unreadNotifications">
+
+                    0
+
+                </h3>
+
+                <span>
+
+                    Unread
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ======================================
+Toolbar
+====================================== -->
+
+    <div class="toolbar">
+
+        <input
+
+            type="text"
+
+            id="searchNotification"
+
+            placeholder="Search notifications...">
+
+        <select id="notificationFilter">
+
+            <option value="All">
+
+                All Notifications
+
+            </option>
+
+            <option value="Message">
+
+                Messages
+
+            </option>
+
+            <option value="Proposal">
+
+                Proposals
+
+            </option>
+
+            <option value="Project">
+
+                Projects
+
+            </option>
+
+            <option value="Payment">
+
+                Payments
+
+            </option>
+
+            <option value="Review">
+
+                Reviews
+
+            </option>
+
+            <option value="System">
+
+                System
+
+            </option>
+
+        </select>
+
+        <button id="markAllRead">
+
+            ✔ Mark All Read
+
+        </button>
+
+    </div>
+        <!-- ======================================
+    Notification List
+    ====================================== -->
+
+    <section
+        id="notificationsContainer"
+        class="notifications-list">
+
+        <div class="loading">
+
+            <div class="loader"></div>
+
+            <h3>Loading Notifications...</h3>
+
+            <p>Please wait...</p>
+
+        </div>
+
+    </section>
+
+    <!-- ======================================
+    Empty State
+    ====================================== -->
+
+    <template id="emptyTemplate">
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+
+                🔔
+
+            </div>
+
+            <h2>
+
+                No Notifications
+
+            </h2>
+
+            <p>
+
+                You're all caught up! New notifications
+                will appear here automatically.
+
+            </p>
+
+        </div>
+
+    </template>
+
+    <!-- ======================================
+    Notification Card Template
+    ====================================== -->
+
+    <template id="notificationTemplate">
+
+        <div class="notification-card unread">
+
+            <div class="notification-icon">
+
+                🔔
+
+            </div>
+
+            <div class="notification-content">
+
+                <div class="notification-header">
+
+                    <h3 class="notification-title">
+
+                        Notification Title
+
+                    </h3>
+
+                    <span class="notification-time">
+
+                        Just Now
+
+                    </span>
+
+                </div>
+
+                <p class="notification-message">
+
+                    Notification message...
+
+                </p>
+
+                <div class="notification-footer">
+
+                    <span class="notification-type">
+
+                        System
+
+                    </span>
+
+                    <div class="notification-actions">
+
+                        <button
+                            class="mark-read-btn">
+
+                            ✔ Read
+
+                        </button>
+
+                        <button
+                            class="delete-btn">
+
+                            🗑 Delete
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </template>
+
+</div>
+
+<!-- ======================================
+Footer
+====================================== -->
+
+<footer>
+
+    <p>
+
+        © 2026 WorkBee Freelance Marketplace
+
+    </p>
+
+</footer>
+
+<!-- ======================================
+JavaScript
+====================================== -->
+
+<script
+    type="module"
+    src="Js folder/notifications.js">
+
+</script>
+
+</body>
+
+</html>

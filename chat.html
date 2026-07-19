@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WorkBee Chat</title>
+
+<link rel="stylesheet" href="Css folder/chat.css">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="logo">
+
+🐝 <strong>WorkBee Chat</strong>
+
+</div>
+
+<div class="chat-user">
+
+<div class="avatar">
+
+👤
+
+</div>
+
+<div>
+
+<h3 id="chatUserName">
+
+Loading...
+
+</h3>
+
+<p id="onlineStatus">
+
+Offline
+
+</p>
+
+</div>
+
+</div>
+
+</header>
+
+<main class="chat-layout">
+
+<div class="chat-window">
+
+<div class="chat-header">
+
+<h2 id="chatTitle">
+
+Project Chat
+
+</h2>
+
+<p>
+
+Secure conversation between Client & Freelancer
+
+</p>
+
+</div>
+
+<div id="typingIndicator"
+
+class="typing">
+
+</div>
+
+<div
+id="messages"
+class="messages">
+
+<div class="loading">
+
+Loading Messages...
+
+</div>
+
+</div>
+<!-- ======================================
+Message Input Area
+====================================== -->
+
+<div class="chat-footer">
+
+    <div class="chat-tools">
+
+        <!-- Emoji Button -->
+
+        <button
+            id="emojiBtn"
+            class="tool-btn"
+            title="Emoji">
+
+            😊
+
+        </button>
+
+        <!-- Image Upload -->
+
+        <label
+            for="imageFile"
+            class="tool-btn"
+            title="Send Image">
+
+            🖼
+
+        </label>
+
+        <input
+            type="file"
+            id="imageFile"
+            accept="image/*"
+            hidden>
+
+        <!-- File Upload -->
+
+        <label
+            for="attachmentFile"
+            class="tool-btn"
+            title="Send File">
+
+            📎
+
+        </label>
+
+        <input
+            type="file"
+            id="attachmentFile"
+            hidden>
+
+    </div>
+
+    <!-- Message Box -->
+
+    <input
+
+        type="text"
+
+        id="messageInput"
+
+        placeholder="Type your message..."
+
+        autocomplete="off"
+
+    >
+
+    <!-- Send Button -->
+
+    <button
+
+        id="sendBtn"
+
+        class="send-btn">
+
+        ➤
+
+    </button>
+
+</div>
+
+</div>
+
+</main>
+
+<script
+type="module"
+src="Js folder/chat.js">
+</script>
+
+</body>
+
+</html>

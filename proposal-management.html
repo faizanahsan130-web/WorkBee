@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Proposal Management | WorkBee</title>
+
+    <link rel="stylesheet" href="Css folder/proposal-management.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+
+    <div class="page-header">
+
+        <h1>📄 Proposal Management</h1>
+
+        <p>Track and manage all your submitted proposals.</p>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <h3>Total</h3>
+
+            <h2 id="totalProposals">0</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>Pending</h3>
+
+            <h2 id="pendingProposals">0</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>Accepted</h3>
+
+            <h2 id="acceptedProposals">0</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>Rejected</h3>
+
+            <h2 id="rejectedProposals">0</h2>
+
+        </div>
+
+    </div>
+
+    <!-- Search & Filter -->
+
+    <div class="toolbar">
+
+        <input
+            type="text"
+            id="searchProposal"
+            placeholder="Search proposals...">
+
+        <select id="statusFilter">
+
+            <option value="All">All Status</option>
+
+            <option value="Pending">Pending</option>
+
+            <option value="Accepted">Accepted</option>
+
+            <option value="Rejected">Rejected</option>
+
+        </select>
+
+    </div>
+
+    <!-- Proposal List -->
+
+    <div id="proposalContainer">
+
+        Loading proposals...
+
+    </div>
+
+</div>
+
+<script type="module" src="Js folder/proposal-management.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dispute Resolution | WorkBee</title>
+
+    <link rel="stylesheet"
+          href="Css folder/disputes.css">
+
+</head>
+
+<body>
+
+<!-- ======================================
+     Header
+====================================== -->
+
+<header class="topbar">
+
+    <div class="logo">
+
+        🐝 <strong>WorkBee</strong>
+
+    </div>
+
+    <nav>
+
+        <a href="client-dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="my-projects.html">
+            My Projects
+        </a>
+
+        <a href="payment.html">
+            Payments
+        </a>
+
+        <a href="milestones.html">
+            Milestones
+        </a>
+
+        <a href="review.html">
+            Reviews
+        </a>
+
+        <a href="chat.html">
+            Messages
+        </a>
+
+        <a href="notifications.html">
+            Notifications
+        </a>
+
+        <a href="disputes.html"
+           class="active">
+            Disputes
+        </a>
+
+    </nav>
+
+</header>
+
+<!-- ======================================
+     Main Container
+====================================== -->
+
+<div class="container">
+
+    <!-- =============================
+         Page Header
+    ============================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>
+
+                ⚖️ Dispute Resolution Center
+
+            </h1>
+
+            <p>
+
+                Raise disputes, upload evidence,
+                communicate with the other party,
+                and track the resolution process.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- =============================
+         Statistics
+    ============================== -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <h3>
+
+                Total Disputes
+
+            </h3>
+
+            <h2 id="totalDisputes">
+
+                0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>
+
+                Open
+
+            </h3>
+
+            <h2 id="openDisputes">
+
+                0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>
+
+                Under Review
+
+            </h3>
+
+            <h2 id="reviewDisputes">
+
+                0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>
+
+                Resolved
+
+            </h3>
+
+            <h2 id="resolvedDisputes">
+
+                0
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <!-- =============================
+         Create Dispute
+    ============================== -->
+
+    <div class="card">
+
+        <h2>
+
+            🚨 Create New Dispute
+
+        </h2>
+
+        <form id="disputeForm">
+
+            <div class="grid">
+
+                <div>
+
+                    <label>
+
+                        Project ID
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="projectId"
+                        placeholder="Enter Project ID"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Opposite Party Email
+
+                    </label>
+
+                    <input
+                        type="email"
+                        id="opponentEmail"
+                        placeholder="client@example.com / freelancer@example.com"
+                        required>
+
+                </div>
+
+            </div>
+
+            <div class="grid">
+
+                <div>
+
+                    <label>
+
+                        Dispute Category
+
+                    </label>
+
+                    <select
+                        id="disputeCategory"
+                        required>
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option>
+                            Payment Issue
+                        </option>
+
+                        <option>
+                            Milestone Issue
+                        </option>
+
+                        <option>
+                            Late Delivery
+                        </option>
+
+                        <option>
+                            Poor Quality
+                        </option>
+
+                        <option>
+                            Communication
+                        </option>
+
+                        <option>
+                            Scam / Fraud
+                        </option>
+
+                        <option>
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Priority
+
+                    </label>
+
+                    <select
+                        id="priority">
+
+                        <option>
+                            Low
+                        </option>
+
+                        <option selected>
+                            Medium
+                        </option>
+
+                        <option>
+                            High
+                        </option>
+
+                        <option>
+                            Critical
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+                        <!-- ==============================
+                 Dispute Description
+            =============================== -->
+
+            <label>
+
+                Describe the Issue
+
+            </label>
+
+            <textarea
+                id="disputeDescription"
+                rows="6"
+                placeholder="Explain your dispute in detail..."
+                required>
+
+            </textarea>
+
+            <!-- ==============================
+                 Evidence Upload
+            =============================== -->
+
+            <label>
+
+                Upload Evidence
+
+            </label>
+
+            <input
+                type="file"
+                id="evidenceFiles"
+                multiple
+                accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.zip">
+
+            <small>
+
+                Supported:
+                JPG, PNG, PDF, DOC, DOCX, ZIP
+
+            </small>
+
+            <!-- ==============================
+                 Submit Button
+            =============================== -->
+
+            <button
+                id="submitDisputeBtn"
+                type="submit">
+
+                ⚖️ Submit Dispute
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- ==============================
+         Dispute Timeline
+    =============================== -->
+
+    <div class="card">
+
+        <h2>
+
+            📅 Resolution Timeline
+
+        </h2>
+
+        <div class="timeline">
+
+            <div class="timeline-step active">
+
+                Open
+
+            </div>
+
+            <div class="timeline-step">
+
+                Under Review
+
+            </div>
+
+            <div class="timeline-step">
+
+                Evidence Submitted
+
+            </div>
+
+            <div class="timeline-step">
+
+                Admin Investigation
+
+            </div>
+
+            <div class="timeline-step">
+
+                Resolved
+
+            </div>
+
+            <div class="timeline-step">
+
+                Closed
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ==============================
+         Search & Filter
+    =============================== -->
+
+    <div class="card">
+
+        <div class="toolbar">
+
+            <input
+                type="text"
+                id="searchDispute"
+                placeholder="Search disputes...">
+
+            <select id="statusFilter">
+
+                <option value="All">
+
+                    All Status
+
+                </option>
+
+                <option>
+
+                    Open
+
+                </option>
+
+                <option>
+
+                    Under Review
+
+                </option>
+
+                <option>
+
+                    Resolved
+
+                </option>
+
+                <option>
+
+                    Closed
+
+                </option>
+
+            </select>
+
+            <button id="refreshDisputes">
+
+                🔄 Refresh
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ==============================
+         Dispute List
+    =============================== -->
+
+    <div class="card">
+
+        <div class="section-header">
+
+            <h2>
+
+                📋 My Disputes
+
+            </h2>
+
+        </div>
+
+        <div id="disputeContainer">
+
+            <div class="loading">
+
+                Loading Disputes...
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==============================
+     Empty State
+================================ -->
+
+<div
+    id="emptyState"
+    class="hidden">
+
+    <div class="empty-state">
+
+        <h2>
+
+            ⚖️ No Disputes Found
+
+        </h2>
+
+        <p>
+
+            Your submitted disputes will appear
+            here with their latest status and
+            resolution progress.
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ==============================
+     Footer
+================================ -->
+
+<footer>
+
+    <p>
+
+        © 2026 WorkBee —
+        Dispute Resolution Center
+
+    </p>
+
+</footer>
+
+<!-- ==============================
+     JavaScript
+================================ -->
+
+<script
+    type="module"
+    src="Js folder/disputes.js">
+
+</script>
+
+</body>
+
+</html>

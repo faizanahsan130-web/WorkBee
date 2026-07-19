@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Applications | WorkBee Admin</title>
+
+    <link rel="stylesheet" href="Css folder/manage-applications.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>🐝 WorkBee</h2>
+
+        <ul>
+
+            <li><a href="admin-dashboard.html">📊 Dashboard</a></li>
+
+            <li><a href="manage-users.html">👥 Manage Users</a></li>
+
+            <li><a href="manage-projects.html">💼 Manage Projects</a></li>
+
+            <li><a href="manage-applications.html" class="active">📄 Applications</a></li>
+
+            <li><a href="manage-payments.html">💳 Payments</a></li>
+
+            <li><a href="manage-withdraws.html">💸 Withdraw Requests</a></li>
+
+            <li><a href="manage-reviews.html">⭐ Reviews</a></li>
+
+            <li><a href="settings.html">⚙️ Settings</a></li>
+
+            <li><a href="index.html">🚪 Logout</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>📄 Manage Applications</h1>
+
+            <input
+                type="text"
+                id="searchApplication"
+                placeholder="Search applications..."
+            >
+
+        </div>
+
+        <div class="table-box">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Project</th>
+
+                        <th>Freelancer</th>
+
+                        <th>Bid</th>
+
+                        <th>Delivery</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="applicationsTable">
+
+                    <tr>
+
+                        <td colspan="6" style="text-align:center;">
+
+                            Loading Applications...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script type="module" src="Js folder/manage-applications.js"></script>
+
+</body>
+
+</html>

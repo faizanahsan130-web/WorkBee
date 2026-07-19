@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications Center | WorkBee</title>
+
+    <link rel="stylesheet" href="Css folder/notifications-center.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <h1>🔔 Notifications Center</h1>
+
+        <p>Stay updated with your latest WorkBee activities.</p>
+
+    </header>
+
+    <!-- Top Actions -->
+
+    <div class="toolbar">
+
+        <input
+            type="text"
+            id="searchNotification"
+            placeholder="Search notifications...">
+
+        <select id="filterNotification">
+
+            <option value="All">All Notifications</option>
+
+            <option value="Message">Messages</option>
+
+            <option value="Project">Projects</option>
+
+            <option value="Payment">Payments</option>
+
+            <option value="Review">Reviews</option>
+
+            <option value="System">System</option>
+
+        </select>
+
+        <button id="markAllRead">
+            ✅ Mark All Read
+        </button>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="stats">
+
+        <div class="card">
+            <h3>Total</h3>
+            <h2 id="totalNotifications">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Unread</h3>
+            <h2 id="unreadNotifications">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Read</h3>
+            <h2 id="readNotifications">0</h2>
+        </div>
+
+    </div>
+
+    <!-- Notifications List -->
+
+    <div id="notificationsContainer">
+
+        Loading Notifications...
+
+    </div>
+
+</div>
+
+<script type="module" src="Js folder/notifications-center.js"></script>
+
+</body>
+
+</html>

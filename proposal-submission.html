@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Submit Proposal | WorkBee</title>
+
+    <link rel="stylesheet" href="Css folder/proposal-submission.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="proposal-card">
+
+        <h1>💼 Submit Proposal</h1>
+
+        <p>Send your proposal to the client.</p>
+
+        <form id="proposalForm">
+
+            <label>Cover Letter</label>
+
+            <textarea
+                id="coverLetter"
+                rows="8"
+                placeholder="Write your proposal..."
+                required>
+            </textarea>
+
+            <label>Bid Amount ($)</label>
+
+            <input
+                type="number"
+                id="bidAmount"
+                placeholder="Enter your bid"
+                min="1"
+                required>
+
+            <label>Delivery Time (Days)</label>
+
+            <input
+                type="number"
+                id="deliveryTime"
+                placeholder="Delivery days"
+                min="1"
+                required>
+
+            <label>Select Portfolio Project</label>
+
+            <select id="portfolioSelect">
+
+                <option value="">
+                    Select Portfolio
+                </option>
+
+            </select>
+
+            <label>Attach File</label>
+
+            <input
+                type="file"
+                id="proposalFile"
+                accept=".pdf,.doc,.docx,.zip,.png,.jpg">
+
+            <div class="buttons">
+
+                <button
+                    type="button"
+                    id="aiProposalBtn">
+
+                    🤖 Generate AI Proposal
+
+                </button>
+
+                <button
+                    type="submit">
+
+                    🚀 Submit Proposal
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script type="module" src="Js folder/proposal-submission.js"></script>
+
+</body>
+
+</html>

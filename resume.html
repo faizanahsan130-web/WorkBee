@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Resume | WorkBee</title>
+
+    <link rel="stylesheet" href="Css%20folder/resume.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="resume-card">
+
+        <h1>📄 My Resume</h1>
+
+        <p>Upload and manage your professional resume.</p>
+
+        <!-- Upload Section -->
+
+        <div class="upload-section">
+
+            <div class="file-icon">
+
+                📄
+
+            </div>
+
+            <h2>Upload Resume</h2>
+
+            <p>Supported formats: PDF, DOC, DOCX (Max 10 MB)</p>
+
+            <input
+                type="file"
+                id="resumeFile"
+                accept=".pdf,.doc,.docx">
+
+            <button
+                type="button"
+                id="uploadResumeBtn">
+
+                ⬆ Upload Resume
+
+            </button>
+<button
+    id="previewResume"
+    type="button">
+
+    📑 Preview
+
+</button>
+<div class="upload-progress">
+
+    <progress
+        id="uploadProgress"
+        value="0"
+        max="100">
+
+    </progress>
+
+    <span id="progressText">
+
+        0%
+
+    </span>
+
+</div>
+<button
+    id="previewResume"
+    type="button">
+
+        </div>
+
+        <!-- Resume Information -->
+
+        <div>
+    <div class="ats-box">
+        <!-- ATS content -->
+    </div>
+</div>
+
+    <h3>ATS Resume Score</h3>
+
+    <span id="atsScore">
+
+        Coming Soon
+
+    </span>
+
+</div>
+            class="resume-info"
+            id="resumeInfo">
+
+            <h2>Current Resume</h2>
+
+            <p>
+
+                <strong>File Name:</strong>
+
+                <span id="resumeName">
+
+                    No Resume Uploaded
+
+                </span>
+
+            </p>
+
+            <p>
+
+                <strong>File Type:</strong>
+
+                <span id="resumeType">
+
+                    -
+
+                </span>
+
+            </p>
+
+            <p>
+
+                <strong>File Size:</strong>
+
+                <span id="resumeSize">
+
+                    -
+
+                </span>
+
+            </p>
+
+            <p>
+
+                <strong>Uploaded Date:</strong>
+
+                <span id="resumeDate">
+
+                    -
+
+                </span>
+
+            </p>
+
+            <p>
+
+                <strong>Status:</strong>
+
+                <span id="resumeStatus">
+
+                    Not Uploaded
+
+                </span>
+
+            </p>
+
+        </div>
+
+        <!-- Resume Visibility -->
+
+        <div class="visibility-box">
+
+            <h3>Resume Visibility</h3>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="visibility"
+                    value="public"
+                    checked>
+
+                Public
+
+            </label>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="visibility"
+                    value="private">
+
+                Private
+
+            </label>
+
+        </div>
+
+        <!-- Buttons -->
+
+        <div class="action-buttons">
+
+            <button
+                id="viewResume"
+                type="button">
+
+                👁 View
+
+            </button>
+
+            <button
+                id="downloadResume"
+                type="button">
+
+                ⬇ Download
+
+            </button>
+
+            <button
+                id="replaceResume"
+                type="button">
+
+                🔄 Replace
+
+            </button>
+
+            <button
+                id="deleteResume"
+                type="button">
+
+                🗑 Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script
+type="module"
+src="Js%20folder/resume.js">
+
+</script>
+
+</body>
+
+</html>

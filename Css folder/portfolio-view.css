@@ -1,0 +1,257 @@
+/* ==========================================
+   WorkBee - Portfolio View
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:40px auto;
+}
+
+/* ===========================
+   Profile Header
+=========================== */
+
+.profile-header{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    margin-bottom:30px;
+}
+
+.profile-header img{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #2563eb;
+}
+
+.profile-header h1{
+    color:#1f2937;
+    margin-bottom:10px;
+    font-size:34px;
+}
+
+.profile-header p{
+    color:#666;
+    margin-bottom:8px;
+}
+
+/* ===========================
+   Cards
+=========================== */
+
+.card{
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.card h2{
+    color:#2563eb;
+    margin-bottom:18px;
+}
+
+.card p{
+    line-height:1.8;
+}
+
+/* ===========================
+   Skills
+=========================== */
+
+#skillsContainer{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.skill{
+    background:#e0ecff;
+    color:#2563eb;
+    padding:8px 15px;
+    border-radius:25px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* ===========================
+   Portfolio Grid
+=========================== */
+
+#portfolioContainer{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.portfolio-card{
+    background:#fafafa;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.portfolio-card:hover{
+    transform:translateY(-5px);
+}
+
+.portfolio-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.portfolio-content{
+    padding:18px;
+}
+
+.portfolio-content h3{
+    margin-bottom:10px;
+    color:#1f2937;
+}
+
+.portfolio-content p{
+    color:#666;
+    margin-bottom:12px;
+}
+
+.portfolio-content a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.portfolio-content a:hover{
+    text-decoration:underline;
+}
+
+/* ===========================
+   Reviews
+=========================== */
+
+.review-card{
+    background:#fafafa;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:15px;
+    border-left:5px solid #2563eb;
+}
+
+.review-card h4{
+    margin-bottom:8px;
+    color:#1f2937;
+}
+
+.review-card p{
+    color:#555;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.actions{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:35px;
+}
+
+.actions button{
+    border:none;
+    padding:14px 30px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    color:#fff;
+    transition:.3s;
+}
+
+#hireBtn{
+    background:#16a34a;
+}
+
+#chatBtn{
+    background:#2563eb;
+}
+
+#shareBtn{
+    background:#7c3aed;
+}
+
+.actions button:hover{
+    opacity:.9;
+    transform:translateY(-2px);
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+    .profile-header{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .profile-header img{
+        width:120px;
+        height:120px;
+    }
+
+    .profile-header h1{
+        font-size:28px;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+
+    .actions button{
+        width:100%;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .container{
+        width:95%;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .profile-header{
+        padding:20px;
+    }
+
+    .profile-header h1{
+        font-size:24px;
+    }
+
+}

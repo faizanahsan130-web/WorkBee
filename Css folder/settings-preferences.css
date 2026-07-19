@@ -1,0 +1,216 @@
+/* ==========================================
+   WorkBee - Settings & Preferences
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    color:#333;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+}
+
+.settings-card{
+    background:#fff;
+    border-radius:15px;
+    padding:35px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.settings-card h1{
+    text-align:center;
+    color:#1f2937;
+    margin-bottom:10px;
+    font-size:34px;
+}
+
+.settings-card p{
+    text-align:center;
+    color:#777;
+    margin-bottom:35px;
+}
+
+/* Sections */
+
+.section{
+    margin-bottom:30px;
+    padding-bottom:25px;
+    border-bottom:1px solid #eee;
+}
+
+.section:last-of-type{
+    border-bottom:none;
+}
+
+.section h2{
+    color:#2563eb;
+    margin-bottom:18px;
+    font-size:22px;
+}
+
+.section label{
+    display:block;
+    margin:12px 0 8px;
+    font-weight:600;
+    color:#444;
+}
+
+/* Inputs */
+
+input[type="text"],
+input[type="email"],
+select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+    transition:.3s;
+    background:#fff;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus{
+    outline:none;
+    border-color:#f59e0b;
+    box-shadow:0 0 5px rgba(245,158,11,.3);
+}
+
+input[readonly]{
+    background:#f3f4f6;
+    cursor:not-allowed;
+}
+
+/* Checkbox */
+
+.section input[type="checkbox"]{
+    margin-right:10px;
+    transform:scale(1.2);
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.buttons button{
+    flex:1;
+    border:none;
+    padding:14px;
+    border-radius:8px;
+    font-size:16px;
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.save-btn{
+    background:#16a34a;
+}
+
+.save-btn:hover{
+    background:#15803d;
+}
+
+.reset-btn{
+    background:#dc2626;
+}
+
+.reset-btn:hover{
+    background:#b91c1c;
+}
+
+/* Dark Mode Support */
+
+body.dark{
+    background:#111827;
+    color:#f3f4f6;
+}
+
+body.dark .settings-card{
+    background:#1f2937;
+}
+
+body.dark input,
+body.dark select{
+    background:#374151;
+    color:#fff;
+    border-color:#4b5563;
+}
+
+body.dark input[readonly]{
+    background:#4b5563;
+}
+
+body.dark .section{
+    border-bottom:1px solid #374151;
+}
+
+body.dark .section label{
+    color:#e5e7eb;
+}
+
+body.dark h1,
+body.dark h2{
+    color:#fff;
+}
+
+body.dark p{
+    color:#d1d5db;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .settings-card{
+        padding:25px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .settings-card h1{
+        font-size:28px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    body{
+        padding:15px;
+    }
+
+    .settings-card{
+        padding:20px;
+    }
+
+    .settings-card h1{
+        font-size:24px;
+    }
+
+    .section h2{
+        font-size:20px;
+    }
+
+}

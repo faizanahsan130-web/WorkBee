@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Earnings | WorkBee</title>
+
+    <link rel="stylesheet" href="Css folder/earnings.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🐝 <strong>WorkBee</strong>
+    </div>
+
+    <nav>
+
+        <a href="freelancer-dashboard.html">Dashboard</a>
+
+        <a href="browse-freelancers.html">Browse Projects</a>
+
+        <a href="chat.html">Messages</a>
+
+        <a href="notifications.html">Notifications</a>
+
+        <a href="earnings.html" class="active">Earnings</a>
+
+        <a href="index.html">Logout</a>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <h1>💰 Earnings Dashboard</h1>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>Total Earnings</h3>
+
+            <h2 id="totalEarnings">$0.00</h2>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Available Balance</h3>
+
+            <h2 id="availableBalance">$0.00</h2>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Pending Payments</h3>
+
+            <h2 id="pendingPayments">$0.00</h2>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Completed Payments</h3>
+
+            <h2 id="completedPayments">0</h2>
+
+        </div>
+
+    </div>
+
+    <div class="table-section">
+
+        <h2>Payment History</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Project</th>
+
+                    <th>Client</th>
+
+                    <th>Amount</th>
+
+                    <th>Status</th>
+
+                    <th>Date</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="paymentTable">
+
+                <tr>
+
+                    <td colspan="5" style="text-align:center;">
+
+                        Loading Payments...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="withdraw-box">
+
+        <button onclick="window.location.href='withdraw.html'">
+
+            💸 Withdraw Money
+
+        </button>
+
+    </div>
+
+</main>
+
+<footer>
+
+    © 2026 WorkBee. All Rights Reserved.
+
+</footer>
+
+<script type="module" src="Js folder/earnings.js"></script>
+
+</body>
+
+</html>

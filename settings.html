@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Settings | WorkBee Admin</title>
+
+<link rel="stylesheet"
+href="Css folder/settings.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<h2>🐝 WorkBee</h2>
+
+<ul>
+
+<li><a href="admin-dashboard.html">📊 Dashboard</a></li>
+
+<li><a href="manage-users.html">👥 Manage Users</a></li>
+
+<li><a href="manage-projects.html">💼 Projects</a></li>
+
+<li><a href="manage-applications.html">📄 Applications</a></li>
+
+<li><a href="manage-payments.html">💳 Payments</a></li>
+
+<li><a href="manage-withdraws.html">💸 Withdraws</a></li>
+
+<li><a href="manage-reviews.html">⭐ Reviews</a></li>
+
+<li><a href="settings.html" class="active">⚙ Settings</a></li>
+
+<li><a href="index.html">🚪 Logout</a></li>
+
+</ul>
+
+</aside>
+
+<!-- Main -->
+
+<main class="main-content">
+
+<h1>⚙ Website Settings</h1>
+
+<form id="settingsForm">
+
+<div class="card">
+
+<h2>General Settings</h2>
+
+<input
+type="text"
+id="siteName"
+placeholder="Website Name"
+value="WorkBee"
+>
+
+<input
+type="email"
+id="adminEmail"
+placeholder="Admin Email"
+>
+
+<input
+type="text"
+id="supportEmail"
+placeholder="Support Email"
+>
+
+</div>
+
+<div class="card">
+
+<h2>Commission</h2>
+
+<input
+type="number"
+id="commission"
+placeholder="Commission %"
+value="10"
+>
+
+</div>
+
+<div class="card">
+
+<h2>Payments</h2>
+
+<label>
+
+<input
+type="checkbox"
+id="paypal"
+checked>
+
+Enable PayPal
+
+</label>
+
+<br><br>
+
+<label>
+
+<input
+type="checkbox"
+id="stripe"
+checked>
+
+Enable Stripe
+
+</label>
+
+</div>
+
+<div class="card">
+
+<h2>Registration</h2>
+
+<label>
+
+<input
+type="checkbox"
+id="allowSignup"
+checked>
+
+Allow New Users
+
+</label>
+
+</div>
+
+<button type="submit">
+
+💾 Save Settings
+
+</button>
+
+</form>
+
+</main>
+
+</div>
+
+<script type="module"
+src="Js folder/settings.js"></script>
+
+</body>
+
+</html>

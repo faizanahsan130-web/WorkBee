@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Payments | WorkBee Admin</title>
+
+    <link rel="stylesheet" href="Css folder/manage-payments.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>🐝 WorkBee</h2>
+
+        <ul>
+
+            <li><a href="admin-dashboard.html">📊 Dashboard</a></li>
+
+            <li><a href="manage-users.html">👥 Manage Users</a></li>
+
+            <li><a href="manage-projects.html">💼 Manage Projects</a></li>
+
+            <li><a href="manage-applications.html">📄 Applications</a></li>
+
+            <li><a href="manage-payments.html" class="active">💳 Payments</a></li>
+
+            <li><a href="manage-withdraws.html">💸 Withdraw Requests</a></li>
+
+            <li><a href="manage-reviews.html">⭐ Reviews</a></li>
+
+            <li><a href="settings.html">⚙️ Settings</a></li>
+
+            <li><a href="index.html">🚪 Logout</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>💳 Manage Payments</h1>
+
+            <input
+                type="text"
+                id="searchPayment"
+                placeholder="Search payment..."
+            >
+
+        </div>
+
+        <!-- Summary Cards -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Total Payments</h3>
+
+                <h2 id="totalPayments">$0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Completed</h3>
+
+                <h2 id="completedPayments">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Pending</h3>
+
+                <h2 id="pendingPayments">0</h2>
+
+            </div>
+
+        </div>
+
+        <!-- Payments Table -->
+
+        <div class="table-box">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Project</th>
+
+                        <th>Client</th>
+
+                        <th>Freelancer</th>
+
+                        <th>Amount</th>
+
+                        <th>Method</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="paymentsTable">
+
+                    <tr>
+
+                        <td colspan="7" style="text-align:center;">
+
+                            Loading Payments...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script type="module" src="Js folder/manage-payments.js"></script>
+
+</body>
+
+</html>

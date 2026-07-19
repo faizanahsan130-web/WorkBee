@@ -1,0 +1,165 @@
+/* ==========================================
+   WorkBee - Proposal Submission
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    color:#333;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+}
+
+.proposal-card{
+    background:#fff;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.proposal-card h1{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:10px;
+    font-size:34px;
+}
+
+.proposal-card p{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+/* Form */
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+label{
+    font-weight:600;
+    color:#333;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:14px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+    transition:.3s;
+}
+
+textarea{
+    resize:vertical;
+    min-height:180px;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    outline:none;
+    border-color:#2563eb;
+    box-shadow:0 0 5px rgba(37,99,235,.25);
+}
+
+input[type="file"]{
+    padding:10px;
+    background:#fff;
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:15px;
+}
+
+.buttons button{
+    flex:1;
+    border:none;
+    padding:15px;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#aiProposalBtn{
+    background:#7c3aed;
+}
+
+#aiProposalBtn:hover{
+    background:#6d28d9;
+}
+
+button[type="submit"]{
+    background:#16a34a;
+}
+
+button[type="submit"]:hover{
+    background:#15803d;
+}
+
+.buttons button:hover{
+    transform:translateY(-2px);
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .proposal-card{
+        padding:25px;
+    }
+
+    .proposal-card h1{
+        font-size:28px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+}
+
+@media(max-width:480px){
+
+    body{
+        padding:15px;
+    }
+
+    .proposal-card{
+        padding:20px;
+    }
+
+    .proposal-card h1{
+        font-size:24px;
+    }
+
+    textarea{
+        min-height:140px;
+    }
+
+}

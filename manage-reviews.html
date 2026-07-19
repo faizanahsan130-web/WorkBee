@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Reviews | WorkBee Admin</title>
+
+    <link rel="stylesheet" href="Css folder/manage-reviews.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>🐝 WorkBee</h2>
+
+        <ul>
+
+            <li><a href="admin-dashboard.html">📊 Dashboard</a></li>
+
+            <li><a href="manage-users.html">👥 Manage Users</a></li>
+
+            <li><a href="manage-projects.html">💼 Manage Projects</a></li>
+
+            <li><a href="manage-applications.html">📄 Applications</a></li>
+
+            <li><a href="manage-payments.html">💳 Payments</a></li>
+
+            <li><a href="manage-withdraws.html">💸 Withdraw Requests</a></li>
+
+            <li><a href="manage-reviews.html" class="active">⭐ Reviews</a></li>
+
+            <li><a href="settings.html">⚙️ Settings</a></li>
+
+            <li><a href="index.html">🚪 Logout</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>⭐ Manage Reviews</h1>
+
+            <input
+                type="text"
+                id="searchReview"
+                placeholder="Search by user or project..."
+            >
+
+        </div>
+
+        <!-- Summary Cards -->
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Reviews</h3>
+                <h2 id="totalReviews">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Average Rating</h3>
+                <h2 id="averageRating">0.0 ⭐</h2>
+            </div>
+
+            <div class="card">
+                <h3>5-Star Reviews</h3>
+                <h2 id="fiveStarReviews">0</h2>
+            </div>
+
+        </div>
+
+        <!-- Reviews Table -->
+
+        <div class="table-box">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Project</th>
+
+                        <th>Reviewer</th>
+
+                        <th>Freelancer</th>
+
+                        <th>Rating</th>
+
+                        <th>Review</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="reviewsTable">
+
+                    <tr>
+
+                        <td colspan="6" style="text-align:center;">
+
+                            Loading Reviews...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script type="module" src="Js folder/manage-reviews.js"></script>
+
+</body>
+
+</html>

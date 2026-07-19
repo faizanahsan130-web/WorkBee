@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Milestone Management | WorkBee</title>
+
+    <link rel="stylesheet"
+          href="Css folder/milestones.css">
+
+</head>
+
+<body>
+
+<!-- =======================================
+     Header
+======================================= -->
+
+<header class="topbar">
+
+    <div class="logo">
+
+        🐝 <strong>WorkBee</strong>
+
+    </div>
+
+    <nav>
+
+        <a href="client-dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="my-projects.html">
+            My Projects
+        </a>
+
+        <a href="proposal.html">
+            Proposals
+        </a>
+
+        <a href="payment.html">
+            Payments
+        </a>
+
+        <a href="chat.html">
+            Messages
+        </a>
+
+        <a href="milestones.html"
+           class="active">
+
+            Milestones
+
+        </a>
+
+        <a href="notifications.html">
+
+            Notifications
+
+        </a>
+
+    </nav>
+
+</header>
+
+<!-- =======================================
+     Main Container
+======================================= -->
+
+<div class="container">
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>
+
+                📅 Milestone Management
+
+            </h1>
+
+            <p>
+
+                Create, track and approve
+                project milestones.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ============================
+         Statistics
+    ============================= -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <h3>
+
+                Total Milestones
+
+            </h3>
+
+            <h2 id="totalMilestones">
+
+                0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>
+
+                Pending
+
+            </h3>
+
+            <h2 id="pendingMilestones">
+
+                0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>
+
+                Completed
+
+            </h3>
+
+            <h2 id="completedMilestones">
+
+                0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>
+
+                Total Value
+
+            </h3>
+
+            <h2 id="totalValue">
+
+                $0.00
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <!-- ============================
+         Create Milestone
+    ============================= -->
+
+    <div class="card">
+
+        <h2>
+
+            ➕ Create New Milestone
+
+        </h2>
+
+        <form id="milestoneForm">
+
+            <div class="grid">
+
+                <div>
+
+                    <label>
+
+                        Project ID
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="projectId"
+                        placeholder="Project ID"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Milestone Title
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="milestoneTitle"
+                        placeholder="Homepage Design"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Amount ($)
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="milestoneAmount"
+                        placeholder="500"
+                        min="1"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label>
+
+                        Due Date
+
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dueDate"
+                        required>
+
+                </div>
+
+            </div>
+
+            <label>
+
+                Description
+
+            </label>
+
+            <textarea
+                id="milestoneDescription"
+                rows="5"
+                placeholder="Describe milestone..."
+                required>
+
+            </textarea>
+
+            <button
+                id="createMilestoneBtn"
+                type="submit">
+
+                🚀 Create Milestone
+
+            </button>
+
+        </form>
+
+    </div>
+        <!-- =======================================
+         Progress Overview
+    ======================================== -->
+
+    <div class="card">
+
+        <div class="section-header">
+
+            <h2>
+
+                📊 Project Progress
+
+            </h2>
+
+            <span id="progressPercent">
+
+                0%
+
+            </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div id="progressFill"
+                 class="progress-fill">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =======================================
+         Milestone List
+    ======================================== -->
+
+    <div class="card">
+
+        <div class="section-header">
+
+            <h2>
+
+                📋 All Milestones
+
+            </h2>
+
+            <button id="refreshMilestones">
+
+                🔄 Refresh
+
+            </button>
+
+        </div>
+
+        <div id="milestoneContainer">
+
+            <div class="loading">
+
+                Loading Milestones...
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =======================================
+     Milestone Card Template
+======================================= -->
+
+<template id="milestoneTemplate">
+
+    <div class="milestone-card">
+
+        <div class="milestone-header">
+
+            <div>
+
+                <h3 class="milestone-title">
+
+                </h3>
+
+                <p class="project-id">
+
+                </p>
+
+            </div>
+
+            <span class="status">
+
+            </span>
+
+        </div>
+
+        <div class="milestone-body">
+
+            <p class="description">
+
+            </p>
+
+            <div class="details">
+
+                <div>
+
+                    <strong>
+
+                        Freelancer
+
+                    </strong>
+
+                    <p class="freelancer">
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <strong>
+
+                        Due Date
+
+                    </strong>
+
+                    <p class="due-date">
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <strong>
+
+                        Amount
+
+                    </strong>
+
+                    <p class="amount">
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="milestone-actions">
+
+            <button class="start-btn">
+
+                ▶ Start
+
+            </button>
+
+            <button class="submit-btn">
+
+                📤 Submit
+
+            </button>
+
+            <button class="approve-btn">
+
+                ✅ Approve
+
+            </button>
+
+            <button class="release-btn">
+
+                💰 Release Payment
+
+            </button>
+
+            <button class="edit-btn">
+
+                ✏ Edit
+
+            </button>
+
+            <button class="delete-btn">
+
+                🗑 Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</template>
+
+<!-- =======================================
+     Empty State
+======================================= -->
+
+<div id="emptyState"
+
+     class="hidden">
+
+    <div class="empty-state">
+
+        <h2>
+
+            📅 No Milestones Yet
+
+        </h2>
+
+        <p>
+
+            Create your first milestone to
+            start managing project progress.
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- =======================================
+     Footer
+======================================= -->
+
+<footer>
+
+    <p>
+
+        © 2026 WorkBee —
+        Milestone Management System
+
+    </p>
+
+</footer>
+
+<!-- =======================================
+     JavaScript
+======================================= -->
+
+<script type="module"
+        src="Js folder/milestones.js">
+
+</script>
+
+</body>
+
+</html>

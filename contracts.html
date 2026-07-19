@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contracts | WorkBee</title>
+
+    <link rel="stylesheet" href="Css folder/contracts.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📄 Contracts</h1>
+
+    <p>Manage all your project contracts</p>
+
+    <div class="stats">
+
+        <div class="card">
+            <h3>Active Contracts</h3>
+            <h2 id="activeContracts">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Completed</h3>
+            <h2 id="completedContracts">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Cancelled</h3>
+            <h2 id="cancelledContracts">0</h2>
+        </div>
+
+    </div>
+
+    <div class="toolbar">
+
+        <input
+            type="text"
+            id="searchContract"
+            placeholder="Search Contract..."
+        >
+
+        <select id="statusFilter">
+
+            <option value="All">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+
+        </select>
+
+    </div>
+
+    <div id="contractsContainer">
+
+        Loading Contracts...
+
+    </div>
+
+</div>
+
+<script type="module" src="Js folder/contracts.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+/* ==========================================
+   WorkBee - Video Meeting
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+    min-height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:40px auto;
+}
+
+/* Header */
+
+header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+header h1{
+    font-size:36px;
+    color:#1f2937;
+    margin-bottom:10px;
+}
+
+header p{
+    color:#666;
+}
+
+/* Meeting Controls */
+
+.meeting-info{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+    margin-bottom:30px;
+}
+
+.meeting-info input{
+    flex:1;
+    min-width:260px;
+    max-width:420px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.meeting-info input:focus{
+    outline:none;
+    border-color:#f59e0b;
+}
+
+.meeting-info button{
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+#joinMeeting{
+    background:#2563eb;
+}
+
+#createMeeting{
+    background:#16a34a;
+}
+
+.meeting-info button:hover{
+    opacity:.9;
+    transform:translateY(-2px);
+}
+
+/* Video Section */
+
+.video-wrapper{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+    gap:25px;
+    margin-bottom:35px;
+}
+
+.video-box{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.video-box video{
+    width:100%;
+    height:320px;
+    background:#000;
+    object-fit:cover;
+}
+
+.video-box h3{
+    padding:15px;
+    text-align:center;
+    color:#1f2937;
+}
+
+/* Controls */
+
+.controls{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.controls button{
+    border:none;
+    padding:14px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    color:#fff;
+    font-size:15px;
+    transition:.3s;
+    min-width:160px;
+}
+
+#cameraBtn{
+    background:#2563eb;
+}
+
+#micBtn{
+    background:#7c3aed;
+}
+
+#screenBtn{
+    background:#f59e0b;
+}
+
+#copyBtn{
+    background:#16a34a;
+}
+
+#leaveBtn{
+    background:#dc2626;
+}
+
+.controls button:hover{
+    opacity:.9;
+    transform:translateY(-2px);
+}
+
+/* Chat */
+
+.chat-section{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.chat-section h2{
+    margin-bottom:20px;
+    color:#1f2937;
+}
+
+#chatMessages{
+    height:260px;
+    overflow-y:auto;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    background:#fafafa;
+    margin-bottom:20px;
+}
+
+.message{
+    background:#eef2ff;
+    padding:10px 14px;
+    border-radius:10px;
+    margin-bottom:12px;
+}
+
+.chat-input{
+    display:flex;
+    gap:10px;
+}
+
+.chat-input input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.chat-input input:focus{
+    outline:none;
+    border-color:#f59e0b;
+}
+
+.chat-input button{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.chat-input button:hover{
+    background:#1d4ed8;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .container{
+        width:95%;
+    }
+
+    .meeting-info{
+        flex-direction:column;
+    }
+
+    .meeting-info input,
+    .meeting-info button{
+        width:100%;
+        max-width:none;
+    }
+
+    .video-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .controls{
+        flex-direction:column;
+    }
+
+    .controls button{
+        width:100%;
+    }
+
+    .chat-input{
+        flex-direction:column;
+    }
+
+    header h1{
+        font-size:30px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    header h1{
+        font-size:26px;
+    }
+
+    .video-box video{
+        height:240px;
+    }
+
+    .chat-section{
+        padding:18px;
+    }
+
+}

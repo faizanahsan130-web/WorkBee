@@ -1,0 +1,201 @@
+/* ==========================================
+   WorkBee - Resume Page
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+}
+
+.resume-card{
+    background:#fff;
+    border-radius:15px;
+    padding:35px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.resume-card h1{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:10px;
+    font-size:34px;
+}
+
+.resume-card>p{
+    text-align:center;
+    color:#666;
+    margin-bottom:35px;
+}
+
+/* ==========================
+   Upload Section
+========================== */
+
+.upload-section{
+    border:2px dashed #2563eb;
+    border-radius:15px;
+    padding:35px;
+    text-align:center;
+    background:#f8fbff;
+    margin-bottom:35px;
+}
+
+.file-icon{
+    font-size:70px;
+    margin-bottom:15px;
+}
+
+.upload-section h2{
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.upload-section p{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.upload-section input{
+    display:block;
+    margin:20px auto;
+    padding:10px;
+}
+
+#uploadResumeBtn{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:14px 28px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+#uploadResumeBtn:hover{
+    background:#1d4ed8;
+}
+
+/* ==========================
+   Resume Information
+========================== */
+
+.resume-info{
+    background:#fafafa;
+    border-radius:12px;
+    padding:25px;
+    margin-bottom:30px;
+}
+
+.resume-info h2{
+    margin-bottom:20px;
+    color:#111827;
+}
+
+.resume-info p{
+    margin-bottom:12px;
+    color:#555;
+    line-height:1.6;
+}
+
+.resume-info strong{
+    color:#111827;
+}
+
+/* ==========================
+   Action Buttons
+========================== */
+
+.action-buttons{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.action-buttons button{
+    border:none;
+    padding:14px;
+    border-radius:8px;
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+#viewResume{
+    background:#2563eb;
+}
+
+#downloadResume{
+    background:#16a34a;
+}
+
+#replaceResume{
+    background:#f59e0b;
+}
+
+#deleteResume{
+    background:#dc2626;
+}
+
+.action-buttons button:hover{
+    opacity:.9;
+    transform:translateY(-2px);
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media(max-width:768px){
+
+    .container{
+        width:95%;
+    }
+
+    .resume-card{
+        padding:25px;
+    }
+
+    .resume-card h1{
+        font-size:28px;
+    }
+
+    .upload-section{
+        padding:25px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .resume-card{
+        padding:18px;
+    }
+
+    .file-icon{
+        font-size:55px;
+    }
+
+    .action-buttons{
+        grid-template-columns:1fr;
+    }
+
+    #uploadResumeBtn{
+        width:100%;
+    }
+
+}

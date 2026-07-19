@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Video Meeting | WorkBee</title>
+
+    <link rel="stylesheet" href="Css folder/video-meeting.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <h1>🎥 WorkBee Video Meeting</h1>
+
+        <p>Connect with clients and freelancers instantly.</p>
+
+    </header>
+
+    <!-- Meeting Information -->
+
+    <div class="meeting-info">
+
+        <input
+            type="text"
+            id="meetingId"
+            placeholder="Enter Meeting ID">
+
+        <button id="joinMeeting">
+            Join Meeting
+        </button>
+
+        <button id="createMeeting">
+            Create Meeting
+        </button>
+
+    </div>
+
+    <!-- Video Area -->
+
+    <div class="video-wrapper">
+
+        <div class="video-box">
+
+            <video
+                id="localVideo"
+                autoplay
+                muted
+                playsinline>
+            </video>
+
+            <h3>You</h3>
+
+        </div>
+
+        <div class="video-box">
+
+            <video
+                id="remoteVideo"
+                autoplay
+                playsinline>
+            </video>
+
+            <h3>Remote User</h3>
+
+        </div>
+
+    </div>
+
+    <!-- Controls -->
+
+    <div class="controls">
+
+        <button id="cameraBtn">
+            📹 Camera
+        </button>
+
+        <button id="micBtn">
+            🎤 Microphone
+        </button>
+
+        <button id="screenBtn">
+            🖥 Share Screen
+        </button>
+
+        <button id="copyBtn">
+            🔗 Copy Link
+        </button>
+
+        <button id="leaveBtn">
+            ❌ Leave
+        </button>
+
+    </div>
+
+    <!-- Meeting Chat -->
+
+    <div class="chat-section">
+
+        <h2>Meeting Chat</h2>
+
+        <div id="chatMessages">
+
+            <p>No messages yet...</p>
+
+        </div>
+
+        <div class="chat-input">
+
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Type message...">
+
+            <button id="sendMessage">
+
+                Send
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module" src="Js folder/video-meeting.js"></script>
+
+</body>
+
+</html>

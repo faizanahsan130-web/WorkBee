@@ -1,0 +1,167 @@
+/* =========================
+   WorkBee - My Projects
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+}
+
+/* Header */
+
+header {
+    background: #ffb703;
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #fff;
+}
+
+/* Main */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+main h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #222;
+}
+
+/* Projects Container */
+
+#projectsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* Project Card */
+
+.project-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-card h2 {
+    color: #1d3557;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.project-budget {
+    color: #28a745;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Buttons */
+
+.project-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.project-actions button {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.view-btn {
+    background: #0077b6;
+}
+
+.edit-btn {
+    background: #f77f00;
+}
+
+.delete-btn {
+    background: #d62828;
+}
+
+.view-btn:hover,
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 0.9;
+}
+
+/* Empty State */
+
+.empty-message {
+    grid-column: 1/-1;
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-actions {
+        flex-direction: column;
+    }
+
+    .project-actions button {
+        width: 100%;
+    }
+}

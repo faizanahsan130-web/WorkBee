@@ -1,0 +1,194 @@
+/* =====================================
+   WorkBee - View Applications
+===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#333;
+}
+
+/* Header */
+
+header{
+    background:#1f2937;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    flex-wrap:wrap;
+}
+
+header h1{
+    font-size:30px;
+}
+
+nav{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+nav a:hover{
+    background:#f5a623;
+}
+
+/* Main */
+
+main{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.page-header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.page-header h2{
+    color:#1f2937;
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.page-header p{
+    color:#666;
+}
+
+/* Applications */
+
+#applicationsContainer{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+}
+
+/* Card */
+
+.card{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    color:#f5a623;
+    margin-bottom:15px;
+}
+
+.card p{
+    margin:10px 0;
+    line-height:1.6;
+}
+
+.status{
+    display:inline-block;
+    margin-top:10px;
+    padding:6px 14px;
+    border-radius:20px;
+    background:#dbeafe;
+    color:#1d4ed8;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* Buttons */
+
+.buttons{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+button{
+    border:none;
+    border-radius:8px;
+    padding:12px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.accept{
+    background:#10b981;
+    color:white;
+}
+
+.accept:hover{
+    background:#059669;
+}
+
+.reject{
+    background:#ef4444;
+    color:white;
+}
+
+.reject:hover{
+    background:#dc2626;
+}
+
+.message{
+    background:#2563eb;
+    color:white;
+}
+
+.message:hover{
+    background:#1d4ed8;
+}
+
+/* Loading */
+
+.loading{
+    width:100%;
+    text-align:center;
+    padding:60px;
+    color:#666;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        gap:20px;
+        text-align:center;
+    }
+
+    nav{
+        justify-content:center;
+    }
+
+    #applicationsContainer{
+        grid-template-columns:1fr;
+    }
+
+    .buttons{
+        grid-template-columns:1fr;
+    }
+
+}

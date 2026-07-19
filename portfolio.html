@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>My Portfolio | WorkBee</title>
+
+<link rel="stylesheet"
+href="Css%20folder/portfolio.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ========================= -->
+<!-- Header -->
+<!-- ========================= -->
+
+<div class="page-header">
+
+<h1>💼 My Portfolio</h1>
+
+<p>
+Showcase your best work and attract more clients.
+</p>
+
+</div>
+
+<!-- ========================= -->
+<!-- Statistics -->
+<!-- ========================= -->
+
+<div class="stats">
+
+<div class="stat-card">
+
+<h3>Total Projects</h3>
+
+<h2 id="totalProjects">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Portfolio Views</h3>
+
+<h2 id="portfolioViews">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Likes</h3>
+
+<h2 id="portfolioLikes">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- Add Portfolio -->
+<!-- ========================= -->
+
+<div class="card">
+
+<h2>
+
+➕ Add New Project
+
+</h2>
+
+<form id="portfolioForm">
+
+<input
+type="text"
+id="projectTitle"
+placeholder="Project Title"
+required>
+
+<select
+id="projectCategory"
+required>
+
+<option value="">
+
+Select Category
+
+</option>
+
+<option>
+
+Web Development
+
+</option>
+
+<option>
+
+Mobile App
+
+</option>
+
+<option>
+
+UI / UX Design
+
+</option>
+
+<option>
+
+Graphic Design
+
+</option>
+
+<option>
+
+WordPress
+
+</option>
+
+<option>
+
+Automation
+
+</option>
+
+<option>
+
+AI Project
+
+</option>
+
+<option>
+
+Other
+
+</option>
+
+</select>
+
+<textarea
+
+id="projectDescription"
+
+rows="6"
+
+placeholder="Project Description"
+
+required>
+
+</textarea>
+
+<input
+
+type="text"
+
+id="projectSkills"
+
+placeholder="Skills (HTML, CSS, JavaScript...)">
+
+<input
+
+type="url"
+
+id="projectLink"
+
+placeholder="Live Demo URL">
+
+<input
+
+type="url"
+
+id="githubLink"
+
+placeholder="GitHub Repository">
+
+<input
+
+type="file"
+
+id="projectImage"
+
+accept="image/*">
+
+<div class="upload-progress">
+
+<progress
+
+id="uploadProgress"
+
+value="0"
+
+max="100">
+
+</progress>
+
+<span id="progressText">
+
+0%
+
+</span>
+
+</div>
+
+<button
+
+type="submit"
+
+id="savePortfolio">
+
+💾 Save Portfolio
+
+</button>
+
+</form>
+
+</div>
+
+<!-- ========================= -->
+<!-- Search -->
+<!-- ========================= -->
+
+<div class="search-box">
+
+<input
+
+type="text"
+
+id="searchPortfolio"
+
+placeholder="Search portfolio...">
+
+</div>

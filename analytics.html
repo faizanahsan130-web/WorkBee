@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Analytics | WorkBee Admin</title>
+
+<link rel="stylesheet" href="Css folder/analytics.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<h2>🐝 WorkBee</h2>
+
+<ul>
+
+<li><a href="admin-dashboard.html">📊 Dashboard</a></li>
+
+<li><a href="analytics.html" class="active">📈 Analytics</a></li>
+
+<li><a href="manage-users.html">👥 Users</a></li>
+
+<li><a href="manage-projects.html">💼 Projects</a></li>
+
+<li><a href="manage-applications.html">📄 Applications</a></li>
+
+<li><a href="manage-payments.html">💳 Payments</a></li>
+
+<li><a href="manage-withdraws.html">💸 Withdraws</a></li>
+
+<li><a href="manage-reviews.html">⭐ Reviews</a></li>
+
+<li><a href="settings.html">⚙ Settings</a></li>
+
+<li><a href="index.html">🚪 Logout</a></li>
+
+</ul>
+
+</aside>
+
+<!-- Main -->
+
+<main class="main-content">
+
+<h1>📊 WorkBee Analytics Dashboard</h1>
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Users</h3>
+<h2 id="totalUsers">0</h2>
+</div>
+
+<div class="card">
+<h3>Total Freelancers</h3>
+<h2 id="totalFreelancers">0</h2>
+</div>
+
+<div class="card">
+<h3>Total Clients</h3>
+<h2 id="totalClients">0</h2>
+</div>
+
+<div class="card">
+<h3>Total Projects</h3>
+<h2 id="totalProjects">0</h2>
+</div>
+
+<div class="card">
+<h3>Applications</h3>
+<h2 id="totalApplications">0</h2>
+</div>
+
+<div class="card">
+<h3>Total Revenue</h3>
+<h2 id="totalRevenue">$0</h2>
+</div>
+
+<div class="card">
+<h3>Withdraw Requests</h3>
+<h2 id="totalWithdraws">0</h2>
+</div>
+
+<div class="card">
+<h3>Average Rating</h3>
+<h2 id="averageRating">0 ⭐</h2>
+</div>
+
+</div>
+
+<div class="charts">
+
+<div class="chart-box">
+
+<h2>Monthly Revenue</h2>
+
+<canvas id="revenueChart"></canvas>
+
+</div>
+
+<div class="chart-box">
+
+<h2>User Growth</h2>
+
+<canvas id="userChart"></canvas>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<!-- Chart.js -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script type="module" src="Js folder/analytics.js"></script>
+
+</body>
+
+</html>

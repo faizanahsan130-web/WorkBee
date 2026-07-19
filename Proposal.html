@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Submit Proposal | WorkBee</title>
+
+<link rel="stylesheet" href="Css folder/proposal.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="proposal-card">
+
+<h1>📩 Submit Proposal</h1>
+
+<p>Send your proposal to the client.</p>
+
+<form id="proposalForm">
+
+<label>Project Title</label>
+
+<input
+type="text"
+id="projectTitle"
+readonly>
+
+<label>Bid Amount ($)</label>
+
+<input
+type="number"
+id="bidAmount"
+required>
+
+<label>Delivery Time (Days)</label>
+
+<input
+type="number"
+id="deliveryDays"
+required>
+
+<label>Cover Letter</label>
+
+<textarea
+id="coverLetter"
+rows="8"
+required
+placeholder="Write a professional proposal..."></textarea>
+
+<label>Select Portfolio Project</label>
+
+<select id="portfolioSelect">
+
+<option value="">Select Portfolio</option>
+
+</select>
+
+<button
+type="submit"
+id="submitProposal">
+
+🚀 Submit Proposal
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script
+type="module"
+src="Js folder/proposal.js"></script>
+
+</body>
+
+</html>

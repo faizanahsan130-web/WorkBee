@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | WorkBee</title>
+
+    <link rel="stylesheet"
+          href="Css folder/admin-dashboard.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ======================================
+     Sidebar
+====================================== -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+
+        🐝 <strong>WorkBee</strong>
+
+        <span>
+
+            Admin Panel
+
+        </span>
+
+    </div>
+
+    <nav>
+
+        <a href="admin-dashboard.html"
+           class="active">
+
+            📊 Dashboard
+
+        </a>
+
+        <a href="admin-users.html">
+
+            👥 Users
+
+        </a>
+
+        <a href="admin-projects.html">
+
+            💼 Projects
+
+        </a>
+
+        <a href="admin-payments.html">
+
+            💳 Payments
+
+        </a>
+
+        <a href="admin-disputes.html">
+
+            ⚖️ Disputes
+
+        </a>
+
+        <a href="admin-reviews.html">
+
+            ⭐ Reviews
+
+        </a>
+
+        <a href="admin-reports.html">
+
+            📈 Reports
+
+        </a>
+
+        <a href="admin-settings.html">
+
+            ⚙️ Settings
+
+        </a>
+
+        <a href="index.html">
+
+            🚪 Logout
+
+        </a>
+
+    </nav>
+
+</aside>
+
+<!-- ======================================
+     Main Content
+====================================== -->
+
+<div class="main-content">
+
+    <!-- ==========================
+         Top Header
+    =========================== -->
+
+    <header class="top-header">
+
+        <div>
+
+            <h1>
+
+                📊 Admin Dashboard
+
+            </h1>
+
+            <p>
+
+                Welcome back, Administrator.
+
+            </p>
+
+        </div>
+
+        <div class="header-actions">
+
+            <button id="themeToggle">
+
+                🌙
+
+            </button>
+
+            <button id="notificationBtn">
+
+                🔔
+
+                <span id="notificationCount">
+
+                    0
+
+                </span>
+
+            </button>
+
+            <div class="admin-profile">
+
+                <img
+
+                    src="https://via.placeholder.com/45"
+
+                    alt="Admin">
+
+                <div>
+
+                    <strong id="adminName">
+
+                        Loading...
+
+                    </strong>
+
+                    <small>
+
+                        Super Admin
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ==========================
+         Statistics Cards
+    =========================== -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+
+            <h4>
+
+                👥 Total Users
+
+            </h4>
+
+            <h2 id="totalUsers">
+
+                0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>
+
+                💼 Projects
+
+            </h4>
+
+            <h2 id="totalProjects">
+
+                0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>
+
+                💰 Revenue
+
+            </h4>
+
+            <h2 id="totalRevenue">
+
+                $0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>
+
+                ⚖️ Open Disputes
+
+            </h4>
+
+            <h2 id="openDisputes">
+
+                0
+
+            </h2>
+
+        </div>
+
+    </section>
+        <!-- ==========================
+         Revenue Analytics
+    =========================== -->
+
+    <section class="dashboard-grid">
+
+        <div class="dashboard-card chart-card">
+
+            <div class="card-header">
+
+                <h2>
+
+                    📈 Revenue Analytics
+
+                </h2>
+
+                <select id="revenuePeriod">
+
+                    <option value="7">
+
+                        Last 7 Days
+
+                    </option>
+
+                    <option value="30" selected>
+
+                        Last 30 Days
+
+                    </option>
+
+                    <option value="365">
+
+                        Last Year
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <canvas id="revenueChart">
+
+            </canvas>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <h2>
+
+                    ⚠️ Pending Approvals
+
+                </h2>
+
+            </div>
+
+            <div id="pendingApprovals">
+
+                <div class="loading">
+
+                    Loading approvals...
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================
+         Activity & Payments
+    =========================== -->
+
+    <section class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <h2>
+
+                    🕒 Recent Activity
+
+                </h2>
+
+            </div>
+
+            <div id="activityFeed">
+
+                <div class="loading">
+
+                    Loading activity...
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <h2>
+
+                    💳 Latest Payments
+
+                </h2>
+
+            </div>
+
+            <div id="latestPayments">
+
+                <div class="loading">
+
+                    Loading payments...
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================
+         New Users
+    =========================== -->
+
+    <section class="dashboard-card">
+
+        <div class="card-header">
+
+            <h2>
+
+                👥 Newly Registered Users
+
+            </h2>
+
+        </div>
+
+        <div id="newUsers">
+
+            <div class="loading">
+
+                Loading users...
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- ==========================
+     Footer
+=========================== -->
+
+<footer class="admin-footer">
+
+    <p>
+
+        © 2026 WorkBee Admin Panel
+
+        | Enterprise Dashboard
+
+        | Version 2.0
+
+    </p>
+
+</footer>
+
+<!-- ==========================
+     JavaScript
+=========================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/chart.js">
+
+</script>
+
+<script
+    type="module"
+    src="Js folder/admin-dashboard.js">
+
+</script>
+
+</body>
+
+</html>

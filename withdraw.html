@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Withdraw Request | WorkBee</title>
+
+    <link rel="stylesheet" href="Css folder/withdraw.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💸 Withdraw Request</h1>
+
+    <form id="withdrawForm">
+
+        <input
+            type="number"
+            id="amount"
+            placeholder="Enter Amount ($)"
+            min="10"
+            required
+        >
+
+        <select
+            id="method"
+            required
+        >
+
+            <option value="">Select Payment Method</option>
+
+            <option value="PayPal">PayPal</option>
+
+            <option value="Stripe">Stripe</option>
+
+            <option value="Bank">Bank Transfer</option>
+
+        </select>
+
+        <input
+            type="text"
+            id="account"
+            placeholder="PayPal Email / Bank Account Number"
+            required
+        >
+
+        <button type="submit">
+
+            💰 Submit Withdraw Request
+
+        </button>
+
+    </form>
+
+    <div class="info">
+
+        <p><strong>Minimum Withdrawal:</strong> $10</p>
+
+        <p><strong>Processing Time:</strong> 24–48 Hours</p>
+
+        <p><strong>Status:</strong> Pending Admin Approval</p>
+
+    </div>
+
+</div>
+
+<script type="module" src="Js folder/withdraw.js"></script>
+
+</body>
+
+</html>

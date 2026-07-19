@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment Cancelled | WorkBee</title>
+
+    <link rel="stylesheet" href="Css folder/payment.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        🐝 <strong>WorkBee</strong>
+
+    </div>
+
+    <nav>
+
+        <a href="client-dashboard.html">Dashboard</a>
+
+        <a href="my-projects.html">My Projects</a>
+
+        <a href="notifications.html">Notifications</a>
+
+        <a href="index.html">Home</a>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <div class="payment-container">
+
+        <div class="payment-left" style="grid-column:1/-1;text-align:center;">
+
+            <div style="font-size:90px;">❌</div>
+
+            <h1 style="color:#dc2626;margin-top:15px;">
+
+                Payment Cancelled
+
+            </h1>
+
+            <p style="font-size:18px;margin-top:15px;">
+
+                Your payment was cancelled or could not be completed.
+
+            </p>
+
+            <p style="margin-top:10px;">
+
+                No money has been charged. You can try again whenever you're ready.
+
+            </p>
+
+            <div class="summary-box" style="margin-top:35px;">
+
+                <h3>Payment Status</h3>
+
+                <p><strong>Status:</strong> Cancelled ❌</p>
+
+                <p><strong>Amount Charged:</strong> $0.00</p>
+
+                <p><strong>Project:</strong> Not Funded</p>
+
+            </div>
+
+            <div style="margin-top:35px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+
+                <button onclick="history.back()">
+
+                    🔄 Try Again
+
+                </button>
+
+                <button onclick="window.location.href='payment.html'">
+
+                    💳 Payment Page
+
+                </button>
+
+                <button onclick="window.location.href='client-dashboard.html'">
+
+                    🏠 Dashboard
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+
+    <p>
+
+        © 2026 WorkBee - Secure Payments Powered by Stripe & PayPal
+
+    </p>
+
+</footer>
+
+</body>
+
+</html>

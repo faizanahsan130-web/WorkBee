@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Review Proposals | WorkBee</title>
+
+<link rel="stylesheet" href="Css folder/review-proposals.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h1>📋 Review Proposals</h1>
+
+<p>Manage freelancer proposals efficiently.</p>
+
+</div>
+
+<div class="toolbar">
+
+<input
+type="text"
+id="searchProposal"
+placeholder="🔍 Search Freelancer...">
+
+<select id="statusFilter">
+
+<option value="All">All Status</option>
+
+<option value="Pending">Pending</option>
+
+<option value="Accepted">Accepted</option>
+
+<option value="Rejected">Rejected</option>
+
+</select>
+
+<button
+id="refreshBtn"
+type="button">
+
+🔄 Refresh
+
+</button>
+
+</div>
+
+<div class="stats">
+
+<div class="stat-card">
+
+<h3>Total</h3>
+
+<h2 id="totalCount">0</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Pending</h3>
+
+<h2 id="pendingCount">0</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Accepted</h3>
+
+<h2 id="acceptedCount">0</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Rejected</h3>
+
+<h2 id="rejectedCount">0</h2>
+
+</div>
+
+</div>
+
+<div
+id="loadingBox"
+class="loading">
+
+Loading proposals...
+
+</div>
+
+<div
+id="proposalList">
+
+</div>
+
+<div
+id="emptyState"
+class="empty-state"
+style="display:none;">
+
+<h2>
+
+📭 No Proposals Found
+
+</h2>
+
+<p>
+
+There are currently no proposals available.
+
+</p>
+
+</div>
+
+</div>
+
+<script
+type="module"
+src="Js folder/review-proposals.js">
+
+</script>
+
+</body>
+
+</html>

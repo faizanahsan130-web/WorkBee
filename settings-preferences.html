@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings & Preferences | WorkBee</title>
+
+    <link rel="stylesheet" href="Css folder/settings-preferences.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="settings-card">
+
+        <h1>⚙️ Settings & Preferences</h1>
+
+        <p>Customize your WorkBee experience.</p>
+
+        <form id="settingsForm">
+
+            <!-- Profile -->
+
+            <div class="section">
+
+                <h2>👤 Profile</h2>
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter your name">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    readonly>
+
+            </div>
+
+            <!-- Appearance -->
+
+            <div class="section">
+
+                <h2>🎨 Appearance</h2>
+
+                <label>Theme</label>
+
+                <select id="theme">
+
+                    <option value="light">Light</option>
+
+                    <option value="dark">Dark</option>
+
+                </select>
+
+                <label>Language</label>
+
+                <select id="language">
+
+                    <option value="en">English</option>
+
+                    <option value="ur">Urdu</option>
+
+                </select>
+
+            </div>
+
+            <!-- Notifications -->
+
+            <div class="section">
+
+                <h2>🔔 Notifications</h2>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="emailNotifications">
+
+                    Email Notifications
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="pushNotifications">
+
+                    Push Notifications
+                </label>
+
+            </div>
+
+            <!-- Privacy -->
+
+            <div class="section">
+
+                <h2>🔒 Privacy</h2>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="profilePublic">
+
+                    Make Profile Public
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="showOnlineStatus">
+
+                    Show Online Status
+                </label>
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="buttons">
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+                    💾 Save Settings
+
+                </button>
+
+                <button
+                    type="reset"
+                    class="reset-btn">
+
+                    🔄 Reset
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script type="module" src="Js folder/settings-preferences.js"></script>
+
+</body>
+
+</html>

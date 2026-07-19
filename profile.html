@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | WorkBee</title>
+    <link rel="stylesheet" href="Css folder/profile.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="profile-card">
+        <h1>👤 My Profile</h1>
+        <p>Manage your WorkBee profile.</p>
+
+        <!-- Profile Image Section -->
+        <div class="profile-image">
+            <img id="profilePreview" src="https://via.placeholder.com/150" alt="Profile Image">
+            <input type="file" id="profileImage" accept="image/*">
+            <button type="button" id="uploadBtn">📷 Upload Photo</button>
+        </div>
+
+        <!-- Profile Form -->
+        <form id="profileForm">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <!-- Yahan se readonly hata diya gaya hai -->
+            <input type="email" id="email" placeholder="Email Address">
+            <input type="text" id="phone" placeholder="Phone Number">
+            <input type="text" id="country" placeholder="Country">
+            <input type="text" id="city" placeholder="City">
+            <input type="text" id="skills" placeholder="Skills (HTML, CSS, JavaScript...)">
+            <textarea id="bio" rows="5" placeholder="Write a short bio..."></textarea>
+            <input type="text" id="website" placeholder="Website / Portfolio Link">
+            <button type="submit">💾 Save Profile</button>
+            <div class="profile-progress">
+
+    <label>Profile Completion</label>
+
+    <progress id="profileProgress" value="0" max="100"></progress>
+
+    <span id="progressText">0%</span>
+
+</div>
+        </form>
+    </div>
+</div>
+
+<script type="module" src="Js folder/profile.js"></script>
+</body>
+</html>
+<input type="text" id="jobTitle" placeholder="Professional Title (e.g. Full Stack Developer)">
+
+<input type="number" id="hourlyRate" placeholder="Hourly Rate ($/hour)">
+
+<input type="number" id="experience" placeholder="Years of Experience">
+
+<input type="text" id="languages" placeholder="Languages (English, Urdu...)">
+
+<select id="availability">
+    <option value="">Availability</option>
+    <option value="Available">Available</option>
+    <option value="Busy">Busy</option>
+    <option value="Unavailable">Unavailable</option>
+</select>
+
+<input type="url" id="linkedin" placeholder="LinkedIn Profile">
+
+<input type="url" id="github" placeholder="GitHub Profile">
+
+<input type="url" id="fiverr" placeholder="Fiverr Profile">
+
+<input type="url" id="upwork" placeholder="Upwork Profile">
