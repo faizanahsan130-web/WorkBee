@@ -3,614 +3,532 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Review & Rating | WorkBee</title>
+<title>WorkBee | Reviews & Ratings</title>
 
-    <link rel="stylesheet"
-          href="Css folder/review.css">
+<link rel="stylesheet" href="Css folder/reviews.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
 <!-- ======================================
-     Header
+Sidebar
 ====================================== -->
 
-<header class="topbar">
+<aside class="sidebar">
 
-    <div class="logo">
+<div class="logo">
 
-        🐝 <strong>WorkBee</strong>
+<h2>🐝 WorkBee</h2>
 
-    </div>
+<span>Reviews & Ratings</span>
 
-    <nav>
+</div>
 
-        <a href="client-dashboard.html">
+<nav>
 
-            Dashboard
+<a href="client-dashboard.html">🏠 Dashboard</a>
 
-        </a>
+<a href="browse-projects.html">📂 Projects</a>
 
-        <a href="my-projects.html">
+<a href="chat.html">💬 Messages</a>
 
-            My Projects
+<a href="wallet.html">💰 Wallet</a>
 
-        </a>
+<a href="reviews.html" class="active">⭐ Reviews</a>
 
-        <a href="proposal.html">
+<a href="notifications.html">🔔 Notifications</a>
 
-            Proposals
+<a href="settings.html">⚙ Settings</a>
 
-        </a>
+<a href="login.html">🚪 Logout</a>
 
-        <a href="payment.html">
+</nav>
 
-            Payments
-
-        </a>
-
-        <a href="milestones.html">
-
-            Milestones
-
-        </a>
-
-        <a href="review.html"
-           class="active">
-
-            Reviews
-
-        </a>
-
-        <a href="chat.html">
-
-            Messages
-
-        </a>
-
-        <a href="notifications.html">
-
-            Notifications
-
-        </a>
-
-    </nav>
-
-</header>
+</aside>
 
 <!-- ======================================
-     Main Container
+Main Container
 ====================================== -->
 
-<div class="container">
+<main class="reviews-container">
 
-    <!-- ==============================
-         Page Header
-    =============================== -->
+<!-- ======================================
+Header
+====================================== -->
 
-    <div class="page-header">
+<section class="reviews-header">
 
-        <div>
+<div>
 
-            <h1>
+<h1>Reviews & Ratings</h1>
 
-                ⭐ Review & Rating
+<p>
 
-            </h1>
+Manage your feedback, ratings and reputation.
 
-            <p>
-
-                Rate completed projects and help
-                build a trusted WorkBee community.
-
-            </p>
-
-        </div>
-
-    </div>
-
-    <!-- ==============================
-         Statistics
-    =============================== -->
-
-    <div class="stats-grid">
-
-        <div class="stat-card">
-
-            <h3>
-
-                Average Rating
-
-            </h3>
-
-            <h2 id="averageRating">
-
-                0.0 ⭐
-
-            </h2>
-
-        </div>
-
-        <div class="stat-card">
-
-            <h3>
-
-                Total Reviews
-
-            </h3>
-
-            <h2 id="totalReviews">
-
-                0
-
-            </h2>
-
-        </div>
-
-        <div class="stat-card">
-
-            <h3>
-
-                5-Star Reviews
-
-            </h3>
-
-            <h2 id="fiveStarReviews">
-
-                0
-
-            </h2>
-
-        </div>
-
-        <div class="stat-card">
-
-            <h3>
-
-                Recommendation
-
-            </h3>
-
-            <h2 id="recommendationRate">
-
-                0%
-
-            </h2>
-
-        </div>
-
-    </div>
-
-    <!-- ==============================
-         Review Form
-    =============================== -->
-
-    <div class="card">
-
-        <h2>
-
-            ✍ Submit Review
-
-        </h2>
-
-        <form id="reviewForm">
-
-            <div class="grid">
-
-                <div>
-
-                    <label>
-
-                        Project ID
-
-                    </label>
-
-                    <input
-                        type="text"
-                        id="projectId"
-                        placeholder="Project ID"
-                        required>
-
-                </div>
-
-                <div>
-
-                    <label>
-
-                        Freelancer Email
-
-                    </label>
-
-                    <input
-                        type="email"
-                        id="freelancerEmail"
-                        placeholder="freelancer@email.com"
-                        required>
-
-                </div>
-
-            </div>
-
-            <label>
-
-                Overall Rating
-
-            </label>
-
-            <div class="star-rating"
-                 id="overallRating">
-
-                <span data-value="1">★</span>
-                <span data-value="2">★</span>
-                <span data-value="3">★</span>
-                <span data-value="4">★</span>
-                <span data-value="5">★</span>
-
-            </div>
-
-            <input
-                type="hidden"
-                id="overallValue"
-                value="5">
-
-            <div class="grid">
-
-                <div>
-
-                    <label>
-
-                        Communication
-
-                    </label>
-
-                    <input
-                        type="number"
-                        id="communication"
-                        min="1"
-                        max="5"
-                        value="5"
-                        required>
-
-                </div>
-
-                <div>
-
-                    <label>
-
-                        Quality
-
-                    </label>
-
-                    <input
-                        type="number"
-                        id="quality"
-                        min="1"
-                        max="5"
-                        value="5"
-                        required>
-
-                </div>
-
-                <div>
-
-                    <label>
-
-                        Delivery
-
-                    </label>
-
-                    <input
-                        type="number"
-                        id="delivery"
-                        min="1"
-                        max="5"
-                        value="5"
-                        required>
-
-                </div>
-
-                <div>
-
-                    <label>
-
-                        Professionalism
-
-                    </label>
-
-                    <input
-                        type="number"
-                        id="professionalism"
-                        min="1"
-                        max="5"
-                        value="5"
-                        required>
-
-                </div>
-
-            </div>
-                        <!-- ==============================
-                 Public Review
-            =============================== -->
-
-            <label>
-
-                Public Review
-
-            </label>
-
-            <textarea
-                id="publicReview"
-                rows="5"
-                placeholder="Share your experience working with this freelancer..."
-                required>
-
-            </textarea>
-
-            <!-- ==============================
-                 Private Feedback
-            =============================== -->
-
-            <label>
-
-                Private Feedback (Only Admin)
-
-            </label>
-
-            <textarea
-                id="privateFeedback"
-                rows="4"
-                placeholder="Private notes (optional)...">
-
-            </textarea>
-
-            <!-- ==============================
-                 Recommendation
-            =============================== -->
-
-            <div class="recommendation-box">
-
-                <label>
-
-                    Would you recommend this freelancer?
-
-                </label>
-
-                <div class="recommend-options">
-
-                    <label>
-
-                        <input
-                            type="radio"
-                            name="recommend"
-                            value="Yes"
-                            checked>
-
-                        👍 Yes
-
-                    </label>
-
-                    <label>
-
-                        <input
-                            type="radio"
-                            name="recommend"
-                            value="No">
-
-                        👎 No
-
-                    </label>
-
-                </div>
-
-            </div>
-
-            <button
-                id="submitReviewBtn"
-                type="submit">
-
-                ⭐ Submit Review
-
-            </button>
-
-        </form>
-
-    </div>
-
-    <!-- ==============================
-         Rating Analytics
-    =============================== -->
-
-    <div class="card">
-
-        <div class="section-header">
-
-            <h2>
-
-                📊 Rating Analytics
-
-            </h2>
-
-        </div>
-
-        <div class="analytics-grid">
-
-            <div class="analytics-item">
-
-                <span>⭐⭐⭐⭐⭐</span>
-
-                <div class="progress-bar">
-
-                    <div
-                        id="fiveStarBar"
-                        class="progress-fill">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="analytics-item">
-
-                <span>⭐⭐⭐⭐</span>
-
-                <div class="progress-bar">
-
-                    <div
-                        id="fourStarBar"
-                        class="progress-fill">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="analytics-item">
-
-                <span>⭐⭐⭐</span>
-
-                <div class="progress-bar">
-
-                    <div
-                        id="threeStarBar"
-                        class="progress-fill">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="analytics-item">
-
-                <span>⭐⭐</span>
-
-                <div class="progress-bar">
-
-                    <div
-                        id="twoStarBar"
-                        class="progress-fill">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="analytics-item">
-
-                <span>⭐</span>
-
-                <div class="progress-bar">
-
-                    <div
-                        id="oneStarBar"
-                        class="progress-fill">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- ==============================
-         Reviews List
-    =============================== -->
-
-    <div class="card">
-
-        <div class="section-header">
-
-            <h2>
-
-                📋 Recent Reviews
-
-            </h2>
-
-            <button id="refreshReviews">
-
-                🔄 Refresh
-
-            </button>
-
-        </div>
-
-        <div id="reviewContainer">
-
-            <div class="loading">
-
-                Loading Reviews...
-
-            </div>
-
-        </div>
-
-    </div>
+</p>
 
 </div>
 
-<!-- ==============================
-     Empty State
-================================ -->
+</section>
+
+<!-- ======================================
+Summary Cards
+====================================== -->
+
+<section class="summary-grid">
+
+<div class="summary-card rating">
+
+<h3>Average Rating</h3>
+
+<h2 id="averageRating">
+
+0.0 ⭐
+
+</h2>
+
+<span id="totalReviews">
+
+0 Reviews
+
+</span>
+
+</div>
+
+<div class="summary-card level">
+
+<h3>Seller Level</h3>
+
+<h2 id="sellerLevel">
+
+New Seller
+
+</h2>
+
+<span>
+
+Grow your reputation
+
+</span>
+
+</div>
+
+<div class="summary-card response">
+
+<h3>Response Rate</h3>
+
+<h2 id="responseRate">
+
+100%
+
+</h2>
+
+<span>
+
+Last 30 Days
+
+</span>
+
+</div>
+
+<div class="summary-card completed">
+
+<h3>Completed Projects</h3>
+
+<h2 id="completedProjects">
+
+0
+
+</h2>
+
+<span>
+
+Eligible for Reviews
+
+</span>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Rating Breakdown
+====================================== -->
+
+<section class="rating-breakdown">
+
+<h2>
+
+⭐ Rating Breakdown
+
+</h2>
+
+<div class="rating-row">
+
+<span>5 ⭐</span>
+
+<div class="progress">
+
+<div id="star5" class="progress-fill"></div>
+
+</div>
+
+<span id="star5Count">0</span>
+
+</div>
+
+<div class="rating-row">
+
+<span>4 ⭐</span>
+
+<div class="progress">
+
+<div id="star4" class="progress-fill"></div>
+
+</div>
+
+<span id="star4Count">0</span>
+
+</div>
+
+<div class="rating-row">
+
+<span>3 ⭐</span>
+
+<div class="progress">
+
+<div id="star3" class="progress-fill"></div>
+
+</div>
+
+<span id="star3Count">0</span>
+
+</div>
+
+<div class="rating-row">
+
+<span>2 ⭐</span>
+
+<div class="progress">
+
+<div id="star2" class="progress-fill"></div>
+
+</div>
+
+<span id="star2Count">0</span>
+
+</div>
+
+<div class="rating-row">
+
+<span>1 ⭐</span>
+
+<div class="progress">
+
+<div id="star1" class="progress-fill"></div>
+
+</div>
+
+<span id="star1Count">0</span>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Write Review
+====================================== -->
+
+<section class="write-review">
+
+<h2>
+
+✍ Write a Review
+
+</h2>
+
+<div class="star-selector" id="starSelector">
+
+<span data-rating="1">⭐</span>
+
+<span data-rating="2">⭐</span>
+
+<span data-rating="3">⭐</span>
+
+<span data-rating="4">⭐</span>
+
+<span data-rating="5">⭐</span>
+
+</div>
+
+<textarea
+
+id="reviewText"
+
+placeholder="Share your experience...">
+
+</textarea>
+
+<button id="submitReview">
+
+Submit Review
+
+</button>
+
+</section>
+<!-- ======================================
+Reviews List
+====================================== -->
+
+<section class="reviews-list-section">
+
+<h2>📄 Recent Reviews</h2>
+
+<div class="reviews-toolbar">
+
+<select id="reviewFilter">
+
+<option value="all">All Reviews</option>
+<option value="5">5 Stars</option>
+<option value="4">4 Stars</option>
+<option value="3">3 Stars</option>
+<option value="2">2 Stars</option>
+<option value="1">1 Star</option>
+
+</select>
+
+<input
+type="text"
+id="searchReview"
+placeholder="Search reviews...">
+
+</div>
+
+<div id="reviewsList">
+
+<div class="review-empty">
+
+No Reviews Available
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Top Rated Badge
+====================================== -->
+
+<section class="badge-section">
+
+<div class="badge-card">
+
+<div class="badge-icon">
+
+🏆
+
+</div>
+
+<div>
+
+<h3 id="badgeTitle">
+
+Top Rated Badge
+
+</h3>
+
+<p id="badgeDescription">
+
+Complete projects and receive positive reviews to unlock badges.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ======================================
+AI Review Protection
+====================================== -->
 
 <div
-    id="emptyState"
-    class="hidden">
+id="aiReviewWarning"
+class="ai-warning hidden">
 
-    <div class="empty-state">
-
-        <h2>
-
-            ⭐ No Reviews Yet
-
-        </h2>
-
-        <p>
-
-            Reviews submitted after project completion
-            will appear here.
-
-        </p>
-
-    </div>
+⚠ AI Warning:
+This review appears to contain spam, abusive language, or suspicious content.
+It may require moderation before publication.
 
 </div>
 
-<!-- ==============================
-     Footer
-================================ -->
+<!-- ======================================
+Review Analytics
+====================================== -->
 
-<footer>
+<section class="analytics-section">
 
-    <p>
+<h2>
 
-        © 2026 WorkBee —
-        Review & Rating System V3
+📊 Review Analytics
 
-    </p>
+</h2>
 
-</footer>
+<div class="analytics-grid">
 
-<!-- ==============================
-     JavaScript
-================================ -->
+<div class="analytics-card">
+
+<h3>
+
+Positive Reviews
+
+</h3>
+
+<h2 id="positiveReviews">
+
+0
+
+</h2>
+
+</div>
+
+<div class="analytics-card">
+
+<h3>
+
+Negative Reviews
+
+</h3>
+
+<h2 id="negativeReviews">
+
+0
+
+</h2>
+
+</div>
+
+<div class="analytics-card">
+
+<h3>
+
+Pending Moderation
+
+</h3>
+
+<h2 id="pendingReviews">
+
+0
+
+</h2>
+
+</div>
+
+<div class="analytics-card">
+
+<h3>
+
+AI Spam Detection
+
+</h3>
+
+<h2 id="spamReviews">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Report Review Modal
+====================================== -->
+
+<div
+id="reportReviewModal"
+class="modal hidden">
+
+<div class="modal-content">
+
+<h2>
+
+🚩 Report Review
+
+</h2>
+
+<label>
+
+Reason
+
+</label>
+
+<select id="reportReason">
+
+<option>Spam</option>
+<option>Fake Review</option>
+<option>Harassment</option>
+<option>Abusive Language</option>
+<option>Other</option>
+
+</select>
+
+<label>
+
+Details
+
+</label>
+
+<textarea
+id="reportDetails"
+placeholder="Explain the reason...">
+
+</textarea>
+
+<div class="modal-actions">
+
+<button id="cancelReportReview">
+
+Cancel
+
+</button>
+
+<button id="submitReportReview">
+
+Submit Report
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ======================================
+JavaScript
+====================================== -->
 
 <script
-    type="module"
-    src="Js folder/review.js">
+type="module"
+src="Js folder/reviews.js">
 
 </script>
+
+</main>
 
 </body>
 
