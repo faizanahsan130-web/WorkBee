@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+WorkBee | Admin Payments
+
+</title>
+
+<link
+rel="stylesheet"
+href="Css folder/admin-payments.css">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ======================================
+Sidebar
+====================================== -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<h2>🐝 WorkBee</h2>
+
+<span>
+
+Admin Panel
+
+</span>
+
+</div>
+
+<nav>
+
+<a href="admin-dashboard.html">
+
+🏠 Dashboard
+
+</a>
+
+<a href="admin-users.html">
+
+👥 Users
+
+</a>
+
+<a href="admin-projects.html">
+
+📂 Projects
+
+</a>
+
+<a
+href="admin-payments.html"
+class="active">
+
+💳 Payments
+
+</a>
+
+<a href="admin-reports.html">
+
+🚩 Reports
+
+</a>
+
+<a href="admin-settings.html">
+
+⚙ Settings
+
+</a>
+
+<a href="login.html">
+
+🚪 Logout
+
+</a>
+
+</nav>
+
+</aside>
+
+<!-- ======================================
+Main Content
+====================================== -->
+
+<main class="main-content">
+
+<!-- Header -->
+
+<header class="top-header">
+
+<div>
+
+<h1>
+
+Payment Management
+
+</h1>
+
+<p>
+
+Monitor escrow, withdrawals,
+refunds and completed payments.
+
+</p>
+
+</div>
+
+<div class="header-actions">
+
+<button id="refreshPayments">
+
+🔄 Refresh
+
+</button>
+
+<button id="exportPayments">
+
+📄 Export CSV
+
+</button>
+
+</div>
+
+</header>
+
+<!-- ======================================
+Statistics
+====================================== -->
+
+<section class="stats-grid">
+
+<div class="stat-card">
+
+<h4>
+
+Total Payments
+
+</h4>
+
+<h2 id="totalPayments">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h4>
+
+Escrow Balance
+
+</h4>
+
+<h2 id="escrowBalance">
+
+$0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h4>
+
+Completed
+
+</h4>
+
+<h2 id="completedPayments">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h4>
+
+Refund Requests
+
+</h4>
+
+<h2 id="refundRequests">
+
+0
+
+</h2>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Toolbar
+====================================== -->
+
+<section class="toolbar">
+
+<input
+type="text"
+id="searchPayment"
+placeholder="Search by client, freelancer or payment ID">
+
+<select id="statusFilter">
+
+<option value="All">
+
+All Status
+
+</option>
+
+<option>
+
+Pending
+
+</option>
+
+<option>
+
+Escrow
+
+</option>
+
+<option>
+
+Completed
+
+</option>
+
+<option>
+
+Refunded
+
+</option>
+
+<option>
+
+Cancelled
+
+</option>
+
+</select>
+
+<select id="methodFilter">
+
+<option value="All">
+
+All Methods
+
+</option>
+
+<option>
+
+Stripe
+
+</option>
+
+<option>
+
+PayPal
+
+</option>
+
+<option>
+
+Bank Transfer
+
+</option>
+
+<option>
+
+JazzCash
+
+</option>
+
+<option>
+
+EasyPaisa
+
+</option>
+
+<option>
+
+Crypto
+
+</option>
+
+</select>
+
+</section>
+
+<!-- ======================================
+Payments Table
+====================================== -->
+
+<section class="table-card">
+
+<div class="table-header">
+
+<h2>
+
+Payment Transactions
+
+</h2>
+
+</div>
+
+<div class="table-responsive">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Client</th>
+
+<th>Freelancer</th>
+
+<th>Amount</th>
+
+<th>Method</th>
+
+<th>Status</th>
+
+<th>Date</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="paymentsTableBody">
+
+<tr>
+
+<td
+colspan="8"
+class="loading">
+
+Loading Payments...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+<!-- ======================================
+Payment Details Modal
+====================================== -->
+
+<div id="paymentModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Payment Details
+
+            </h2>
+
+            <button id="closePaymentModal">
+
+                &times;
+
+            </button>
+
+        </div>
+
+        <div
+        id="paymentDetails"
+        class="modal-body">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Release Escrow Modal
+====================================== -->
+
+<div id="releaseModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Release Escrow
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                Are you sure you want to
+                release this escrow payment
+                to the freelancer?
+
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+            id="cancelRelease"
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+            id="confirmRelease"
+            class="btn-success">
+
+                Release
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Refund Modal
+====================================== -->
+
+<div id="refundModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Approve Refund
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                Refund the payment to the
+                client?
+
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+            id="cancelRefund"
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+            id="confirmRefund"
+            class="btn-warning">
+
+                Refund
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Delete Payment Modal
+====================================== -->
+
+<div id="deleteModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Delete Payment
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                This action cannot be undone.
+
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+            id="cancelDelete"
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+            id="confirmDelete"
+            class="btn-danger">
+
+                Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Pagination
+====================================== -->
+
+<section class="pagination">
+
+    <button id="prevPage">
+
+        ◀ Previous
+
+    </button>
+
+    <span id="pageInfo">
+
+        Page 1 of 1
+
+    </span>
+
+    <button id="nextPage">
+
+        Next ▶
+
+    </button>
+
+</section>
+
+<!-- ======================================
+Footer
+====================================== -->
+
+<footer class="admin-footer">
+
+    <p>
+
+        © 2026 WorkBee Admin Panel
+
+        | Secure Payment Management
+
+    </p>
+
+</footer>
+
+</main>
+
+<!-- ======================================
+JavaScript
+====================================== -->
+
+<script
+type="module"
+src="Js folder/admin-payments.js">
+
+</script>
+
+</body>
+
+</html>

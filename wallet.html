@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WorkBee | Wallet & Escrow</title>
+
+<link rel="stylesheet" href="Css folder/wallet.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ======================================
+Sidebar
+====================================== -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<h2>🐝 WorkBee</h2>
+
+<span>Wallet & Escrow</span>
+
+</div>
+
+<nav>
+
+<a href="client-dashboard.html">🏠 Dashboard</a>
+
+<a href="browse-projects.html">📂 Projects</a>
+
+<a href="chat.html">💬 Messages</a>
+
+<a href="wallet.html" class="active">💰 Wallet</a>
+
+<a href="notifications.html">🔔 Notifications</a>
+
+<a href="settings.html">⚙ Settings</a>
+
+<a href="login.html">🚪 Logout</a>
+
+</nav>
+
+</aside>
+
+<!-- ======================================
+Main Container
+====================================== -->
+
+<main class="wallet-container">
+
+<!-- ======================================
+Page Header
+====================================== -->
+
+<section class="wallet-header">
+
+<div>
+
+<h1>Wallet Dashboard</h1>
+
+<p>
+
+Manage your balance, escrow payments and withdrawals.
+
+</p>
+
+</div>
+
+<div class="wallet-actions">
+
+<button id="depositBtn">
+
+💳 Deposit
+
+</button>
+
+<button id="withdrawBtn">
+
+💸 Withdraw
+
+</button>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Balance Cards
+====================================== -->
+
+<section class="wallet-cards">
+
+<div class="wallet-card available">
+
+<h3>
+
+Available Balance
+
+</h3>
+
+<h2 id="availableBalance">
+
+$0.00
+
+</h2>
+
+<span>
+
+Ready to Withdraw
+
+</span>
+
+</div>
+
+<div class="wallet-card pending">
+
+<h3>
+
+Pending Balance
+
+</h3>
+
+<h2 id="pendingBalance">
+
+$0.00
+
+</h2>
+
+<span>
+
+Awaiting Clearance
+
+</span>
+
+</div>
+
+<div class="wallet-card escrow">
+
+<h3>
+
+Escrow Balance
+
+</h3>
+
+<h2 id="escrowBalance">
+
+$0.00
+
+</h2>
+
+<span>
+
+Protected Funds
+
+</span>
+
+</div>
+
+<div class="wallet-card earnings">
+
+<h3>
+
+Total Earnings
+
+</h3>
+
+<h2 id="totalEarnings">
+
+$0.00
+
+</h2>
+
+<span>
+
+Lifetime Income
+
+</span>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Quick Statistics
+====================================== -->
+
+<section class="stats-grid">
+
+<div class="stat-box">
+
+<h4>Projects Paid</h4>
+
+<h2 id="paidProjects">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-box">
+
+<h4>Withdrawals</h4>
+
+<h2 id="withdrawCount">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-box">
+
+<h4>Deposits</h4>
+
+<h2 id="depositCount">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-box">
+
+<h4>Escrow Active</h4>
+
+<h2 id="escrowCount">
+
+0
+
+</h2>
+
+</div>
+
+</section>
+<!-- ======================================
+Transaction History
+====================================== -->
+
+<section class="transactions-section">
+
+<div class="section-header">
+
+<h2>
+
+📄 Transaction History
+
+</h2>
+
+<select id="transactionFilter">
+
+<option value="all">All Transactions</option>
+<option value="deposit">Deposits</option>
+<option value="withdraw">Withdrawals</option>
+<option value="escrow">Escrow</option>
+<option value="refund">Refunds</option>
+
+</select>
+
+</div>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+<th>Type</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Reference</th>
+
+</tr>
+
+</thead>
+
+<tbody id="transactionTable">
+
+<tr>
+
+<td colspan="5">
+
+No Transactions Found
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Escrow Projects
+====================================== -->
+
+<section class="escrow-section">
+
+<h2>
+
+🔒 Active Escrow Projects
+
+</h2>
+
+<div id="escrowProjects">
+
+<div class="empty-card">
+
+No Active Escrow Projects
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ======================================
+AI Fraud Alert
+====================================== -->
+
+<div id="fraudAlert" class="fraud-alert hidden">
+
+⚠ AI Security Notice:
+A suspicious payment or withdrawal has been detected.
+Your transaction may require manual verification.
+
+</div>
+
+<!-- ======================================
+Monthly Earnings
+====================================== -->
+
+<section class="chart-section">
+
+<h2>
+
+📊 Monthly Earnings
+
+</h2>
+
+<div class="chart-placeholder">
+
+<canvas id="earningsChart"></canvas>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Deposit Modal
+====================================== -->
+
+<div id="depositModal" class="modal hidden">
+
+<div class="modal-content">
+
+<h2>
+
+💳 Deposit Funds
+
+</h2>
+
+<label>
+
+Amount
+
+</label>
+
+<input
+type="number"
+id="depositAmount"
+placeholder="Enter Amount">
+
+<label>
+
+Payment Method
+
+</label>
+
+<select id="depositMethod">
+
+<option>Stripe</option>
+<option>PayPal</option>
+<option>JazzCash</option>
+<option>Easypaisa</option>
+<option>Bank Transfer</option>
+
+</select>
+
+<div class="modal-actions">
+
+<button id="cancelDeposit">
+
+Cancel
+
+</button>
+
+<button id="confirmDeposit">
+
+Deposit
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ======================================
+Withdraw Modal
+====================================== -->
+
+<div id="withdrawModal" class="modal hidden">
+
+<div class="modal-content">
+
+<h2>
+
+💸 Withdraw Funds
+
+</h2>
+
+<label>
+
+Amount
+
+</label>
+
+<input
+type="number"
+id="withdrawAmount"
+placeholder="Enter Amount">
+
+<label>
+
+Withdrawal Method
+
+</label>
+
+<select id="withdrawMethod">
+
+<option>Bank Transfer</option>
+<option>PayPal</option>
+<option>Wise</option>
+<option>Payoneer</option>
+<option>JazzCash</option>
+<option>Easypaisa</option>
+
+</select>
+
+<div class="modal-actions">
+
+<button id="cancelWithdraw">
+
+Cancel
+
+</button>
+
+<button id="confirmWithdraw">
+
+Withdraw
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ======================================
+JavaScript
+====================================== -->
+
+<script
+type="module"
+src="Js folder/wallet.js">
+
+</script>
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+WorkBee | Admin Projects
+</title>
+
+<link rel="stylesheet"
+href="Css folder/admin-projects.css">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ===========================
+Sidebar
+=========================== -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<h2>🐝 WorkBee</h2>
+
+<span>Admin Panel</span>
+
+</div>
+
+<nav>
+
+<a href="admin-dashboard.html">
+🏠 Dashboard
+</a>
+
+<a href="admin-users.html">
+👤 Users
+</a>
+
+<a
+class="active"
+href="admin-projects.html">
+
+📂 Projects
+
+</a>
+
+<a href="admin-payments.html">
+💳 Payments
+</a>
+
+<a href="admin-reports.html">
+🚩 Reports
+</a>
+
+<a href="admin-settings.html">
+⚙ Settings
+</a>
+
+<a href="login.html">
+🚪 Logout
+</a>
+
+</nav>
+
+</aside>
+
+<!-- ===========================
+Main
+=========================== -->
+
+<main class="main-content">
+
+<!-- Header -->
+
+<header class="top-header">
+
+<div>
+
+<h1>
+
+Project Management
+
+</h1>
+
+<p>
+
+Manage all projects
+posted on WorkBee.
+
+</p>
+
+</div>
+
+<div class="header-actions">
+
+<button id="refreshProjects">
+
+🔄 Refresh
+
+</button>
+
+<button id="exportProjects">
+
+📄 Export CSV
+
+</button>
+
+</div>
+
+</header>
+
+<!-- Statistics -->
+
+<section class="stats-grid">
+
+<div class="stat-card">
+
+<h4>Total Projects</h4>
+
+<h2 id="totalProjects">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h4>Open Projects</h4>
+
+<h2 id="openProjects">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h4>Completed</h4>
+
+<h2 id="completedProjects">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h4>Suspended</h4>
+
+<h2 id="suspendedProjects">
+
+0
+
+</h2>
+
+</div>
+
+</section>
+
+<!-- Toolbar -->
+
+<section class="toolbar">
+
+<input
+
+type="text"
+
+id="searchProject"
+
+placeholder="Search projects...">
+
+<select id="categoryFilter">
+
+<option value="All">
+
+All Categories
+
+</option>
+
+<option>
+
+Web Development
+
+</option>
+
+<option>
+
+Mobile App
+
+</option>
+
+<option>
+
+Graphic Design
+
+</option>
+
+<option>
+
+Video Editing
+
+</option>
+
+<option>
+
+Writing
+
+</option>
+
+<option>
+
+AI
+
+</option>
+
+</select>
+
+<select id="statusFilter">
+
+<option value="All">
+
+All Status
+
+</option>
+
+<option>
+
+Open
+
+</option>
+
+<option>
+
+In Progress
+
+</option>
+
+<option>
+
+Completed
+
+</option>
+
+<option>
+
+Suspended
+
+</option>
+
+</select>
+
+</section>
+
+<!-- Projects Table -->
+
+<section class="table-card">
+
+<div class="table-header">
+
+<h2>
+
+Projects
+
+</h2>
+
+</div>
+
+<div class="table-responsive">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Title</th>
+
+<th>Client</th>
+
+<th>Category</th>
+
+<th>Budget</th>
+
+<th>Status</th>
+
+<th>Posted</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="projectsTableBody">
+
+<tr>
+
+<td
+colspan="8"
+class="loading">
+
+Loading Projects...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+<!-- ======================================
+Project Details Modal
+====================================== -->
+
+<div id="projectModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Project Details
+
+            </h2>
+
+            <button id="closeProjectModal">
+
+                &times;
+
+            </button>
+
+        </div>
+
+        <div
+        id="projectDetails"
+        class="modal-body">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Suspend Project Modal
+====================================== -->
+
+<div id="suspendModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Suspend Project
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                Are you sure you want
+                to suspend this project?
+
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+            id="cancelSuspend"
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+            id="confirmSuspend"
+            class="btn-warning">
+
+                Suspend
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Delete Project Modal
+====================================== -->
+
+<div id="deleteModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Delete Project
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                This action cannot be
+                undone.
+
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+            id="cancelDelete"
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+            id="confirmDelete"
+            class="btn-danger">
+
+                Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Feature Project Modal
+====================================== -->
+
+<div id="featureModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Feature Project
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                Make this project
+                featured on homepage?
+
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+            id="cancelFeature"
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+            id="confirmFeature"
+            class="btn-success">
+
+                Feature
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Pagination
+====================================== -->
+
+<section class="pagination">
+
+    <button id="prevPage">
+
+        ◀ Previous
+
+    </button>
+
+    <span id="pageInfo">
+
+        Page 1 of 1
+
+    </span>
+
+    <button id="nextPage">
+
+        Next ▶
+
+    </button>
+
+</section>
+
+<!-- ======================================
+Footer
+====================================== -->
+
+<footer class="admin-footer">
+
+    <p>
+
+        © 2026 WorkBee Admin Panel
+
+        | Secure Management System
+
+    </p>
+
+</footer>
+
+</main>
+
+<!-- ======================================
+JavaScript
+====================================== -->
+
+<script
+type="module"
+src="Js folder/admin-projects.js">
+
+</script>
+
+</body>
+
+</html>

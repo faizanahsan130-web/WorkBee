@@ -1,70 +1,81 @@
 // ======================================
 // WorkBee Chat V2
-// Part 1 - Authentication & Initialization
+// Part 1 - Complete Replacement
 // ======================================
 
-import { auth, db } from "../firebase/firebase-config.js";
+// ======================================
+// Firebase
+// ======================================
+
+import { auth, db }
+from "../firebase/firebase-config.js";
 
 import {
     onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 import {
     collection,
     query,
+    where,
     orderBy,
     onSnapshot,
     addDoc,
     serverTimestamp,
-    doc,
-    getDoc,
-    updateDoc
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+    getDocs
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 // ======================================
-// Elements
+// DOM Elements
 // ======================================
 
-const chatUserName = document.getElementById("chatUserName");
-const onlineStatus = document.getElementById("onlineStatus");
+const conversationList =
+document.getElementById("conversationList");
 
-const chatTitle = document.getElementById("chatTitle");
+const messagesContainer =
+document.getElementById("messagesContainer");
 
-const messages = document.getElementById("messages");
+const messageInput =
+document.getElementById("messageInput");
 
-const messageInput = document.getElementById("messageInput");
+const sendMessage =
+document.getElementById("sendMessage");
 
-const sendBtn = document.getElementById("sendBtn");
+const chatUserName =
+document.getElementById("chatUserName");
 
-const typingIndicator = document.getElementById("typingIndicator");
+const chatStatus =
+document.getElementById("chatStatus");
 
-const imageFile = document.getElementById("imageFile");
+const chatAvatar =
+document.getElementById("chatAvatar");
 
-const attachmentFile = document.getElementById("attachmentFile");
-
-const emojiBtn = document.getElementById("emojiBtn");
+const searchChat =
+document.getElementById("searchChat");
 
 // ======================================
-// Global Variables
+// Variables
 // ======================================
 
 let currentUser = null;
 
-let currentChatId = null;
+let currentConversation = null;
 
-let currentUserProfile = null;
+let conversations = [];
 
-let unsubscribeMessages = null;
+let messages = [];
 
 // ======================================
 // Authentication
 // ======================================
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(auth, async(user)=>{
 
-    if (!user) {
+    if(!user){
 
-        window.location.href = "login.html";
+        window.location.href="login.html";
 
         return;
 
@@ -72,66 +83,345 @@ onAuthStateChanged(auth, async (user) => {
 
     currentUser = user;
 
-    await loadCurrentUser();
-
     initializeChat();
 
 });
 
 // ======================================
-// Load Current User
+// Initialize
 // ======================================
 
-async function loadCurrentUser() {
+function initializeChat(){
 
-    try {
+    loadConversations();
 
-        const userRef = doc(db, "users", currentUser.uid);
-
-        const userSnap = await getDoc(userRef);
-
-        if (userSnap.exists()) {
-
-            currentUserProfile = userSnap.data();
-
-            chatUserName.textContent =
-                currentUserProfile.fullName || currentUser.email;
-
-        } else {
-
-            chatUserName.textContent = currentUser.email;
-
-        }
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        chatUserName.textContent = currentUser.email;
-
-    }
+    initializeSearch();
 
 }
 
 // ======================================
-// Initialize Chat
+// Conversation List
 // ======================================
 
-function initializeChat() {
+function loadConversations(){
 
-    const params = new URLSearchParams(window.location.search);
+    const q = query(
 
-    currentChatId = params.get("chat");
+        collection(db,"conversations")
 
-    if (!currentChatId) {
+    );
 
-        messages.innerHTML = `
+    onSnapshot(q,(snapshot)=>{
 
-        <div class="loading">
+        conversations=[];
 
-            No Chat Selected
+        snapshot.forEach(doc=>{
+
+            const data=doc.data();
+
+            if(
+
+                data.members?.includes(currentUser.email)
+
+            ){
+
+                conversations.push({
+
+                    id:doc.id,
+
+                    ...data
+
+                });
+
+            }
+
+        });
+
+        renderConversations();
+
+    });
+
+}
+
+// ======================================
+// Render Conversations
+// ======================================
+
+function renderConversations(){
+
+    conversationList.innerHTML="";
+
+    if(conversations.length===0){
+
+        conversationList.innerHTML=`
+
+<div class="loading">
+
+No conversations found.
+
+</div>
+
+`;
+
+        return;
+
+    }
+
+    conversations.forEach(chat=>{
+
+        const otherUser=
+
+        chat.members.find(
+
+        email=>email!==currentUser.email
+
+        );
+
+        conversationList.innerHTML+=`
+
+<div
+class="conversation-item"
+data-id="${chat.id}">
+
+<img
+class="conversation-avatar"
+src="${chat.photoURL || 'https://via.placeholder.com/50'}">
+
+<div class="conversation-info">
+
+<h4>
+
+${otherUser}
+
+</h4>
+
+<p>
+
+${chat.lastMessage || "Start chatting"}
+
+</p>
+
+</div>
+
+<div class="conversation-time">
+
+${chat.lastTime || ""}
+
+</div>
+
+</div>
+
+`;
+
+    });
+
+    bindConversationClicks();
+
+}
+
+// ======================================
+// Conversation Click
+// ======================================
+
+function bindConversationClicks(){
+
+document
+.querySelectorAll(".conversation-item")
+.forEach(item=>{
+
+item.onclick=()=>{
+
+currentConversation=
+
+item.dataset.id;
+
+loadMessages();
+
+};
+
+});
+
+}
+
+// ======================================
+// Search
+// ======================================
+
+function initializeSearch(){
+
+if(!searchChat) return;
+
+searchChat.addEventListener(
+
+"input",
+
+()=>{
+
+const keyword=
+
+searchChat.value
+
+.toLowerCase();
+
+document
+
+.querySelectorAll(
+
+".conversation-item"
+
+)
+
+.forEach(item=>{
+
+item.style.display=
+
+item.innerText
+
+.toLowerCase()
+
+.includes(keyword)
+
+?
+
+"flex"
+
+:
+
+"none";
+
+});
+
+}
+
+);
+
+}
+
+// ======================================
+// Messages
+// ======================================
+
+function loadMessages(){
+
+const q=query(
+
+collection(
+
+db,
+
+"conversations",
+
+currentConversation,
+
+"messages"
+
+),
+
+orderBy(
+
+"createdAt"
+
+)
+
+);
+
+onSnapshot(q,(snapshot)=>{
+
+messages=[];
+
+snapshot.forEach(doc=>{
+
+messages.push({
+
+id:doc.id,
+
+...doc.data()
+
+});
+
+});
+
+renderMessages();
+
+});
+
+}
+
+// ======================================
+// Send Message
+// ======================================
+
+if(sendMessage){
+
+sendMessage.onclick=async()=>{
+
+const text=
+
+messageInput.value.trim();
+
+if(!text) return;
+
+await addDoc(
+
+collection(
+
+db,
+
+"conversations",
+
+currentConversation,
+
+"messages"
+
+),
+
+{
+
+sender:
+
+currentUser.email,
+
+message:text,
+
+type:"text",
+
+createdAt:
+
+serverTimestamp(),
+
+read:false
+
+}
+
+);
+
+messageInput.value="";
+
+};
+
+}
+
+console.log("💬 Chat Part 1 Loaded");
+// ======================================
+// WorkBee Chat V2
+// Part 2 - Messages Rendering & Status
+// ======================================
+
+// ======================================
+// Render Messages
+// ======================================
+
+function renderMessages(){
+
+    messagesContainer.innerHTML="";
+
+    if(messages.length===0){
+
+        messagesContainer.innerHTML=`
+
+        <div class="empty-chat">
+
+            No messages yet.
 
         </div>
 
@@ -141,136 +431,89 @@ function initializeChat() {
 
     }
 
-    chatTitle.textContent =
-        "Conversation #" + currentChatId;
+    messages.forEach(message=>{
 
-    onlineStatus.textContent = "Connecting...";
+        const own=
 
-    loadMessages();
+        message.sender===currentUser.email;
 
-}
+        const type=
 
-// ======================================
-// Auto Scroll
-// ======================================
+        own ? "sent" : "received";
 
-function scrollToBottom() {
+        let content="";
 
-    messages.scrollTop = messages.scrollHeight;
+        // Text Message
 
-}
+        if(message.type==="text"){
 
-// ======================================
-// Loading State
-// ======================================
+            content=`
 
-function showLoading() {
+            <p>
 
-    messages.innerHTML = `
+                ${escapeHTML(message.message)}
 
-    <div class="loading">
+            </p>
 
-        Loading Messages...
-
-    </div>
-
-    `;
-
-}
-
-// ======================================
-// Empty State
-// ======================================
-
-function showEmptyChat() {
-
-    messages.innerHTML = `
-
-    <div class="loading">
-
-        No messages yet.<br>
-
-        Start the conversation 👋
-
-    </div>
-
-    `;
-
-}
-
-console.log("====================================");
-console.log("🐝 WorkBee Chat V2");
-console.log("Authentication Ready");
-console.log("Initialization Ready");
-console.log("====================================");
-// ======================================
-// WorkBee Chat V2
-// Part 2 - Real-Time Messages
-// ======================================
-
-// ======================================
-// Load Messages
-// ======================================
-
-function loadMessages() {
-
-    showLoading();
-
-    // Purana listener remove karo
-    if (unsubscribeMessages) {
-
-        unsubscribeMessages();
-
-    }
-
-    const messagesRef = collection(
-        db,
-        "chats",
-        currentChatId,
-        "messages"
-    );
-
-    const q = query(
-        messagesRef,
-        orderBy("createdAt", "asc")
-    );
-
-    unsubscribeMessages = onSnapshot(q, (snapshot) => {
-
-        messages.innerHTML = "";
-
-        if (snapshot.empty) {
-
-            showEmptyChat();
-
-            return;
+            `;
 
         }
 
-        snapshot.forEach((docSnap) => {
+        // Image Message
 
-            const data = docSnap.data();
+        if(message.type==="image"){
 
-            renderMessage({
-                id: docSnap.id,
-                ...data
-            });
+            content=`
 
-        });
+            <img
 
-        scrollToBottom();
+            src="${message.imageURL}"
 
-        onlineStatus.textContent = "Online";
+            class="chat-image"
 
-    }, (error) => {
+            onclick="window.open('${message.imageURL}','_blank')">
 
-        console.error(error);
+            `;
 
-        messages.innerHTML = `
+        }
 
-        <div class="loading">
+        // File Message
 
-            Failed to load messages.
+        if(message.type==="file"){
+
+            content=`
+
+            <a
+
+            href="${message.fileURL}"
+
+            target="_blank">
+
+            📎 ${message.fileName}
+
+            </a>
+
+            `;
+
+        }
+
+        messagesContainer.innerHTML += `
+
+        <div class="message ${type}">
+
+            <div class="message-content">
+
+                ${content}
+
+                <span class="message-time">
+
+                    ${formatTime(message.createdAt)}
+
+                    ${own ? getReadIcon(message.read) : ""}
+
+                </span>
+
+            </div>
 
         </div>
 
@@ -278,737 +521,626 @@ function loadMessages() {
 
     });
 
-}
+    messagesContainer.scrollTop=
 
-// ======================================
-// Render Message
-// ======================================
-
-function renderMessage(message) {
-
-    const mine =
-        message.senderId === currentUser.uid;
-
-    const bubble =
-        document.createElement("div");
-
-    bubble.className =
-        mine
-        ? "message my-message"
-        : "message other-message";
-
-    let html = "";
-
-    // Sender Name
-    if (!mine) {
-
-        html += `
-
-        <div class="sender">
-
-            ${message.senderName || "User"}
-
-        </div>
-
-        `;
-
-    }
-
-    // Text Message
-    if (message.text) {
-
-        html += `
-
-        <p>
-
-            ${escapeHtml(message.text)}
-
-        </p>
-
-        `;
-
-    }
-
-    // Image
-    if (message.imageUrl) {
-
-        html += `
-
-        <img
-
-            src="${message.imageUrl}"
-
-            alt="Image"
-
-            loading="lazy"
-
-        >
-
-        `;
-
-    }
-
-    // File Attachment
-    if (message.fileUrl) {
-
-        html += `
-
-        <a
-
-            class="attachment"
-
-            href="${message.fileUrl}"
-
-            target="_blank">
-
-            📎 ${message.fileName || "Attachment"}
-
-        </a>
-
-        `;
-
-    }
-
-    // Time
-    let time = "";
-
-    if (message.createdAt?.toDate) {
-
-        time =
-            message.createdAt
-            .toDate()
-            .toLocaleTimeString([], {
-
-                hour: "2-digit",
-
-                minute: "2-digit"
-
-            });
-
-    }
-
-    html += `
-
-    <span class="message-time">
-
-        ${time}
-
-    </span>
-
-    `;
-
-    // Seen Status
-    if (mine) {
-
-        html += `
-
-        <div class="seen">
-
-            ${message.seen ? "✔✔ Seen" : "✔ Sent"}
-
-        </div>
-
-        `;
-
-    }
-
-    bubble.innerHTML = html;
-
-    messages.appendChild(bubble);
+    messagesContainer.scrollHeight;
 
 }
 
 // ======================================
-// HTML Escape
+// Read Status
 // ======================================
 
-function escapeHtml(text) {
+function getReadIcon(read){
 
-    const div =
-        document.createElement("div");
+    return read
 
-    div.textContent = text;
+    ?
 
-    return div.innerHTML;
+    `<span class="read-status">✓✓</span>`
+
+    :
+
+    `<span class="read-status">✓</span>`;
 
 }
 
-console.log("✅ Real-Time Chat Ready");
 // ======================================
-// WorkBee Chat V2
-// Part 3 - Send Message System
+// Time Format
 // ======================================
 
-// ======================================
-// Send Button
-// ======================================
+function formatTime(timestamp){
 
-sendBtn.addEventListener("click", sendMessage);
+    if(!timestamp) return "";
 
-// ======================================
-// Enter Key Support
-// ======================================
+    try{
 
-messageInput.addEventListener("keydown", (e) => {
+        const date=
 
-    if (e.key === "Enter" && !e.shiftKey) {
+        timestamp.toDate();
 
-        e.preventDefault();
+        return date.toLocaleTimeString(
 
-        sendMessage();
-
-    }
-
-});
-
-// ======================================
-// Send Message
-// ======================================
-
-async function sendMessage() {
-
-    const text = messageInput.value.trim();
-
-    if (!text) return;
-
-    if (!currentChatId) {
-
-        alert("Chat not found.");
-
-        return;
-
-    }
-
-    sendBtn.disabled = true;
-
-    sendBtn.textContent = "Sending...";
-
-    try {
-
-        await addDoc(
-
-            collection(
-                db,
-                "chats",
-                currentChatId,
-                "messages"
-            ),
+            [],
 
             {
 
-                senderId: currentUser.uid,
+                hour:"2-digit",
 
-                senderName:
-                    currentUserProfile?.fullName ||
-                    currentUser.email,
-
-                senderEmail:
-                    currentUser.email,
-
-                text: text,
-
-                imageUrl: "",
-
-                fileUrl: "",
-
-                fileName: "",
-
-                seen: false,
-
-                type: "text",
-
-                createdAt: serverTimestamp()
+                minute:"2-digit"
 
             }
 
         );
 
-        messageInput.value = "";
-
-        messageInput.focus();
-
-        scrollToBottom();
-
     }
 
-    catch (error) {
+    catch{
 
-        console.error(error);
-
-        alert("Failed to send message.\n\n" + error.message);
-
-    }
-
-    finally {
-
-        sendBtn.disabled = false;
-
-        sendBtn.innerHTML = "➤";
+        return "";
 
     }
 
 }
 
 // ======================================
-// Input Auto Resize (Future Ready)
+// Escape HTML
 // ======================================
 
-messageInput.addEventListener("input", () => {
+function escapeHTML(text){
 
-    const limit = 2000;
+    if(!text) return "";
 
-    if (messageInput.value.length > limit) {
+    return text
 
-        messageInput.value =
-            messageInput.value.substring(0, limit);
+    .replace(/&/g,"&amp;")
 
-    }
+    .replace(/</g,"&lt;")
 
-});
+    .replace(/>/g,"&gt;")
 
-// ======================================
-// Typing Indicator Placeholder
-// ======================================
+    .replace(/"/g,"&quot;")
 
-messageInput.addEventListener("focus", () => {
-
-    typingIndicator.textContent = "";
-
-});
-
-console.log("✅ Send Message System Ready");
-// ======================================
-// WorkBee Chat V2
-// Part 4 - Image Upload
-// ======================================
-
-imageFile.addEventListener("change", async () => {
-
-    const file = imageFile.files[0];
-
-    if (!file) return;
-
-    if (!file.type.startsWith("image/")) {
-
-        alert("Please select a valid image.");
-
-        imageFile.value = "";
-
-        return;
-
-    }
-
-    const formData = new FormData();
-
-    formData.append("image", file);
-
-    sendBtn.disabled = true;
-
-    sendBtn.innerHTML = "Uploading...";
-
-    try {
-
-        const response = await fetch(
-            "http://localhost:3000/upload",
-            {
-                method: "POST",
-                body: formData
-            }
-        );
-
-        const result = await response.json();
-
-        if (!result.success) {
-
-            throw new Error(result.message);
-
-        }
-
-        await addDoc(
-
-            collection(
-                db,
-                "chats",
-                currentChatId,
-                "messages"
-            ),
-
-            {
-
-                senderId: currentUser.uid,
-
-                senderName:
-                    currentUserProfile?.fullName ||
-                    currentUser.email,
-
-                senderEmail:
-                    currentUser.email,
-
-                text: "",
-
-                imageUrl: result.imageUrl,
-
-                fileUrl: "",
-
-                fileName: "",
-
-                type: "image",
-
-                seen: false,
-
-                createdAt: serverTimestamp()
-
-            }
-
-        );
-
-        imageFile.value = "";
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        alert(error.message);
-
-    }
-
-    finally {
-
-        sendBtn.disabled = false;
-
-        sendBtn.innerHTML = "➤";
-
-    }
-
-});
-// ======================================
-// File Upload
-// ======================================
-
-attachmentFile.addEventListener("change", async () => {
-
-    const file = attachmentFile.files[0];
-
-    if (!file) return;
-
-    alert(
-        "File upload endpoint will be enabled after API V2.\n\nCurrently image upload is active."
-    );
-
-    attachmentFile.value = "";
-
-});
-// ======================================
-// WorkBee Chat V2
-// Part 5 - Typing, Presence & Seen Status
-// ======================================
-
-// ======================================
-// User Presence
-// ======================================
-
-async function updatePresence(status = "online") {
-
-    try {
-
-        await setDoc(
-
-            doc(db, "presence", currentUser.uid),
-
-            {
-
-                uid: currentUser.uid,
-
-                name:
-                    currentUserProfile?.fullName ||
-                    currentUser.email,
-
-                status,
-
-                lastSeen: serverTimestamp()
-
-            },
-
-            { merge: true }
-
-        );
-
-        onlineStatus.textContent =
-            status === "online"
-                ? "🟢 Online"
-                : "⚪ Offline";
-
-    }
-
-    catch (error) {
-
-        console.error("Presence Error:", error);
-
-    }
+    .replace(/'/g,"&#039;");
 
 }
 
-// Login ke baad online
+// ======================================
+// Online Status (Foundation)
+// ======================================
 
-onAuthStateChanged(auth, async (user) => {
+function updateUserStatus(isOnline){
 
-    if (!user) return;
+    chatStatus.textContent=
 
-    await updatePresence("online");
+    isOnline
 
-});
+    ?
 
-// Browser band ya refresh
+    "🟢 Online"
 
-window.addEventListener("beforeunload", () => {
+    :
 
-    updatePresence("offline");
+    "⚪ Offline";
 
-});
+}
 
 // ======================================
 // Typing Indicator
 // ======================================
 
-let typingTimeout = null;
+const typingIndicator=
 
-messageInput.addEventListener("input", async () => {
+document.getElementById("typingIndicator");
 
-    if (!currentChatId) return;
+let typingTimeout=null;
 
-    try {
+if(messageInput){
+
+messageInput.addEventListener("input",()=>{
+
+typingIndicator.classList.remove("hidden");
+
+clearTimeout(typingTimeout);
+
+typingTimeout=setTimeout(()=>{
+
+typingIndicator.classList.add("hidden");
+
+},1500);
+
+});
+
+}
+
+// ======================================
+// Enter Key Send
+// ======================================
+
+if(messageInput){
+
+messageInput.addEventListener("keydown",(e)=>{
+
+if(e.key==="Enter" && !e.shiftKey){
+
+e.preventDefault();
+
+sendMessage.click();
+
+}
+
+});
+
+}
+
+// ======================================
+// Image Preview
+// ======================================
+
+document.addEventListener("click",(e)=>{
+
+if(e.target.classList.contains("chat-image")){
+
+const modal=
+
+document.getElementById("imagePreviewModal");
+
+const preview=
+
+document.getElementById("previewImage");
+
+preview.src=e.target.src;
+
+modal.classList.remove("hidden");
+
+}
+
+});
+
+const closePreview=
+
+document.getElementById("closePreview");
+
+if(closePreview){
+
+closePreview.onclick=()=>{
+
+document
+
+.getElementById("imagePreviewModal")
+
+.classList.add("hidden");
+
+};
+
+}
+
+console.log("💬 Chat Part 2 Loaded");
+// ======================================
+// WorkBee Chat V2
+// Part 3 - Uploads, AI Protection & Moderation
+// ======================================
+
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+
+const storage = getStorage();
+
+// ======================================
+// DOM Elements
+// ======================================
+
+const imageUpload = document.getElementById("imageUpload");
+const fileUpload = document.getElementById("fileUpload");
+
+const aiWarning = document.getElementById("aiWarning");
+
+const reportUserBtn = document.getElementById("reportUser");
+const blockUserBtn = document.getElementById("blockUser");
+
+const reportModal = document.getElementById("reportModal");
+const blockModal = document.getElementById("blockModal");
+
+// ======================================
+// AI Scam Detection
+// ======================================
+
+const scamKeywords=[
+
+"telegram",
+"whatsapp",
+"discord",
+"gmail",
+"email me",
+"contact me",
+"outside payment",
+"paypal",
+"crypto",
+"bitcoin",
+"binance",
+"gift card",
+"wire transfer",
+"western union",
+"moneygram",
+"bit.ly",
+"tinyurl",
+"shorturl"
+
+];
+
+function detectScam(text){
+
+text=text.toLowerCase();
+
+return scamKeywords.some(keyword=>
+
+text.includes(keyword)
+
+);
+
+}
+
+// ======================================
+// AI Warning
+// ======================================
+
+if(messageInput){
+
+messageInput.addEventListener("input",()=>{
+
+const suspicious=
+
+detectScam(
+
+messageInput.value
+
+);
+
+if(suspicious){
+
+aiWarning.classList.remove("hidden");
+
+}else{
+
+aiWarning.classList.add("hidden");
+
+}
+
+});
+
+}
+
+// ======================================
+// Image Upload
+// ======================================
+
+if(imageUpload){
+
+imageUpload.onchange=async(e)=>{
+
+const file=e.target.files[0];
+
+if(!file) return;
+
+const storageRef=ref(
+
+storage,
+
+`chat-images/${Date.now()}-${file.name}`
+
+);
+
+await uploadBytes(
+
+storageRef,
+
+file
+
+);
+
+const imageURL=
+
+await getDownloadURL(storageRef);
+
+await addDoc(
+
+collection(
+
+db,
+
+"conversations",
+
+currentConversation,
+
+"messages"
+
+),
+
+{
+
+sender:currentUser.email,
+
+type:"image",
+
+imageURL,
+
+createdAt:serverTimestamp(),
+
+read:false
+
+}
+
+);
+
+};
+
+}
+
+// ======================================
+// File Upload
+// ======================================
+
+if(fileUpload){
+
+fileUpload.onchange=async(e)=>{
+
+const file=e.target.files[0];
+
+if(!file) return;
+
+const storageRef=ref(
+
+storage,
+
+`chat-files/${Date.now()}-${file.name}`
+
+);
+
+await uploadBytes(
+
+storageRef,
+
+file
+
+);
+
+const fileURL=
+
+await getDownloadURL(storageRef);
+
+await addDoc(
+
+collection(
+
+db,
+
+"conversations",
+
+currentConversation,
+
+"messages"
+
+),
+
+{
+
+sender:currentUser.email,
+
+type:"file",
+
+fileName:file.name,
+
+fileURL,
+
+createdAt:serverTimestamp(),
+
+read:false
+
+}
+
+);
+
+};
+
+}
+
+// ======================================
+// Report User
+// ======================================
+
+if(reportUserBtn){
+
+reportUserBtn.onclick=()=>{
+
+reportModal.classList.remove("hidden");
+
+};
+
+}
+
+const submitReport=
+
+document.getElementById("submitReport");
+
+const cancelReport=
+
+document.getElementById("cancelReport");
+
+if(cancelReport){
+
+cancelReport.onclick=()=>{
+
+reportModal.classList.add("hidden");
+
+};
+
+}
+
+if(submitReport){
+
+submitReport.onclick=async()=>{
+
+const reason=
+
+document.getElementById("reportReason").value;
+
+const description=
+
+document.getElementById("reportDescription").value;
+
+await addDoc(
+
+collection(db,"reports"),
+
+{
+
+conversationId:currentConversation,
+
+reportedBy:currentUser.email,
+
+reason,
+
+description,
+
+status:"Open",
+
+riskScore:
+
+detectScam(description)
+
+?
+
+90
+
+:
+
+10,
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+alert("Report submitted successfully.");
+
+reportModal.classList.add("hidden");
+
+};
+
+}
+
+// ======================================
+// Block User
+// ======================================
+
+if(blockUserBtn){
+
+blockUserBtn.onclick=()=>{
+
+blockModal.classList.remove("hidden");
+
+};
+
+}
+
+const confirmBlock=
+
+document.getElementById("confirmBlock");
+
+const cancelBlock=
+
+document.getElementById("cancelBlock");
+
+if(cancelBlock){
+
+cancelBlock.onclick=()=>{
+
+blockModal.classList.add("hidden");
+
+};
+
+}
+
+if(confirmBlock){
+
+confirmBlock.onclick=()=>{
+
+alert("User blocked successfully.");
+
+blockModal.classList.add("hidden");
+
+};
+
+}
+
+// ======================================
+// Emoji Button (Foundation)
+// ======================================
+
+const emojiButton=
+
+document.getElementById("emojiButton");
+
+if(emojiButton){
+
+emojiButton.onclick=()=>{
+
+messageInput.value += "😊 ";
+
+messageInput.focus();
+
+};
+
+}
+
+console.log("💬 Chat Part 3 Loaded");
+// ======================================
+// WorkBee Chat V2
+// Part 4 - Production Final
+// ======================================
+
+import {
+    doc,
+    updateDoc,
+    setDoc
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+// ======================================
+// User Presence
+// ======================================
+
+async function setOnlineStatus(status){
+
+    if(!currentUser) return;
+
+    try{
 
         await setDoc(
 
-            doc(
-                db,
-                "chats",
-                currentChatId,
-                "typing",
-                currentUser.uid
-            ),
+            doc(db,"presence",currentUser.uid),
 
             {
 
-                uid: currentUser.uid,
+                uid:currentUser.uid,
 
-                name:
-                    currentUserProfile?.fullName ||
-                    currentUser.email,
+                email:currentUser.email,
 
-                typing: true,
+                online:status,
 
-                updatedAt: serverTimestamp()
+                lastSeen:serverTimestamp()
 
-            }
-
-        );
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-    }
-
-    clearTimeout(typingTimeout);
-
-    typingTimeout = setTimeout(async () => {
-
-        try {
-
-            await setDoc(
-
-                doc(
-                    db,
-                    "chats",
-                    currentChatId,
-                    "typing",
-                    currentUser.uid
-                ),
-
-                {
-
-                    typing: false,
-
-                    updatedAt: serverTimestamp()
-
-                },
-
-                { merge: true }
-
-            );
-
-        }
-
-        catch (error) {
-
-            console.error(error);
-
-        }
-
-    }, 1500);
-
-});
-
-// ======================================
-// Seen Status
-// ======================================
-
-async function markMessagesAsSeen(snapshot) {
-
-    try {
-
-        const updates = [];
-
-        snapshot.forEach((docSnap) => {
-
-            const data = docSnap.data();
-
-            if (
-                data.senderId !== currentUser.uid &&
-                !data.seen
-            ) {
-
-                updates.push(
-
-                    updateDoc(
-
-                        doc(
-                            db,
-                            "chats",
-                            currentChatId,
-                            "messages",
-                            docSnap.id
-                        ),
-
-                        {
-
-                            seen: true,
-
-                            seenAt: serverTimestamp()
-
-                        }
-
-                    )
-
-                );
-
-            }
-
-        });
-
-        await Promise.all(updates);
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-    }
-
-}
-
-// ======================================
-// Call Seen Status
-// ======================================
-
-// loadMessages() ke onSnapshot callback ke andar,
-// render complete hone ke baad ye line add karo:
-//
-// await markMessagesAsSeen(snapshot);
-
-// ======================================
-// Console
-// ======================================
-
-console.log("✅ Presence Ready");
-console.log("✅ Typing Indicator Ready");
-console.log("✅ Seen Status Ready");
-// ======================================
-// WorkBee Chat V2
-// Part 6 - Final Production
-// ======================================
-
-// ======================================
-// Emoji Button
-// ======================================
-
-emojiBtn.addEventListener("click", () => {
-
-    messageInput.value += "😊";
-
-    messageInput.focus();
-
-});
-
-// ======================================
-// Desktop Notification
-// ======================================
-
-async function showNotification(title, body) {
-
-    if (!("Notification" in window)) return;
-
-    if (Notification.permission === "default") {
-
-        await Notification.requestPermission();
-
-    }
-
-    if (Notification.permission === "granted") {
-
-        new Notification(title, {
-
-            body,
-
-            icon: "images/logo.png"
-
-        });
-
-    }
-
-}
-
-// ======================================
-// Message Delete
-// ======================================
-
-window.deleteMessage = async function(messageId) {
-
-    const ok = confirm("Delete this message?");
-
-    if (!ok) return;
-
-    try {
-
-        await updateDoc(
-
-            doc(
-                db,
-                "chats",
-                currentChatId,
-                "messages",
-                messageId
-            ),
+            },
 
             {
 
-                deleted: true,
-
-                text: "🚫 This message was deleted.",
-
-                imageUrl: "",
-
-                fileUrl: "",
-
-                fileName: "",
-
-                type: "deleted"
+                merge:true
 
             }
 
@@ -1020,51 +1152,187 @@ window.deleteMessage = async function(messageId) {
 
         console.error(error);
 
-        alert(error.message);
+    }
+
+}
+
+window.addEventListener("load",()=>{
+
+    setOnlineStatus(true);
+
+});
+
+window.addEventListener("beforeunload",()=>{
+
+    setOnlineStatus(false);
+
+});
+
+// ======================================
+// Read Receipt
+// ======================================
+
+async function markMessagesAsRead(){
+
+    if(!currentConversation) return;
+
+    messages.forEach(async(message)=>{
+
+        if(
+
+            message.sender!==currentUser.email &&
+
+            !message.read
+
+        ){
+
+            try{
+
+                await updateDoc(
+
+                    doc(
+
+                        db,
+
+                        "conversations",
+
+                        currentConversation,
+
+                        "messages",
+
+                        message.id
+
+                    ),
+
+                    {
+
+                        read:true
+
+                    }
+
+                );
+
+            }
+
+            catch(error){
+
+                console.error(error);
+
+            }
+
+        }
+
+    });
+
+}
+
+// ======================================
+// Auto Read
+// ======================================
+
+const observer=new MutationObserver(()=>{
+
+    markMessagesAsRead();
+
+});
+
+observer.observe(messagesContainer,{
+
+    childList:true,
+
+    subtree:true
+
+});
+
+// ======================================
+// Notification Sound
+// ======================================
+
+const notificationSound=new Audio(
+
+"https://actions.google.com/sounds/v1/cartoon/pop.ogg"
+
+);
+
+let previousMessageCount=0;
+
+function playNotification(){
+
+    if(messages.length>previousMessageCount){
+
+        const latest=
+
+        messages[messages.length-1];
+
+        if(
+
+            latest.sender!==currentUser.email
+
+        ){
+
+            notificationSound.play()
+
+            .catch(()=>{});
+
+        }
 
     }
+
+    previousMessageCount=
+
+    messages.length;
+
+}
+
+// ======================================
+// Override Render
+// ======================================
+
+const originalRender=renderMessages;
+
+renderMessages=function(){
+
+    originalRender();
+
+    playNotification();
 
 };
 
 // ======================================
-// Edit Message
+// Archive Chat
 // ======================================
 
-window.editMessage = async function(messageId, oldText){
+async function archiveConversation(){
 
-    const newText = prompt(
-
-        "Edit Message",
-
-        oldText
-
-    );
-
-    if(newText===null) return;
-
-    if(newText.trim()==="") return;
+    if(!currentConversation) return;
 
     try{
 
         await updateDoc(
 
             doc(
+
                 db,
-                "chats",
-                currentChatId,
-                "messages",
-                messageId
+
+                "conversations",
+
+                currentConversation
+
             ),
 
             {
 
-                text:newText,
+                archived:true,
 
-                edited:true,
-
-                editedAt:serverTimestamp()
+                archivedBy:currentUser.email
 
             }
+
+        );
+
+        alert(
+
+            "Conversation Archived."
 
         );
 
@@ -1072,48 +1340,182 @@ window.editMessage = async function(messageId, oldText){
 
     catch(error){
 
-        alert(error.message);
+        console.error(error);
 
     }
+
+}
+
+// ======================================
+// Advanced AI Link Scan
+// ======================================
+
+function containsSuspiciousLink(text){
+
+    if(!text) return false;
+
+    const patterns=[
+
+        "http://",
+
+        "https://",
+
+        "bit.ly",
+
+        "tinyurl",
+
+        "cutt.ly",
+
+        "t.me",
+
+        "wa.me",
+
+        "discord.gg"
+
+    ];
+
+    text=text.toLowerCase();
+
+    return patterns.some(link=>
+
+        text.includes(link)
+
+    );
+
+}
+
+// ======================================
+// Enhanced Send
+// ======================================
+
+if(sendMessage){
+
+const oldSend=sendMessage.onclick;
+
+sendMessage.onclick=async()=>{
+
+const text=
+
+messageInput.value.trim();
+
+if(
+
+containsSuspiciousLink(text)
+
+||
+
+detectScam(text)
+
+){
+
+aiWarning.classList.remove("hidden");
+
+}
+
+await oldSend();
+
+};
+
+}
+
+// ======================================
+// Message Reaction Foundation
+// ======================================
+
+function addReaction(
+
+messageId,
+
+emoji
+
+){
+
+console.log(
+
+"Reaction:",
+
+messageId,
+
+emoji
+
+);
+
+}
+
+// ======================================
+// Chat Statistics
+// ======================================
+
+function chatAnalytics(){
+
+const sent=
+
+messages.filter(
+
+m=>m.sender===currentUser.email
+
+).length;
+
+const received=
+
+messages.length-sent;
+
+console.log({
+
+sent,
+
+received,
+
+total:messages.length
+
+});
+
+}
+
+setInterval(
+
+chatAnalytics,
+
+60000
+
+);
+
+// ======================================
+// Auto Scroll
+// ======================================
+
+function smoothScroll(){
+
+messagesContainer.scrollTo({
+
+top:
+
+messagesContainer.scrollHeight,
+
+behavior:"smooth"
+
+});
+
+}
+
+const oldRenderMessages=
+
+renderMessages;
+
+renderMessages=function(){
+
+oldRenderMessages();
+
+smoothScroll();
 
 };
 
 // ======================================
-// Connection Monitor
+// Production Ready
 // ======================================
 
-window.addEventListener("online",()=>{
+console.log(
 
-    onlineStatus.textContent="🟢 Online";
+"🚀 WorkBee Chat System Production Ready"
 
-});
-
-window.addEventListener("offline",()=>{
-
-    onlineStatus.textContent="🔴 Offline";
-
-});
-
-// ======================================
-// Cleanup
-// ======================================
-
-window.addEventListener("beforeunload",()=>{
-
-    if(unsubscribeMessages){
-
-        unsubscribeMessages();
-
-    }
-
-});
-
-// ======================================
-// Version
-// ======================================
-
-console.log("==================================");
-console.log("WorkBee Chat V2");
-console.log("Production Version");
-console.log("Real-Time Messaging Enabled");
-console.log("==================================");
+);

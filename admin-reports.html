@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+WorkBee | Admin Reports
+
+</title>
+
+<link
+rel="stylesheet"
+href="Css folder/admin-reports.css">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ======================================
+Sidebar
+====================================== -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<h2>🐝 WorkBee</h2>
+
+<span>
+
+Admin Panel
+
+</span>
+
+</div>
+
+<nav>
+
+<a href="admin-dashboard.html">
+
+🏠 Dashboard
+
+</a>
+
+<a href="admin-users.html">
+
+👥 Users
+
+</a>
+
+<a href="admin-projects.html">
+
+📂 Projects
+
+</a>
+
+<a href="admin-payments.html">
+
+💳 Payments
+
+</a>
+
+<a
+href="admin-reports.html"
+class="active">
+
+🚩 Reports
+
+</a>
+
+<a href="admin-settings.html">
+
+⚙ Settings
+
+</a>
+
+<a href="login.html">
+
+🚪 Logout
+
+</a>
+
+</nav>
+
+</aside>
+
+<!-- ======================================
+Main Content
+====================================== -->
+
+<main class="main-content">
+
+<!-- Header -->
+
+<header class="top-header">
+
+<div>
+
+<h1>
+
+Reports & Moderation Center
+
+</h1>
+
+<p>
+
+Manage reports, scam detection,
+fraud alerts and moderation.
+
+</p>
+
+</div>
+
+<div class="header-actions">
+
+<button id="refreshReports">
+
+🔄 Refresh
+
+</button>
+
+<button id="exportReports">
+
+📄 Export CSV
+
+</button>
+
+</div>
+
+</header>
+
+<!-- ======================================
+Statistics
+====================================== -->
+
+<section class="stats-grid">
+
+<div class="stat-card">
+
+<h4>
+
+Total Reports
+
+</h4>
+
+<h2 id="totalReports">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h4>
+
+Open Reports
+
+</h4>
+
+<h2 id="openReports">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h4>
+
+High Risk
+
+</h4>
+
+<h2 id="highRiskReports">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h4>
+
+Resolved
+
+</h4>
+
+<h2 id="resolvedReports">
+
+0
+
+</h2>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Toolbar
+====================================== -->
+
+<section class="toolbar">
+
+<input
+type="text"
+id="searchReport"
+placeholder="Search by report ID, user or email">
+
+<select id="statusFilter">
+
+<option value="All">
+
+All Status
+
+</option>
+
+<option>
+
+Open
+
+</option>
+
+<option>
+
+Investigating
+
+</option>
+
+<option>
+
+Resolved
+
+</option>
+
+<option>
+
+Rejected
+
+</option>
+
+</select>
+
+<select id="typeFilter">
+
+<option value="All">
+
+All Types
+
+</option>
+
+<option>
+
+Scam
+
+</option>
+
+<option>
+
+Spam
+
+</option>
+
+<option>
+
+Fake Project
+
+</option>
+
+<option>
+
+Fake Freelancer
+
+</option>
+
+<option>
+
+Harassment
+
+</option>
+
+<option>
+
+Payment Fraud
+
+</option>
+
+<option>
+
+Malicious Link
+
+</option>
+
+<option>
+
+Identity Fraud
+
+</option>
+
+<option>
+
+Other
+
+</option>
+
+</select>
+
+</section>
+
+<!-- ======================================
+Reports Table
+====================================== -->
+
+<section class="table-card">
+
+<div class="table-header">
+
+<h2>
+
+Moderation Queue
+
+</h2>
+
+</div>
+
+<div class="table-responsive">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Reported User</th>
+
+<th>Report Type</th>
+
+<th>Risk Score</th>
+
+<th>Status</th>
+
+<th>Date</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="reportsTableBody">
+
+<tr>
+
+<td
+colspan="7"
+class="loading">
+
+Loading Reports...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+<!-- ======================================
+Report Details Modal
+====================================== -->
+
+<div id="reportModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Report Details
+
+            </h2>
+
+            <button id="closeReportModal">
+
+                &times;
+
+            </button>
+
+        </div>
+
+        <div
+        id="reportDetails"
+        class="modal-body">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+AI Analysis Modal
+====================================== -->
+
+<div id="aiModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+
+                AI Risk Analysis
+
+            </h2>
+
+            <button id="closeAiModal">
+
+                &times;
+
+            </button>
+
+        </div>
+
+        <div
+        id="aiAnalysis"
+        class="modal-body">
+
+            <h3>
+
+                Risk Score:
+                <span id="riskScore">
+
+                    --
+
+                </span>
+
+            </h3>
+
+            <hr>
+
+            <div id="riskReasons">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Warning Modal
+====================================== -->
+
+<div id="warningModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Send Warning
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <textarea
+
+            id="warningMessage"
+
+            rows="6"
+
+            placeholder="Write warning message...">
+
+            </textarea>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+
+            id="cancelWarning"
+
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+
+            id="confirmWarning"
+
+            class="btn-warning">
+
+                Send Warning
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Suspend User Modal
+====================================== -->
+
+<div id="suspendModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Suspend User
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                Suspend this user account?
+
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+
+            id="cancelSuspend"
+
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+
+            id="confirmSuspend"
+
+            class="btn-danger">
+
+                Suspend
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Ban User Modal
+====================================== -->
+
+<div id="banModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Permanently Ban User
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                This action cannot be undone.
+
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+
+            id="cancelBan"
+
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+
+            id="confirmBan"
+
+            class="btn-danger">
+
+                Ban User
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Resolve Report Modal
+====================================== -->
+
+<div id="resolveModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Resolve Report
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                Mark this report as resolved?
+
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+
+            id="cancelResolve"
+
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+
+            id="confirmResolve"
+
+            class="btn-success">
+
+                Resolve
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Reject Report Modal
+====================================== -->
+
+<div id="rejectModal" class="modal hidden">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Reject Report
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                Reject this report?
+
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+
+            id="cancelReject"
+
+            class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+
+            id="confirmReject"
+
+            class="btn-danger">
+
+                Reject
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Pagination
+====================================== -->
+
+<section class="pagination">
+
+    <button id="prevPage">
+
+        ◀ Previous
+
+    </button>
+
+    <span id="pageInfo">
+
+        Page 1 of 1
+
+    </span>
+
+    <button id="nextPage">
+
+        Next ▶
+
+    </button>
+
+</section>
+
+<!-- ======================================
+Footer
+====================================== -->
+
+<footer class="admin-footer">
+
+    <p>
+
+        © 2026 WorkBee Trust & Safety Center
+
+        | AI Moderation System
+
+    </p>
+
+</footer>
+
+</main>
+
+<!-- ======================================
+JavaScript
+====================================== -->
+
+<script
+type="module"
+src="Js folder/admin-reports.js">
+
+</script>
+
+</body>
+</html>

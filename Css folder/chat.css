@@ -1,32 +1,342 @@
 /* ======================================
-WorkBee Chat V2
-Production CSS
+   WorkBee Chat V2
+   Part 1 - Complete Replacement
 ====================================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
+/* ======================================
+   Root Variables
+====================================== */
 
-body{
+:root{
 
-    background:#f5f7fb;
+    --primary:#facc15;
+    --primary-dark:#eab308;
 
-    color:#333;
+    --sidebar:#111827;
+    --background:#f8fafc;
+    --card:#ffffff;
+
+    --text:#111827;
+    --text-light:#6b7280;
+
+    --border:#e5e7eb;
+
+    --success:#22c55e;
+    --danger:#ef4444;
+    --warning:#f59e0b;
+    --info:#3b82f6;
+
+    --shadow:0 10px 25px rgba(0,0,0,.08);
 
 }
 
 /* ======================================
-Top Bar
+   Reset
 ====================================== */
 
-.topbar{
+*{
 
-    height:70px;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 
-    background:#ffffff;
+}
+
+body{
+
+    font-family:"Poppins",sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    display:flex;
+
+    height:100vh;
+
+    overflow:hidden;
+
+}
+
+/* ======================================
+   Sidebar
+====================================== */
+
+.sidebar{
+
+    width:260px;
+
+    background:var(--sidebar);
+
+    color:#fff;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.logo{
+
+    padding:30px 20px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.logo h2{
+
+    color:var(--primary);
+
+    margin-bottom:6px;
+
+}
+
+.logo span{
+
+    color:#9ca3af;
+
+    font-size:13px;
+
+}
+
+.sidebar nav{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-top:15px;
+
+}
+
+.sidebar nav a{
+
+    color:#d1d5db;
+
+    text-decoration:none;
+
+    padding:15px 22px;
+
+    transition:.25s;
+
+    font-weight:500;
+
+}
+
+.sidebar nav a:hover{
+
+    background:#1f2937;
+
+    color:#fff;
+
+}
+
+.sidebar nav a.active{
+
+    background:var(--primary);
+
+    color:#111827;
+
+    font-weight:700;
+
+}
+
+/* ======================================
+   Chat Layout
+====================================== */
+
+.chat-container{
+
+    flex:1;
+
+    display:grid;
+
+    grid-template-columns:340px 1fr;
+
+    height:100vh;
+
+}
+
+/* ======================================
+   Conversation List
+====================================== */
+
+.chat-list{
+
+    background:#fff;
+
+    border-right:1px solid var(--border);
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.chat-header{
+
+    padding:20px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.chat-header h2{
+
+    margin-bottom:15px;
+
+}
+
+.chat-header input{
+
+    width:100%;
+
+    padding:12px 14px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:14px;
+
+}
+
+.chat-header input:focus{
+
+    border-color:var(--primary);
+
+}
+
+/* ======================================
+   Conversation Items
+====================================== */
+
+.conversation-list{
+
+    flex:1;
+
+    overflow-y:auto;
+
+}
+
+.conversation-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:16px 18px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    border-bottom:1px solid #f1f5f9;
+
+}
+
+.conversation-item:hover{
+
+    background:#f8fafc;
+
+}
+
+.conversation-item.active{
+
+    background:#fff8db;
+
+}
+
+.conversation-avatar{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.conversation-info{
+
+    flex:1;
+
+}
+
+.conversation-info h4{
+
+    font-size:15px;
+
+    margin-bottom:4px;
+
+}
+
+.conversation-info p{
+
+    font-size:13px;
+
+    color:var(--text-light);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.conversation-time{
+
+    font-size:12px;
+
+    color:#9ca3af;
+
+}
+
+.online-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:var(--success);
+
+}
+
+/* ======================================
+   Chat Window
+====================================== */
+
+.chat-window{
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#f8fafc;
+
+}
+
+/* ======================================
+   Chat Header
+====================================== */
+
+.chat-top{
+
+    background:#fff;
+
+    border-bottom:1px solid var(--border);
+
+    padding:18px 22px;
 
     display:flex;
 
@@ -34,29 +344,9 @@ Top Bar
 
     align-items:center;
 
-    padding:0 30px;
-
-    border-bottom:1px solid #e5e5e5;
-
-    position:sticky;
-
-    top:0;
-
-    z-index:100;
-
 }
 
-.logo{
-
-    font-size:24px;
-
-    font-weight:bold;
-
-    color:#f5a000;
-
-}
-
-.chat-user{
+.user-info{
 
     display:flex;
 
@@ -66,184 +356,173 @@ Top Bar
 
 }
 
-.avatar{
+.user-info img{
 
-    width:50px;
+    width:55px;
 
-    height:50px;
+    height:55px;
 
     border-radius:50%;
 
-    background:#f5a000;
+    object-fit:cover;
 
-    color:#fff;
+}
+
+.user-info h3{
+
+    margin-bottom:5px;
+
+}
+
+.user-info p{
+
+    color:var(--success);
+
+    font-size:13px;
+
+}
+
+.chat-actions{
 
     display:flex;
 
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:24px;
+    gap:10px;
 
 }
 
-#chatUserName{
+.chat-actions button{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#f3f4f6;
+
+    cursor:pointer;
+
+    transition:.25s;
 
     font-size:18px;
 
-    margin-bottom:3px;
-
 }
 
-#onlineStatus{
+.chat-actions button:hover{
 
-    color:green;
-
-    font-size:13px;
+    background:var(--primary);
 
 }
 
 /* ======================================
-Layout
+   Messages Area
 ====================================== */
 
-.chat-layout{
+.messages-container{
 
-    width:100%;
-
-    max-width:1100px;
-
-    margin:25px auto;
-
-    padding:0 20px;
-
-}
-
-.chat-window{
-
-    background:#fff;
-
-    border-radius:15px;
-
-    overflow:hidden;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-
-}
-
-/* ======================================
-Header
-====================================== */
-
-.chat-header{
-
-    background:#f8f9fc;
-
-    padding:25px;
-
-    border-bottom:1px solid #eee;
-
-}
-
-.chat-header h2{
-
-    font-size:28px;
-
-    color:#f5a000;
-
-}
-
-.chat-header p{
-
-    margin-top:6px;
-
-    color:#666;
-
-}
-
-.typing{
-
-    height:25px;
-
-    padding:5px 25px;
-
-    font-size:13px;
-
-    color:#0b8a3c;
-
-}
-/* ======================================
-Messages Area
-====================================== */
-
-.messages{
-
-    height:520px;
+    flex:1;
 
     overflow-y:auto;
 
     padding:25px;
 
-    background:#f7f8fc;
+}
+
+.empty-chat{
+
+    height:100%;
 
     display:flex;
 
-    flex-direction:column;
+    justify-content:center;
 
-    gap:18px;
+    align-items:center;
 
-    scroll-behavior:smooth;
+    color:#9ca3af;
 
-}
-
-/* Scrollbar */
-
-.messages::-webkit-scrollbar{
-
-    width:8px;
-
-}
-
-.messages::-webkit-scrollbar-thumb{
-
-    background:#d2d2d2;
-
-    border-radius:20px;
-
-}
-
-.messages::-webkit-scrollbar-track{
-
-    background:transparent;
+    font-size:18px;
 
 }
 
 /* ======================================
-Message Bubble
+   Loading
+====================================== */
+
+.loading{
+
+    text-align:center;
+
+    padding:40px;
+
+    color:var(--text-light);
+
+}
+/* ======================================
+   WorkBee Chat V2
+   Part 2 - Messages & Input
+====================================== */
+
+/* ======================================
+   Message Bubble
 ====================================== */
 
 .message{
 
-    max-width:75%;
+    display:flex;
 
-    padding:14px 18px;
+    margin-bottom:18px;
 
-    border-radius:15px;
-
-    word-break:break-word;
-
-    animation:fadeIn .25s ease;
-
-    position:relative;
+    animation:fadeMessage .25s ease;
 
 }
 
-.message p{
+.message.sent{
 
-    line-height:1.6;
+    justify-content:flex-end;
 
-    font-size:15px;
+}
+
+.message.received{
+
+    justify-content:flex-start;
+
+}
+
+.message-content{
+
+    max-width:70%;
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    position:relative;
+
+    box-shadow:var(--shadow);
+
+    word-wrap:break-word;
+
+}
+
+.message.sent .message-content{
+
+    background:var(--primary);
+
+    color:#111827;
+
+    border-bottom-right-radius:6px;
+
+}
+
+.message.received .message-content{
+
+    background:#ffffff;
+
+    color:var(--text);
+
+    border-bottom-left-radius:6px;
 
 }
 
@@ -257,83 +536,15 @@ Message Bubble
 
     opacity:.7;
 
-}
-
-/* ======================================
-My Message
-====================================== */
-
-.my-message{
-
-    align-self:flex-end;
-
-    background:#ffb000;
-
-    color:#fff;
-
-    border-bottom-right-radius:4px;
-
-}
-
-/* ======================================
-Other Message
-====================================== */
-
-.other-message{
-
-    align-self:flex-start;
-
-    background:#fff;
-
-    color:#333;
-
-    border:1px solid #ececec;
-
-    border-bottom-left-radius:4px;
-
-}
-
-/* ======================================
-Sender Name
-====================================== */
-
-.sender{
-
-    font-size:13px;
-
-    font-weight:bold;
-
-    margin-bottom:6px;
-
-}
-
-/* ======================================
-Seen Status
-====================================== */
-
-.seen{
-
-    font-size:11px;
-
-    margin-top:6px;
-
     text-align:right;
 
-    opacity:.75;
-
 }
-
-/* ======================================
-Images
-====================================== */
 
 .message img{
 
-    width:100%;
+    max-width:260px;
 
-    max-width:280px;
-
-    border-radius:10px;
+    border-radius:12px;
 
     margin-top:10px;
 
@@ -341,59 +552,265 @@ Images
 
 }
 
-/* ======================================
-Attachments
-====================================== */
+.message a{
 
-.attachment{
-
-    display:inline-block;
-
-    margin-top:10px;
-
-    padding:10px 14px;
-
-    background:#eef2ff;
-
-    border-radius:8px;
+    color:var(--info);
 
     text-decoration:none;
 
-    color:#0d47a1;
+}
+
+.message a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ======================================
+   Read Status
+====================================== */
+
+.read-status{
+
+    margin-left:8px;
+
+    font-size:12px;
+
+    color:var(--success);
+
+}
+
+/* ======================================
+   Typing Indicator
+====================================== */
+
+.typing-indicator{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:10px 20px;
+
+    color:var(--text-light);
 
     font-size:14px;
 
-    font-weight:bold;
+}
+
+.typing-indicator.hidden{
+
+    display:none;
 
 }
 
-.attachment:hover{
+.typing-indicator span{
 
-    background:#dde6ff;
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    animation:typing 1.2s infinite;
+
+}
+
+.typing-indicator span:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+.typing-indicator span:nth-child(3){
+
+    animation-delay:.4s;
 
 }
 
 /* ======================================
-Loading
+   AI Warning
 ====================================== */
 
-.loading{
+.ai-warning{
 
-    text-align:center;
+    margin:15px;
 
-    color:#777;
+    padding:14px 18px;
 
-    font-size:18px;
+    background:#fff7ed;
 
-    margin-top:60px;
+    color:#92400e;
+
+    border-left:5px solid var(--warning);
+
+    border-radius:10px;
+
+    font-size:14px;
+
+}
+
+.ai-warning.hidden{
+
+    display:none;
 
 }
 
 /* ======================================
-Animation
+   Chat Input
 ====================================== */
 
-@keyframes fadeIn{
+.chat-input-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:#fff;
+
+    border-top:1px solid var(--border);
+
+    padding:18px;
+
+}
+
+.chat-input-area textarea{
+
+    flex:1;
+
+    resize:none;
+
+    min-height:50px;
+
+    max-height:150px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:14px;
+
+    font-family:"Poppins",sans-serif;
+
+    outline:none;
+
+}
+
+.chat-input-area textarea:focus{
+
+    border-color:var(--primary);
+
+}
+
+.icon-btn{
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#f3f4f6;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    transition:.25s;
+
+}
+
+.icon-btn:hover{
+
+    background:var(--primary);
+
+}
+
+.send-btn{
+
+    border:none;
+
+    background:var(--primary);
+
+    color:#111827;
+
+    padding:13px 22px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+.send-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+/* ======================================
+   Upload Preview
+====================================== */
+
+.upload-preview{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    padding:10px 20px;
+
+}
+
+.upload-preview img{
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+}
+
+.upload-preview .file{
+
+    padding:10px;
+
+    background:#fff;
+
+    border-radius:10px;
+
+    border:1px solid var(--border);
+
+    font-size:13px;
+
+}
+
+/* ======================================
+   Animation
+====================================== */
+
+@keyframes fadeMessage{
 
     from{
 
@@ -412,272 +829,456 @@ Animation
     }
 
 }
+
+@keyframes typing{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+        opacity:1;
+
+    }
+
+}
 /* ======================================
-Chat Footer
+   WorkBee Chat V2
+   Part 3 - Production Final
 ====================================== */
 
-.chat-footer{
+/* ======================================
+   Image Preview Modal
+====================================== */
+
+.modal{
+
+    position:fixed;
+    inset:0;
 
     display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    padding:18px;
-
-    background:#ffffff;
-
-    border-top:1px solid #e5e5e5;
-
-}
-
-.chat-tools{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-}
-
-.tool-btn{
-
-    width:45px;
-
-    height:45px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#f3f4f6;
-
-    font-size:20px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    display:flex;
-
     justify-content:center;
-
     align-items:center;
 
-}
+    background:rgba(0,0,0,.65);
 
-.tool-btn:hover{
+    z-index:9999;
 
-    background:#ffb000;
-
-    color:#fff;
-
-    transform:scale(1.08);
+    animation:fadeIn .25s ease;
 
 }
 
-.chat-footer input[type="text"]{
+.modal.hidden{
 
-    flex:1;
+    display:none;
 
-    height:50px;
+}
 
-    border:1px solid #ddd;
+.modal-content{
 
-    border-radius:30px;
+    width:90%;
+    max-width:700px;
 
-    padding:0 20px;
+    background:#fff;
 
-    font-size:15px;
+    border-radius:16px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+    position:relative;
+
+}
+
+.modal-content.small{
+
+    max-width:420px;
+
+    padding:25px;
+
+}
+
+.modal-content img{
+
+    width:100%;
+    max-height:80vh;
+    object-fit:contain;
+
+    display:block;
+
+}
+
+.modal-content h2{
+
+    margin-bottom:20px;
+
+}
+
+.modal-content p{
+
+    color:var(--text-light);
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+
+}
+
+.modal-content select,
+.modal-content textarea{
+
+    width:100%;
+
+    margin-bottom:15px;
+
+    padding:12px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    font-family:"Poppins",sans-serif;
 
     outline:none;
 
-    transition:.3s;
+}
+
+.modal-content textarea{
+
+    min-height:120px;
+
+    resize:vertical;
 
 }
 
-.chat-footer input[type="text"]:focus{
+.modal-content select:focus,
+.modal-content textarea:focus{
 
-    border-color:#ffb000;
-
-    box-shadow:0 0 8px rgba(255,176,0,.25);
+    border-color:var(--primary);
 
 }
 
-/* ======================================
-Send Button
-====================================== */
+#closePreview{
 
-.send-btn{
+    position:absolute;
 
-    width:55px;
+    top:15px;
+    right:15px;
 
-    height:55px;
+    width:40px;
+    height:40px;
 
     border:none;
 
     border-radius:50%;
 
-    background:#ffb000;
-
-    color:#fff;
-
-    font-size:22px;
+    background:#fff;
 
     cursor:pointer;
 
-    transition:.3s;
+    font-size:18px;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ======================================
+   Modal Buttons
+====================================== */
+
+.modal-actions{
 
     display:flex;
 
-    justify-content:center;
+    justify-content:flex-end;
 
-    align-items:center;
+    gap:12px;
+
+}
+
+.modal-actions button{
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+#submitReport,
+#confirmBlock{
+
+    background:var(--danger);
+
+    color:#fff;
+
+}
+
+#cancelReport,
+#cancelBlock{
+
+    background:#e5e7eb;
+
+}
+
+/* ======================================
+   Custom Scrollbar
+====================================== */
+
+.messages-container::-webkit-scrollbar,
+.conversation-list::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.messages-container::-webkit-scrollbar-track,
+.conversation-list::-webkit-scrollbar-track{
+
+    background:#f1f5f9;
+
+}
+
+.messages-container::-webkit-scrollbar-thumb,
+.conversation-list::-webkit-scrollbar-thumb{
+
+    background:#cbd5e1;
+
+    border-radius:20px;
+
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover,
+.conversation-list::-webkit-scrollbar-thumb:hover{
+
+    background:#94a3b8;
+
+}
+
+/* ======================================
+   Hover Effects
+====================================== */
+
+.conversation-item,
+.chat-actions button,
+.icon-btn,
+.send-btn,
+.modal-actions button{
+
+    transition:all .25s ease;
+
+}
+
+.conversation-item:hover{
+
+    transform:translateX(4px);
+
+}
+
+.chat-actions button:hover,
+.icon-btn:hover{
+
+    transform:scale(1.08);
 
 }
 
 .send-btn:hover{
 
-    background:#e09a00;
-
-    transform:scale(1.08);
+    transform:translateY(-2px);
 
 }
 
 /* ======================================
-Responsive
+   Responsive
 ====================================== */
+
+@media(max-width:992px){
+
+.chat-container{
+
+grid-template-columns:280px 1fr;
+
+}
+
+.sidebar{
+
+width:220px;
+
+}
+
+}
 
 @media(max-width:768px){
 
-    .topbar{
+body{
 
-        padding:12px 15px;
+flex-direction:column;
 
-        height:auto;
+overflow:auto;
 
-        flex-direction:column;
+}
 
-        align-items:flex-start;
+.sidebar{
 
-        gap:12px;
+width:100%;
+height:auto;
 
-    }
+}
 
-    .chat-layout{
+.chat-container{
 
-        padding:10px;
+grid-template-columns:1fr;
 
-    }
+height:auto;
 
-    .messages{
+}
 
-        height:420px;
+.chat-list{
 
-        padding:15px;
+height:300px;
 
-    }
+border-right:none;
 
-    .message{
+border-bottom:1px solid var(--border);
 
-        max-width:90%;
+}
 
-    }
+.chat-top{
 
-    .chat-footer{
+flex-direction:column;
 
-        flex-wrap:wrap;
+align-items:flex-start;
 
-        gap:10px;
+gap:15px;
 
-    }
+}
 
-    .chat-tools{
+.chat-actions{
 
-        width:100%;
+width:100%;
 
-        justify-content:center;
+justify-content:space-between;
 
-    }
+}
 
-    .chat-footer input[type="text"]{
+.message-content{
 
-        width:100%;
+max-width:90%;
 
-        order:2;
+}
 
-    }
+.chat-input-area{
 
-    .send-btn{
+flex-wrap:wrap;
 
-        width:100%;
+}
 
-        height:50px;
+.chat-input-area textarea{
 
-        border-radius:10px;
+width:100%;
 
-        order:3;
+order:-1;
 
-    }
+}
+
+.send-btn{
+
+width:100%;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.chat-header h2{
+
+font-size:22px;
+
+}
+
+.user-info h3{
+
+font-size:16px;
+
+}
+
+.message-content{
+
+font-size:14px;
+
+}
+
+.icon-btn{
+
+width:42px;
+height:42px;
+
+}
 
 }
 
 /* ======================================
-Large Screens
+   Print
 ====================================== */
 
-@media(min-width:1400px){
+@media print{
 
-    .chat-layout{
+.sidebar,
+.chat-input-area,
+.chat-actions{
 
-        max-width:1300px;
+display:none;
 
-    }
+}
+
+.chat-window{
+
+width:100%;
+
+}
 
 }
 
 /* ======================================
-Utility Classes
+   Animation
 ====================================== */
 
-.hidden{
+@keyframes fadeIn{
 
-    display:none !important;
+from{
 
-}
+opacity:0;
 
-.text-center{
-
-    text-align:center;
+transform:scale(.95);
 
 }
 
-.mt-10{
+to{
 
-    margin-top:10px;
+opacity:1;
 
-}
-
-.mb-10{
-
-    margin-bottom:10px;
+transform:scale(1);
 
 }
 
-.online{
-
-    color:#28a745;
-
-    font-weight:bold;
-
 }
 
-.offline{
-
-    color:#dc3545;
-
-    font-weight:bold;
-
-}
+/* ======================================
+   End of File
+====================================== */

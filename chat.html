@@ -5,41 +5,168 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<title>WorkBee Chat</title>
+<title>
 
-<link rel="stylesheet" href="Css folder/chat.css">
+WorkBee | Messages
+
+</title>
+
+<link
+rel="stylesheet"
+href="Css folder/chat.css">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
 </head>
 
 <body>
 
-<header class="topbar">
+<!-- ======================================
+Sidebar
+====================================== -->
+
+<aside class="sidebar">
 
 <div class="logo">
 
-🐝 <strong>WorkBee Chat</strong>
+<h2>
+
+🐝 WorkBee
+
+</h2>
+
+<span>
+
+Real-Time Chat
+
+</span>
 
 </div>
 
-<div class="chat-user">
+<nav>
 
-<div class="avatar">
+<a href="client-dashboard.html">
 
-👤
+🏠 Dashboard
+
+</a>
+
+<a href="browse-projects.html">
+
+📂 Projects
+
+</a>
+
+<a href="notifications.html">
+
+🔔 Notifications
+
+</a>
+
+<a
+href="chat.html"
+class="active">
+
+💬 Messages
+
+</a>
+
+<a href="wallet.html">
+
+💰 Wallet
+
+</a>
+
+<a href="settings.html">
+
+⚙ Settings
+
+</a>
+
+<a href="login.html">
+
+🚪 Logout
+
+</a>
+
+</nav>
+
+</aside>
+
+<!-- ======================================
+Main Content
+====================================== -->
+
+<main class="chat-container">
+
+<!-- Left Panel -->
+
+<section class="chat-list">
+
+<div class="chat-header">
+
+<h2>
+
+Messages
+
+</h2>
+
+<input
+type="text"
+id="searchChat"
+placeholder="Search conversation...">
 
 </div>
+
+<div
+id="conversationList"
+class="conversation-list">
+
+<div class="loading">
+
+Loading Conversations...
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Chat Window
+====================================== -->
+
+<section class="chat-window">
+
+<!-- Header -->
+
+<div class="chat-top">
+
+<div class="user-info">
+
+<img
+
+id="chatAvatar"
+
+src="https://via.placeholder.com/50"
+
+alt="Avatar">
 
 <div>
 
 <h3 id="chatUserName">
 
-Loading...
+Select a Conversation
 
 </h3>
 
-<p id="onlineStatus">
+<p id="chatStatus">
 
 Offline
 
@@ -49,136 +176,332 @@ Offline
 
 </div>
 
-</header>
+<div class="chat-actions">
 
-<main class="chat-layout">
+<button id="voiceCall">
 
-<div class="chat-window">
+📞
 
-<div class="chat-header">
+</button>
 
-<h2 id="chatTitle">
+<button id="videoCall">
 
-Project Chat
+🎥
 
-</h2>
+</button>
 
-<p>
+<button id="reportUser">
 
-Secure conversation between Client & Freelancer
+🚩
 
-</p>
+</button>
+
+<button id="blockUser">
+
+🚫
+
+</button>
 
 </div>
 
-<div id="typingIndicator"
-
-class="typing">
-
 </div>
+
+<!-- Messages -->
 
 <div
-id="messages"
-class="messages">
+id="messagesContainer"
+class="messages-container">
 
-<div class="loading">
+<div class="empty-chat">
 
-Loading Messages...
+Start chatting with a freelancer or client.
 
 </div>
 
 </div>
 <!-- ======================================
-Message Input Area
+AI Scam Warning
 ====================================== -->
 
-<div class="chat-footer">
+<div id="aiWarning" class="ai-warning hidden">
 
-    <div class="chat-tools">
+    <span>
 
-        <!-- Emoji Button -->
+        ⚠ AI Warning:
+        Suspicious message detected.
+        Avoid external payments or sharing personal contact information.
 
-        <button
-            id="emojiBtn"
-            class="tool-btn"
-            title="Emoji">
+    </span>
 
-            😊
+</div>
 
-        </button>
+<!-- ======================================
+Typing Indicator
+====================================== -->
 
-        <!-- Image Upload -->
+<div
+id="typingIndicator"
+class="typing-indicator hidden">
 
-        <label
-            for="imageFile"
-            class="tool-btn"
-            title="Send Image">
+    <span></span>
+    <span></span>
+    <span></span>
 
-            🖼
+    <p>
 
-        </label>
+        User is typing...
 
-        <input
-            type="file"
-            id="imageFile"
-            accept="image/*"
-            hidden>
+    </p>
 
-        <!-- File Upload -->
+</div>
 
-        <label
-            for="attachmentFile"
-            class="tool-btn"
-            title="Send File">
+<!-- ======================================
+Message Input
+====================================== -->
 
-            📎
+<div class="chat-input-area">
 
-        </label>
+    <label
+    for="imageUpload"
+    class="icon-btn">
 
-        <input
-            type="file"
-            id="attachmentFile"
-            hidden>
+        🖼
 
-    </div>
-
-    <!-- Message Box -->
+    </label>
 
     <input
+    type="file"
+    id="imageUpload"
+    accept="image/*"
+    hidden>
 
-        type="text"
+    <label
+    for="fileUpload"
+    class="icon-btn">
 
-        id="messageInput"
+        📎
 
-        placeholder="Type your message..."
+    </label>
 
-        autocomplete="off"
-
-    >
-
-    <!-- Send Button -->
+    <input
+    type="file"
+    id="fileUpload"
+    hidden>
 
     <button
+    id="emojiButton"
+    class="icon-btn">
 
-        id="sendBtn"
+        😀
+    </button>
 
-        class="send-btn">
+    <textarea
 
-        ➤
+    id="messageInput"
+
+    placeholder="Type your message..."
+
+    rows="1">
+
+    </textarea>
+
+    <button
+    id="voiceMessage"
+    class="icon-btn">
+
+        🎤
+
+    </button>
+
+    <button
+    id="sendMessage"
+    class="send-btn">
+
+        ➤ Send
 
     </button>
 
 </div>
 
+<!-- ======================================
+Image Preview Modal
+====================================== -->
+
+<div
+id="imagePreviewModal"
+class="modal hidden">
+
+    <div class="modal-content">
+
+        <button
+        id="closePreview">
+
+            ✖
+
+        </button>
+
+        <img
+
+        id="previewImage"
+
+        src=""
+
+        alt="Preview">
+
+    </div>
+
 </div>
 
+<!-- ======================================
+Report User Modal
+====================================== -->
+
+<div
+id="reportModal"
+class="modal hidden">
+
+    <div class="modal-content small">
+
+        <h2>
+
+            Report User
+
+        </h2>
+
+        <select id="reportReason">
+
+            <option value="">
+
+                Select Reason
+
+            </option>
+
+            <option>
+
+                Scam
+
+            </option>
+
+            <option>
+
+                Spam
+
+            </option>
+
+            <option>
+
+                Harassment
+
+            </option>
+
+            <option>
+
+                Fake Project
+
+            </option>
+
+            <option>
+
+                Malicious Link
+
+            </option>
+
+            <option>
+
+                Other
+
+            </option>
+
+        </select>
+
+        <textarea
+
+        id="reportDescription"
+
+        placeholder="Describe the issue...">
+
+        </textarea>
+
+        <div class="modal-actions">
+
+            <button
+            id="cancelReport">
+
+                Cancel
+
+            </button>
+
+            <button
+            id="submitReport">
+
+                Submit Report
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+Block User Modal
+====================================== -->
+
+<div
+id="blockModal"
+class="modal hidden">
+
+    <div class="modal-content small">
+
+        <h2>
+
+            Block User
+
+        </h2>
+
+        <p>
+
+            Are you sure you want to block this user?
+            You won't receive any more messages from them.
+
+        </p>
+
+        <div class="modal-actions">
+
+            <button
+            id="cancelBlock">
+
+                Cancel
+
+            </button>
+
+            <button
+            id="confirmBlock">
+
+                Block User
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
 </main>
+
+<!-- ======================================
+JavaScript
+====================================== -->
 
 <script
 type="module"
 src="Js folder/chat.js">
+
 </script>
 
 </body>
-
 </html>
