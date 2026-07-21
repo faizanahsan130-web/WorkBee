@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WorkBee | Browse Projects</title>
+
+<link rel="stylesheet" href="Css folder/browse-projects.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ======================================
+Sidebar
+====================================== -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<h2>🐝 WorkBee</h2>
+
+<span>Freelancer Marketplace</span>
+
+</div>
+
+<nav>
+
+<a href="dashboard.html">🏠 Dashboard</a>
+
+<a href="browse-projects.html" class="active">📂 Browse Projects</a>
+
+<a href="browse-freelancers.html">👨‍💻 Browse Freelancers</a>
+
+<a href="chat.html">💬 Messages</a>
+
+<a href="wallet.html">💰 Wallet</a>
+
+<a href="reviews.html">⭐ Reviews</a>
+
+<a href="login.html">🚪 Logout</a>
+
+</nav>
+
+</aside>
+
+<!-- ======================================
+Main Content
+====================================== -->
+
+<main class="projects-container">
+
+<!-- ======================================
+Header
+====================================== -->
+
+<section class="projects-header">
+
+<div>
+
+<h1>Browse Projects</h1>
+
+<p>
+
+Discover thousands of freelance jobs from clients worldwide.
+
+</p>
+
+</div>
+
+<button id="refreshProjects">
+
+🔄 Refresh
+
+</button>
+
+</section>
+
+<!-- ======================================
+Statistics
+====================================== -->
+
+<section class="stats-grid">
+
+<div class="stat-card">
+
+<h3>Total Projects</h3>
+
+<h2 id="totalProjects">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Open Jobs</h3>
+
+<h2 id="openProjects">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Applied</h3>
+
+<h2 id="appliedProjects">
+
+0
+
+</h2>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Saved</h3>
+
+<h2 id="savedProjects">
+
+0
+
+</h2>
+
+</div>
+
+</section>
+
+<!-- ======================================
+Search & Filters
+====================================== -->
+
+<section class="filters">
+
+<input
+
+type="text"
+
+id="searchProject"
+
+placeholder="Search by title, skills or client...">
+
+<select id="categoryFilter">
+
+<option value="all">All Categories</option>
+
+<option value="Web Development">Web Development</option>
+
+<option value="Mobile App">Mobile App</option>
+
+<option value="UI/UX Design">UI/UX Design</option>
+
+<option value="Graphic Design">Graphic Design</option>
+
+<option value="AI & Automation">AI & Automation</option>
+
+<option value="Data Entry">Data Entry</option>
+
+<option value="Digital Marketing">Digital Marketing</option>
+
+</select>
+
+<select id="budgetFilter">
+
+<option value="all">All Budgets</option>
+
+<option value="0-100">$0 - $100</option>
+
+<option value="100-500">$100 - $500</option>
+
+<option value="500-1000">$500 - $1000</option>
+
+<option value="1000+">$1000+</option>
+
+</select>
+
+<select id="experienceFilter">
+
+<option value="all">All Levels</option>
+
+<option value="Beginner">Beginner</option>
+
+<option value="Intermediate">Intermediate</option>
+
+<option value="Expert">Expert</option>
+
+</select>
+
+</section>
+
+<!-- ======================================
+Featured Projects
+====================================== -->
+
+<section class="featured-projects">
+
+<h2>🔥 Featured Projects</h2>
+
+<div id="featuredProjectsGrid" class="project-grid">
+
+<!-- Firebase Featured Projects -->
+
+</div>
+
+</section>
+<!-- ======================================
+All Projects
+====================================== -->
+
+<section class="all-projects">
+
+<h2>📂 All Available Projects</h2>
+
+<div id="projectsGrid" class="project-grid">
+
+<!-- Dynamic Project Cards -->
+
+</div>
+
+</section>
+
+<!-- ======================================
+Project Details Modal
+====================================== -->
+
+<div id="projectModal" class="modal hidden">
+
+<div class="modal-content">
+
+<span id="closeProjectModal" class="close-btn">
+
+&times;
+
+</span>
+
+<h2 id="modalProjectTitle">
+
+Project Title
+
+</h2>
+
+<div class="project-meta">
+
+<span id="modalCategory">
+
+Category
+
+</span>
+
+<span id="modalBudget">
+
+Budget
+
+</span>
+
+<span id="modalLevel">
+
+Experience
+
+</span>
+
+</div>
+
+<p id="modalDescription">
+
+Project description will appear here.
+
+</p>
+
+<h3>Required Skills</h3>
+
+<div id="modalSkills" class="skills-container">
+
+</div>
+
+<div class="client-box">
+
+<h3>Client Information</h3>
+
+<p>
+
+<strong>Name:</strong>
+
+<span id="clientName">
+
+Unknown
+
+</span>
+
+</p>
+
+<p>
+
+<strong>Country:</strong>
+
+<span id="clientCountry">
+
+-
+
+</span>
+
+</p>
+
+<p>
+
+<strong>Rating:</strong>
+
+<span id="clientRating">
+
+⭐ 0.0
+
+</span>
+
+</p>
+
+</div>
+
+<div class="project-actions">
+
+<button id="saveProjectBtn">
+
+❤️ Save Project
+
+</button>
+
+<button id="applyProjectBtn">
+
+🚀 Apply Now
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ======================================
+Loading
+====================================== -->
+
+<div id="loadingProjects" class="loading hidden">
+
+<div class="spinner"></div>
+
+<p>
+
+Loading Projects...
+
+</p>
+
+</div>
+
+<!-- ======================================
+Empty State
+====================================== -->
+
+<div id="emptyProjects" class="empty-state hidden">
+
+<h2>
+
+📂 No Projects Found
+
+</h2>
+
+<p>
+
+Try changing your search or filter options.
+
+</p>
+
+</div>
+
+<!-- ======================================
+JavaScript
+====================================== -->
+
+<script
+type="module"
+src="Js folder/browse-projects.js">
+</script>
+
+</main>
+
+</body>
+
+</html>
