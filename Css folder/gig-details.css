@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 50px;
+    border-bottom: 1px solid #e4e5e7;
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffb703;
+}
+
+.search-box {
+    display: flex;
+    width: 35%;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    background-color: #ffb703;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-weight: 600;
+}
+
+.btn-logout {
+    color: #e63946 !important;
+}
+
+/* Layout Container */
+.gig-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+/* Left Content */
+.gig-title {
+    font-size: 26px;
+    color: #222325;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.seller-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.seller-avatar {
+    width: 45px;
+    height: 45px;
+    background-color: #ffb703;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge {
+    font-size: 11px;
+    background-color: #e2e8f0;
+    color: #475569;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.gig-gallery img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.gig-description {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #e4e5e7;
+}
+
+.gig-description h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.gig-description p {
+    color: #62646a;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.gig-description ul {
+    margin-left: 20px;
+    color: #62646a;
+    line-height: 1.8;
+}
+
+/* Right Sidebar Pricing Box */
+.gig-sidebar {
+    position: sticky;
+    top: 20px;
+}
+
+.package-box {
+    background-color: #ffffff;
+    border: 1px solid #e4e5e7;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.package-tabs {
+    display: flex;
+    border-bottom: 1px solid #e4e5e7;
+}
+
+.package-tabs button {
+    flex: 1;
+    padding: 12px;
+    background: #f7f7f7;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    color: #74767e;
+}
+
+.package-tabs button.active {
+    background: #fff;
+    color: #222325;
+    border-bottom: 3px solid #ffb703;
+}
+
+.package-content {
+    padding: 25px;
+}
+
+.price-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.price-header .price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #222325;
+}
+
+.package-desc {
+    font-size: 14px;
+    color: #62646a;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.package-features {
+    font-size: 14px;
+    color: #404145;
+    margin-bottom: 25px;
+}
+
+.package-features p {
+    margin-bottom: 8px;
+}
+
+.package-features ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.package-features li {
+    margin-bottom: 6px;
+    color: #62646a;
+}
+
+.btn-order {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffb703;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+}
+
+.btn-order:hover {
+    background-color: #e0a000;
+}
+
+.btn-contact {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    color: #62646a;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-contact:hover {
+    background-color: #f7f7f7;
+}
