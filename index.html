@@ -1,80 +1,1273 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkBee - Freelance Marketplace</title>
 
-    <link rel="stylesheet" href="css/style.css">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+WorkBee | World's Smart Freelance Marketplace
+</title>
+
+<meta name="description"
+content="Hire top freelancers and grow your business with WorkBee.">
+
+<meta name="keywords"
+content="Freelance, WorkBee, Jobs, Marketplace, AI">
+
+<meta name="author"
+content="WorkBee">
+
+<!-- Google Font -->
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- CSS -->
+
+<link rel="stylesheet"
+href="Css folder/style.css">
+
+<link rel="stylesheet"
+href="Css folder/responsive.css">
+
+<link rel="stylesheet"
+href="Css folder/animations.css">
+
 </head>
 
 <body>
 
-<header class="navbar">
-    <div class="logo">🐝 WorkBee</div>
+<!-- ========================================= -->
+<!-- Loading Screen -->
+<!-- ========================================= -->
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Services</a>
-        <a href="login.html">Login</a>
-        <a href="signup.html">Signup</a>
-    </nav>
+<div id="loader">
+
+<div class="spinner"></div>
+
+<h2>
+
+🐝 WorkBee
+
+</h2>
+
+<p>
+
+Connecting Talent With Opportunity...
+
+</p>
+
+</div>
+
+<!-- ========================================= -->
+<!-- Header -->
+<!-- ========================================= -->
+
+<header class="header">
+
+<div class="container">
+
+<div class="logo">
+
+<a href="index.html">
+
+🐝 <span>WorkBee</span>
+
+</a>
+
+</div>
+
+<nav class="navbar">
+
+<ul>
+
+<li>
+
+<a class="active"
+href="index.html">
+
+Home
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#categories">
+
+Categories
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#freelancers">
+
+Freelancers
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#projects">
+
+Projects
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#about">
+
+About
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#contact">
+
+Contact
+
+</a>
+
+</li>
+
+</ul>
+
+</nav>
+
+<div class="header-actions">
+
+<button id="themeToggle">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+<a class="login-btn"
+href="login.html">
+
+Login
+
+</a>
+
+<a class="signup-btn"
+href="signup.html">
+
+Join Now
+
+</a>
+
+</div>
+
+<div id="mobileMenu">
+
+<i class="fa-solid fa-bars"></i>
+
+</div>
+
+</div>
+
 </header>
+
+<!-- ========================================= -->
+<!-- Hero -->
+<!-- ========================================= -->
 
 <section class="hero">
 
-    <div class="hero-text">
-        <h1>Hire the Best Freelancers Worldwide</h1>
+<div class="container hero-grid">
 
-        <p>
-            WorkBee connects businesses with talented freelancers
-            from around the world.
-        </p>
+<div class="hero-left">
 
-        <button class="btn-main">Get Started</button>
-    </div>
+<h1>
 
-    <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900" alt="WorkBee">
-    </div>
+Hire Expert Freelancers
+
+<span>
+
+Worldwide
+
+</span>
+
+</h1>
+
+<p>
+
+Find verified professionals for web development,
+AI automation, graphic design,
+marketing and hundreds of other services.
+
+</p>
+
+<div class="hero-search">
+
+<input
+type="text"
+placeholder="Search freelancers, skills or projects...">
+
+<button>
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+Search
+
+</button>
+
+</div>
+
+<div class="hero-buttons">
+
+<a
+href="signup.html"
+class="primary-btn">
+
+Start Hiring
+
+</a>
+
+<a
+href="browse-projects.html"
+class="secondary-btn">
+
+Browse Projects
+
+</a>
+
+</div>
+
+<div class="hero-tags">
+
+<span>AI Automation</span>
+
+<span>Web Development</span>
+
+<span>Graphic Design</span>
+
+<span>Video Editing</span>
+
+<span>SEO</span>
+
+<span>Marketing</span>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<img
+src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200"
+alt="WorkBee Hero">
+
+<div class="floating-card">
+
+<h3>
+
+⭐ 4.9/5
+
+</h3>
+
+<p>
+
+Trusted by thousands of clients worldwide.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
-<section class="services">
+<!-- ========================================= -->
+<!-- Trusted Companies -->
+<!-- ========================================= -->
 
-    <h2>Popular Services</h2>
+<section class="trusted">
 
-    <div class="grid">
+<div class="container">
 
-        <div class="card">
-            <h3>Web Development</h3>
-            <p>Professional websites & web apps.</p>
-        </div>
+<h3>
 
-        <div class="card">
-            <h3>Graphic Design</h3>
-            <p>Logos, banners and branding.</p>
-        </div>
+Trusted by professionals worldwide
 
-        <div class="card">
-            <h3>AI Automation</h3>
-            <p>AI chatbots and workflow automation.</p>
-        </div>
+</h3>
 
-        <div class="card">
-            <h3>Digital Marketing</h3>
-            <p>SEO, Ads and Social Media.</p>
-        </div>
+<div class="companies">
 
-    </div>
+<span>Google</span>
+
+<span>Microsoft</span>
+
+<span>Amazon</span>
+
+<span>Adobe</span>
+
+<span>Meta</span>
+
+<span>Netflix</span>
+
+</div>
+
+</div>
 
 </section>
 
-<footer>
-    <p>© 2026 WorkBee. All Rights Reserved.</p>
+<!-- ========================================= -->
+<!-- Continue in Part 2 -->
+<!-- ========================================= -->
+ <!-- ========================================= -->
+<!-- Popular Categories -->
+<!-- ========================================= -->
+
+<section class="categories" id="categories">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Popular Categories</h2>
+
+<p>
+
+Discover the most in-demand freelance services.
+
+</p>
+
+</div>
+
+<div class="categories-grid">
+
+<div class="category-card">
+
+<i class="fa-solid fa-code"></i>
+
+<h3>Web Development</h3>
+
+<p>Professional websites & web applications.</p>
+
+</div>
+
+<div class="category-card">
+
+<i class="fa-solid fa-mobile-screen"></i>
+
+<h3>App Development</h3>
+
+<p>Android & iOS mobile applications.</p>
+
+</div>
+
+<div class="category-card">
+
+<i class="fa-solid fa-robot"></i>
+
+<h3>AI Automation</h3>
+
+<p>AI Chatbots & Workflow Automation.</p>
+
+</div>
+
+<div class="category-card">
+
+<i class="fa-solid fa-palette"></i>
+
+<h3>Graphic Design</h3>
+
+<p>Logos, Branding & UI/UX Design.</p>
+
+</div>
+
+<div class="category-card">
+
+<i class="fa-solid fa-video"></i>
+
+<h3>Video Editing</h3>
+
+<p>Professional editing & motion graphics.</p>
+
+</div>
+
+<div class="category-card">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h3>Digital Marketing</h3>
+
+<p>SEO, Ads & Social Media Marketing.</p>
+
+</div>
+
+<div class="category-card">
+
+<i class="fa-solid fa-pen-nib"></i>
+
+<h3>Content Writing</h3>
+
+<p>Articles, Blogs & Copywriting.</p>
+
+</div>
+
+<div class="category-card">
+
+<i class="fa-solid fa-database"></i>
+
+<h3>Data & Analytics</h3>
+
+<p>Excel, Dashboards & BI Reports.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- Featured Freelancers -->
+<!-- ========================================= -->
+
+<section class="featured-freelancers"
+id="freelancers">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+Top Freelancers
+
+</h2>
+
+<p>
+
+Hire trusted professionals with excellent ratings.
+
+</p>
+
+</div>
+
+<div class="freelancer-grid">
+
+<div class="freelancer-card">
+
+<img src="Assets/Images/user1.jpg"
+alt="Freelancer">
+
+<h3>
+
+Sarah Johnson
+
+</h3>
+
+<span>
+
+Full Stack Developer
+
+</span>
+
+<div class="rating">
+
+★★★★★
+
+</div>
+
+<p>
+
+$35/hr
+
+</p>
+
+<a href="browse-freelancers.html">
+
+View Profile
+
+</a>
+
+</div>
+
+<div class="freelancer-card">
+
+<img src="Assets/Images/user2.jpg"
+alt="Freelancer">
+
+<h3>
+
+Ali Khan
+
+</h3>
+
+<span>
+
+AI Automation Expert
+
+</span>
+
+<div class="rating">
+
+★★★★★
+
+</div>
+
+<p>
+
+$50/hr
+
+</p>
+
+<a href="browse-freelancers.html">
+
+View Profile
+
+</a>
+
+</div>
+
+<div class="freelancer-card">
+
+<img src="Assets/Images/user3.jpg"
+alt="Freelancer">
+
+<h3>
+
+Emma Wilson
+
+</h3>
+
+<span>
+
+UI/UX Designer
+
+</span>
+
+<div class="rating">
+
+★★★★★
+
+</div>
+
+<p>
+
+$42/hr
+
+</p>
+
+<a href="browse-freelancers.html">
+
+View Profile
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- Featured Projects -->
+<!-- ========================================= -->
+
+<section class="featured-projects"
+id="projects">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+Latest Projects
+
+</h2>
+
+<p>
+
+Browse recently posted freelance opportunities.
+
+</p>
+
+</div>
+
+<div class="project-grid">
+
+<div class="project-card">
+
+<h3>
+
+Build AI Chatbot
+
+</h3>
+
+<p>
+
+Need an AI chatbot for customer support.
+
+</p>
+
+<span>
+
+Budget: $1200
+
+</span>
+
+<a href="browse-projects.html">
+
+Apply Now
+
+</a>
+
+</div>
+
+<div class="project-card">
+
+<h3>
+
+React Website
+
+</h3>
+
+<p>
+
+Looking for React developer for SaaS dashboard.
+
+</p>
+
+<span>
+
+Budget: $1800
+
+</span>
+
+<a href="browse-projects.html">
+
+Apply Now
+
+</a>
+
+</div>
+
+<div class="project-card">
+
+<h3>
+
+Logo Design
+
+</h3>
+
+<p>
+
+Need modern brand identity & logo.
+
+</p>
+
+<span>
+
+Budget: $300
+
+</span>
+
+<a href="browse-projects.html">
+
+Apply Now
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- Statistics -->
+<!-- ========================================= -->
+
+<section class="statistics">
+
+<div class="container">
+
+<div class="stats-grid">
+
+<div class="stat-box">
+
+<h2>
+
+50K+
+
+</h2>
+
+<p>
+
+Freelancers
+
+</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2>
+
+15K+
+
+</h2>
+
+<p>
+
+Clients
+
+</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2>
+
+200K+
+
+</h2>
+
+<p>
+
+Projects Completed
+
+</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2>
+
+98%
+
+</h2>
+
+<p>
+
+Success Rate
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- Why Choose WorkBee -->
+<!-- ========================================= -->
+
+<section class="why-workbee"
+id="about">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+Why Choose WorkBee?
+
+</h2>
+
+</div>
+
+<div class="why-grid">
+
+<div>
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<h3>
+
+Secure Payments
+
+</h3>
+
+<p>
+
+Protected escrow payment system.
+
+</p>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-bolt"></i>
+
+<h3>
+
+Fast Hiring
+
+</h3>
+
+<p>
+
+Find freelancers within minutes.
+
+</p>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-earth-americas"></i>
+
+<h3>
+
+Global Marketplace
+
+</h3>
+
+<p>
+
+Connect with professionals worldwide.
+
+</p>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-headset"></i>
+
+<h3>
+
+24/7 Support
+
+</h3>
+
+<p>
+
+Our support team is always available.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- Continue in Part 3 -->
+<!-- ========================================= -->
+ <!-- ========================================= -->
+<!-- Testimonials -->
+<!-- ========================================= -->
+
+<section class="testimonials">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>What Our Users Say</h2>
+
+<p>Thousands of freelancers and clients trust WorkBee.</p>
+
+</div>
+
+<div class="testimonial-grid">
+
+<div class="testimonial-card">
+
+<img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
+
+<h3>Sarah Johnson</h3>
+
+<span>Business Owner</span>
+
+<p>
+
+"WorkBee helped me hire an amazing developer within 24 hours.
+The hiring experience was smooth and professional."
+
+</p>
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+</div>
+
+<div class="testimonial-card">
+
+<img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
+
+<h3>Ali Hassan</h3>
+
+<span>Freelancer</span>
+
+<p>
+
+"I started earning international income through WorkBee.
+Highly recommended platform."
+
+</p>
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+</div>
+
+<div class="testimonial-card">
+
+<img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client">
+
+<h3>Emma Wilson</h3>
+
+<span>Startup Founder</span>
+
+<p>
+
+"Professional freelancers, secure payments and excellent support."
+
+</p>
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FAQ -->
+<!-- ========================================= -->
+
+<section class="faq">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Frequently Asked Questions</h2>
+
+</div>
+
+<div class="faq-box">
+
+<div class="faq-item">
+
+<h3>How does WorkBee work?</h3>
+
+<p>
+
+Clients post projects and freelancers submit proposals.
+After hiring, payments are secured through WorkBee.
+
+</p>
+
+</div>
+
+<div class="faq-item">
+
+<h3>Is WorkBee free?</h3>
+
+<p>
+
+Yes. Creating an account is free for both freelancers and clients.
+
+</p>
+
+</div>
+
+<div class="faq-item">
+
+<h3>How are payments protected?</h3>
+
+<p>
+
+WorkBee uses an escrow payment system to keep transactions secure.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- Newsletter -->
+<!-- ========================================= -->
+
+<section class="newsletter">
+
+<div class="container">
+
+<h2>
+
+Join Our Newsletter
+
+</h2>
+
+<p>
+
+Get the latest freelance jobs and platform updates.
+
+</p>
+
+<div class="newsletter-form">
+
+<input
+type="email"
+placeholder="Enter your email">
+
+<button>
+
+Subscribe
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- Download App -->
+<!-- ========================================= -->
+
+<section class="download-app">
+
+<div class="container">
+
+<div class="download-content">
+
+<div>
+
+<h2>
+
+Download WorkBee App
+
+</h2>
+
+<p>
+
+Manage your projects and messages anytime, anywhere.
+
+</p>
+
+<div class="store-buttons">
+
+<a href="#">
+
+<i class="fa-brands fa-google-play"></i>
+
+Google Play
+
+</a>
+
+<a href="#">
+
+<i class="fa-brands fa-apple"></i>
+
+App Store
+
+</a>
+
+</div>
+
+</div>
+
+<div>
+
+<img
+src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500"
+alt="Mobile App">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- Footer -->
+<!-- ========================================= -->
+
+<footer id="contact">
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<h2>
+
+🐝 WorkBee
+
+</h2>
+
+<p>
+
+Connecting talent with opportunity worldwide.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>
+
+Company
+
+</h3>
+
+<ul>
+
+<li><a href="#">About</a></li>
+
+<li><a href="#">Careers</a></li>
+
+<li><a href="#">Blog</a></li>
+
+<li><a href="#">Contact</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3>
+
+Support
+
+</h3>
+
+<ul>
+
+<li><a href="#">Help Center</a></li>
+
+<li><a href="#">Privacy Policy</a></li>
+
+<li><a href="#">Terms & Conditions</a></li>
+
+<li><a href="#">FAQ</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3>
+
+Follow Us
+
+</h3>
+
+<div class="social-links">
+
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+<a href="#"><i class="fab fa-x-twitter"></i></a>
+
+<a href="#"><i class="fab fa-youtube"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="footer-bottom">
+
+<p>
+
+© 2026 WorkBee. All Rights Reserved.
+
+</p>
+
+</div>
+
+</div>
+
 </footer>
 
-<script src="js/script.js"></script>
+<!-- ========================================= -->
+<!-- JavaScript -->
+<!-- ========================================= -->
+
+<script src="Js folder/script.js"></script>
+
+<script src="Js folder/animation.js"></script>
+
+<script type="module"
+src="Js folder/firebase-home.js"></script>
 
 </body>
+
 </html>

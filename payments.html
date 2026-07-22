@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Payments & Wallet | WorkBee</title>
+
+<meta name="description"
+content="Manage your WorkBee wallet, deposits, withdrawals and escrow payments securely.">
+
+<link rel="icon" href="assets/logo.png">
+
+<!-- Google Fonts -->
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="Css folder/payments.css">
+
+<link rel="stylesheet" href="Css folder/responsive.css">
+
+</head>
+
+<body>
+
+<!-- Loader -->
+
+<div id="loader">
+
+<div class="spinner"></div>
+
+<h3>Loading Wallet...</h3>
+
+</div>
+
+<!-- Header -->
+
+<header class="wallet-header">
+
+<div class="container">
+
+<a href="client-dashboard.html" class="logo">
+
+🐝 <span>WorkBee</span>
+
+</a>
+
+<nav>
+
+<a href="client-dashboard.html">
+Dashboard
+</a>
+
+<a href="browse-projects.html">
+Projects
+</a>
+
+<a href="wallet.html">
+Wallet
+</a>
+
+<a href="notifications.html">
+Notifications
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- Wallet -->
+
+<section class="wallet-section">
+
+<div class="container">
+
+<div class="wallet-grid">
+
+<!-- Balance Card -->
+
+<div class="wallet-card balance-card">
+
+<div class="wallet-icon">
+
+<i class="fa-solid fa-wallet"></i>
+
+</div>
+
+<h3>Available Balance</h3>
+
+<h1 id="walletBalance">
+
+$0.00
+
+</h1>
+
+<p>
+
+Updated in real-time using Firebase
+
+</p>
+
+<div class="wallet-actions">
+
+<button id="depositBtn"
+class="btn-primary">
+
+<i class="fa-solid fa-plus"></i>
+
+Deposit
+
+</button>
+
+<button id="withdrawBtn"
+class="btn-secondary">
+
+<i class="fa-solid fa-money-bill-transfer"></i>
+
+Withdraw
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Escrow Card -->
+
+<div class="wallet-card escrow-card">
+
+<div class="wallet-icon escrow">
+
+<i class="fa-solid fa-lock"></i>
+
+</div>
+
+<h3>Escrow Balance</h3>
+
+<h2 id="escrowBalance">
+
+$0.00
+
+</h2>
+
+<p>
+
+Money protected until project completion.
+
+</p>
+
+<div class="escrow-status">
+
+<span class="badge active">
+
+Protected
+
+</span>
+
+</div>
+
+</div>
+
+<!-- Earnings Card -->
+
+<div class="wallet-card earnings-card">
+
+<div class="wallet-icon earnings">
+
+<i class="fa-solid fa-chart-line"></i>
+
+</div>
+
+<h3>Total Earnings</h3>
+
+<h2 id="totalEarnings">
+
+$0.00
+
+</h2>
+
+<p>
+
+Lifetime earnings from completed projects.
+
+</p>
+
+</div>
+
+<!-- Pending Card -->
+
+<div class="wallet-card pending-card">
+
+<div class="wallet-icon pending">
+
+<i class="fa-solid fa-hourglass-half"></i>
+
+</div>
+
+<h3>Pending Clearance</h3>
+
+<h2 id="pendingBalance">
+
+$0.00
+
+</h2>
+
+<p>
+
+Funds waiting for release.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- Quick Actions -->
+
+<div class="quick-actions">
+
+<h2>
+
+Quick Payment Options
+
+</h2>
+
+<div class="action-grid">
+
+<div class="action-card"
+id="stripeCard">
+
+<i class="fa-brands fa-cc-stripe"></i>
+
+<h4>
+
+Stripe
+
+</h4>
+
+<p>
+
+International Payments
+
+</p>
+
+</div>
+
+<div class="action-card"
+id="jazzcashCard">
+
+<i class="fa-solid fa-mobile-screen-button"></i>
+
+<h4>
+
+JazzCash
+
+</h4>
+
+<p>
+
+Pakistan Gateway
+
+</p>
+
+</div>
+
+<div class="action-card"
+id="easypaisaCard">
+
+<i class="fa-solid fa-money-check-dollar"></i>
+
+<h4>
+
+EasyPaisa
+
+</h4>
+
+<p>
+
+Fast Mobile Payments
+
+</p>
+
+</div>
+
+<div class="action-card"
+id="bankTransferCard">
+
+<i class="fa-solid fa-building-columns"></i>
+
+<h4>
+
+Bank Transfer
+
+</h4>
+
+<p>
+
+Direct Bank Deposit
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+<!-- Recent Transactions -->
+
+<section class="transactions-section">
+
+    <h2>
+
+        Recent Transactions
+
+    </h2>
+
+    <div class="table-wrapper">
+
+        <table class="transactions-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Type</th>
+
+                    <th>Amount</th>
+
+                    <th>Method</th>
+
+                    <th>Status</th>
+
+                    <th>Date</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="transactionsBody">
+
+                <tr>
+
+                    <td colspan="6">
+
+                        No Transactions Found
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- Deposit Modal -->
+
+<div id="depositModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>
+
+            Deposit Funds
+
+        </h2>
+
+        <p>
+
+            Choose your preferred payment method.
+
+        </p>
+
+        <select id="depositMethod">
+
+            <option value="stripe">Stripe</option>
+
+            <option value="jazzcash">JazzCash</option>
+
+            <option value="easypaisa">EasyPaisa</option>
+
+            <option value="bank">Bank Transfer</option>
+
+        </select>
+
+        <input
+            type="number"
+            id="depositAmount"
+            placeholder="Enter Amount">
+
+        <button
+            id="confirmDeposit"
+            class="btn-primary">
+
+            Deposit Now
+
+        </button>
+
+        <button
+            class="btn-secondary closeModal">
+
+            Cancel
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Withdraw Modal -->
+
+<div id="withdrawModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>
+
+            Withdraw Funds
+
+        </h2>
+
+        <input
+            type="number"
+            id="withdrawAmount"
+            placeholder="Enter Amount">
+
+        <select id="withdrawMethod">
+
+            <option value="bank">
+
+                Bank Transfer
+
+            </option>
+
+            <option value="jazzcash">
+
+                JazzCash
+
+            </option>
+
+            <option value="easypaisa">
+
+                EasyPaisa
+
+            </option>
+
+        </select>
+
+        <button
+            id="confirmWithdraw"
+            class="btn-primary">
+
+            Request Withdrawal
+
+        </button>
+
+        <button
+            class="btn-secondary closeModal">
+
+            Cancel
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Escrow Details -->
+
+<section class="escrow-section">
+
+    <h2>
+
+        Escrow Protection
+
+    </h2>
+
+    <div class="escrow-info">
+
+        <div class="info-box">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <h4>
+
+                Secure Payments
+
+            </h4>
+
+            <p>
+
+                Client payments remain protected until work is approved.
+
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h4>
+
+                Safe Transactions
+
+            </h4>
+
+            <p>
+
+                Every payment is encrypted and securely processed.
+
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <i class="fa-solid fa-handshake"></i>
+
+            <h4>
+
+                Fair Releases
+
+            </h4>
+
+            <p>
+
+                Funds are released only after successful project completion.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Success Modal -->
+
+<div id="successModal" class="modal">
+
+    <div class="modal-content">
+
+        <i class="fa-solid fa-circle-check success-icon"></i>
+
+        <h2>
+
+            Success
+
+        </h2>
+
+        <p id="successText">
+
+            Operation completed successfully.
+
+        </p>
+
+        <button
+            class="btn-primary closeModal">
+
+            Continue
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Error Modal -->
+
+<div id="errorModal" class="modal">
+
+    <div class="modal-content">
+
+        <i class="fa-solid fa-circle-xmark error-icon"></i>
+
+        <h2>
+
+            Error
+
+        </h2>
+
+        <p id="errorText">
+
+            Something went wrong.
+
+        </p>
+
+        <button
+            class="btn-secondary closeModal">
+
+            Close
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Toast -->
+
+<div id="toast-container"></div>
+
+<!-- Footer -->
+
+<footer class="wallet-footer">
+
+    <div class="container">
+
+        <p>
+
+            © 2026 WorkBee. All Rights Reserved.
+
+        </p>
+
+        <div class="footer-links">
+
+            <a href="privacy.html">
+
+                Privacy Policy
+
+            </a>
+
+            <a href="terms.html">
+
+                Terms
+
+            </a>
+
+            <a href="contact.html">
+
+                Contact
+
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- Firebase -->
+
+<script type="module"
+src="firebase/firebase-config.js"></script>
+
+<!-- Wallet JS -->
+
+<script
+type="module"
+src="Js folder/payments.js"></script>
+
+</body>
+
+</html>
