@@ -1,7 +1,7 @@
 import { auth } from "../firebase/firebase-config.js";
 
 import {
-  signInWithEmailAndPassword
+    signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 const loginForm = document.getElementById("loginForm");
@@ -24,7 +24,8 @@ loginForm.addEventListener("submit", async (event) => {
 
         alert("✅ Login Successful!");
 
-        window.location.href = "client-dashboard.html";
+        // Redirection updated to Marketplace
+        window.location.href = "browse-gigs.html";
 
     } catch (error) {
 
