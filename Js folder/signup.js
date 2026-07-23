@@ -1,21 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const signupForm = document.querySelector('.auth-form');
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-    if (signupForm) {
-        signupForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+// Apna Firebase config yahan lagayein jo aapki baki files mein hai
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
 
-            const password = signupForm.querySelector('input[type="password"]:nth-of-type(1)').value;
-            const confirmPassword = signupForm.querySelector('input[type="password"]:nth-of-type(2)').value;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-            if (password !== confirmPassword) {
-                alert('Passwords do not match! Please check again.');
-                return;
-            }
+const signupForm = document.getElementById('signupForm');
+if (signupForm) {
+    signupForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('signupEmail').value;
+        const password = document.getElementById('signupPassword').value;
 
-            // Successful signup simulation
-            alert('Account created successfully! Redirecting to login...');
-            window.location.href = 'login.html';
-        });
-    }
-});
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            alert('Account successfully ban gaya hai!');
+            window.location.href = 'browse-gigs.html';
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+    });
+}
