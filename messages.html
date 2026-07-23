@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - WorkBee</title>
+    <link rel="stylesheet" href="Css%20folder/browse-gigs.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="browse-gigs.html">🐝 WorkBee</a>
+            </div>
+            
+            <div class="header-right-actions">
+                <a href="browse-gigs.html" class="nav-text-link">Browse Gigs</a>
+                <a href="client-dashboard.html" class="nav-text-link">Dashboard</a>
+                <a href="notifications.html" class="header-icon-btn" title="Notifications">🔔</a>
+                <a href="login.html" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Messages Layout -->
+    <main class="main-layout" style="max-width: 1100px; margin: 20px auto; padding: 0 20px;">
+        
+        <div style="display: grid; grid-template-columns: 320px 1fr; background: white; border: 1px solid #e2e8f0; border-radius: 12px; height: 75vh; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            
+            <!-- Sidebar: Conversations List -->
+            <div style="border-right: 1px solid #e2e8f0; display: flex; flex-direction: column;">
+                <div style="padding: 20px; border-bottom: 1px solid #e2e8f0;">
+                    <h3 style="font-size: 16px; color: #0f172a; margin: 0;">Messages</h3>
+                </div>
+                <div style="overflow-y: auto; flex: 1;">
+                    <!-- Chat Item 1 -->
+                    <div style="padding: 15px 20px; border-bottom: 1px solid #f1f5f9; background: #f8fafc; cursor: pointer;">
+                        <div style="font-weight: 600; font-size: 14px; color: #0f172a;">Faizan Ali</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">I am working on your Firebase website...</div>
+                    </div>
+                    <!-- Chat Item 2 -->
+                    <div style="padding: 15px 20px; border-bottom: 1px solid #f1f5f9; cursor: pointer;">
+                        <div style="font-weight: 600; font-size: 14px; color: #0f172a;">Ahmad Hassan</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Voice bot structure is ready!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Box Area -->
+            <div style="display: flex; flex-direction: column; background: #fdfdfd;">
+                <!-- Chat Header -->
+                <div style="padding: 15px 20px; border-bottom: 1px solid #e2e8f0; background: white; display: flex; align-items: center;">
+                    <span style="font-weight: 600; font-size: 15px; color: #0f172a;">Faizan Ali</span>
+                </div>
+
+                <!-- Messages Body -->
+                <div style="flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px;">
+                    <!-- Incoming Message -->
+                    <div style="align-self: flex-start; background: #f1f5f9; padding: 12px 16px; border-radius: 10px; max-width: 70%; font-size: 14px; color: #334155;">
+                        Hello! Main aapki website par kaam kar raha hoon, HTML/CSS code almost complete hai.
+                    </div>
+                    <!-- Outgoing Message -->
+                    <div style="align-self: flex-end; background: #2563eb; color: white; padding: 12px 16px; border-radius: 10px; max-width: 70%; font-size: 14px;">
+                        Great! Firebase integration ka bataiyega kab tak ho jaye gi?
+                    </div>
+                </div>
+
+                <!-- Message Input Footer -->
+                <div style="padding: 15px 20px; border-top: 1px solid #e2e8f0; background: white; display: flex; gap: 10px;">
+                    <input type="text" placeholder="Type a message..." style="flex: 1; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; outline: none;">
+                    <button style="background: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer;">Send</button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

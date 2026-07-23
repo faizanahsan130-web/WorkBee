@@ -1,98 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Dashboard | WorkBee</title>
-
-    <link rel="stylesheet" href="Css folder/client-dashboard.css">
+    <title>Client Dashboard - WorkBee</title>
+    <link rel="stylesheet" href="Css%20folder/browse-gigs.css">
 </head>
-
 <body>
 
-<div class="dashboard">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard - WorkBee</title>
+    <link rel="stylesheet" href="Css%20folder/browse-gigs.css">
+</head>
+<body>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-
-        <h2>🐝 WorkBee</h2>
-
-        <ul>
-            <li><a href="client-dashboard.html">Dashboard</a></li>
-            <li><a href="post-project.html">Post Project</a></li>
-            <li><a href="browse-freelancers.html">Browse Freelancers</a></li>
-            <li><a href="#">My Projects</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="index.html">Logout</a></li>
-        </ul>
-
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-
-        <h1>Welcome, Client 👋</h1>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>Total Projects</h3>
-                <h2>12</h2>
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="client-dashboard.html">🐝 WorkBee</a>
             </div>
-
-            <div class="card">
-                <h3>Active Projects</h3>
-                <h2>5</h2>
+            
+            <div class="header-right-actions">
+                <a href="browse-gigs.html" class="nav-text-link">Browse Gigs</a>
+                <a href="messages.html" class="header-icon-btn" title="Messages">✉️</a>
+                <a href="notifications.html" class="header-icon-btn" title="Notifications">🔔</a>
+                <a href="seller-dashboard.html" class="btn-switch-selling">Switch to Selling</a>
+                <a href="login.html" class="btn-logout">Logout</a>
             </div>
+        </div>
+    </header>
 
-            <div class="card">
-                <h3>Completed</h3>
-                <h2>7</h2>
+    <!-- Baqi dashboard ka content yahan se shuru hoga -->
+    <!-- Client Dashboard Main Container -->
+    <main class="main-layout" style="flex-direction: column; gap: 20px;">
+        
+        <!-- Welcome Banner -->
+        <div style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; padding: 30px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1 style="font-size: 24px; margin-bottom: 8px;">Welcome back, Client!</h1>
+                <p style="font-size: 14px; opacity: 0.9;">Manage your ongoing orders, track progress, and hire top freelancers.</p>
             </div>
-
-            <div class="card">
-                <h3>Total Spending</h3>
-                <h2>$4,850</h2>
-            </div>
-
+            <a href="browse-gigs.html" style="background: #ffffff; color: #2563eb; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">Post a Request / Hire</a>
         </div>
 
-        <h2 style="margin-top:40px;">Recent Projects</h2>
+        <!-- Quick Stats Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+            <div style="background: white; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                <span style="color: #64748b; font-size: 13px; font-weight: 600;">ACTIVE ORDERS</span>
+                <h3 style="font-size: 28px; color: #0f172a; margin-top: 5px;">2</h3>
+            </div>
+            <div style="background: white; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                <span style="color: #64748b; font-size: 13px; font-weight: 600;">COMPLETED PROJECTS</span>
+                <h3 style="font-size: 28px; color: #0f172a; margin-top: 5px;">5</h3>
+            </div>
+            <div style="background: white; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                <span style="color: #64748b; font-size: 13px; font-weight: 600;">TOTAL SPENT</span>
+                <h3 style="font-size: 28px; color: #0f172a; margin-top: 5px;">$430</h3>
+            </div>
+        </div>
 
-        <table>
-
-            <tr>
-                <th>Project</th>
-                <th>Status</th>
-                <th>Budget</th>
-            </tr>
-
-            <tr>
-                <td>Website Development</td>
-                <td>Active</td>
-                <td>$800</td>
-            </tr>
-
-            <tr>
-                <td>Logo Design</td>
-                <td>Completed</td>
-                <td>$120</td>
-            </tr>
-
-            <tr>
-                <td>AI Chatbot</td>
-                <td>Pending</td>
-                <td>$1500</td>
-            </tr>
-
-        </table>
+        <!-- Orders Section -->
+        <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; margin-top: 10px;">
+            <h3 style="font-size: 18px; color: #0f172a; margin-bottom: 20px;">Recent Orders</h3>
+            
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #f1f5f9; color: #64748b; font-size: 13px;">
+                            <th style="padding: 12px;">GIG / SERVICE</th>
+                            <th style="padding: 12px;">FREELANCER</th>
+                            <th style="padding: 12px;">DUE DATE</th>
+                            <th style="padding: 12px;">STATUS</th>
+                            <th style="padding: 12px;">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size: 14px; color: #334155;">
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 15px; font-weight: 600;">HTML/CSS Website with Firebase</td>
+                            <td style="padding: 15px;">Faizan Ali</td>
+                            <td style="padding: 15px;">July 28, 2026</td>
+                            <td style="padding: 15px;"><span style="background: #fef3c7; color: #d97706; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600;">In Progress</span></td>
+                            <td style="padding: 15px;"><a href="messages.html" style="color: #2563eb; text-decoration: none; font-weight: 600;">Chat</a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; font-weight: 600;">Vapi.ai Voice Bot Integration</td>
+                            <td style="padding: 15px;">Ahmad Hassan</td>
+                            <td style="padding: 15px;">August 02, 2026</td>
+                            <td style="padding: 15px;"><span style="background: #d1fae5; color: #059669; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600;">In Delivery</span></td>
+                            <td style="padding: 15px;"><a href="messages.html" style="color: #2563eb; text-decoration: none; font-weight: 600;">Review</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
     </main>
-
-</div>
-
-<script src="Js folder/client-dashboard.js"></script>
 
 </body>
 </html>

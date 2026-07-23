@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Gig - WorkBee</title>
+    <link rel="stylesheet" href="Css%20folder/browse-gigs.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="seller-dashboard.html">🐝 WorkBee</a>
+            </div>
+            
+            <div class="header-right-actions">
+                <a href="seller-dashboard.html" class="nav-text-link">Dashboard</a>
+                <a href="messages.html" class="header-icon-btn" title="Messages">✉️</a>
+                <a href="notifications.html" class="header-icon-btn" title="Notifications">🔔</a>
+                <a href="login.html" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Create Gig Main Container -->
+    <main class="main-layout" style="max-width: 700px; margin: 20px auto; padding: 0 20px;">
+        
+        <div style="background: white; padding: 25px 30px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <h2 style="font-size: 20px; color: #0f172a; margin-bottom: 5px;">Create a New Gig</h2>
+            <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">Fill out the details below to publish your service on WorkBee.</p>
+            
+            <form action="seller-dashboard.html" method="GET" style="display: flex; flex-direction: column; gap: 15px;">
+                
+                <!-- Gig Title -->
+                <div>
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Gig Title</label>
+                    <input type="text" placeholder="e.g. I will build a responsive HTML/CSS website with Firebase" required style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none;">
+                </div>
+
+                <!-- Category -->
+                <div>
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Category</label>
+                    <select required style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; background: white; outline: none;">
+                        <option value="">Select a category</option>
+                        <option value="software">Software Development</option>
+                        <option value="automations">Automations & AI Agents</option>
+                        <option value="uiux">UI/UX Design</option>
+                    </select>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Description</label>
+                    <textarea rows="3" placeholder="Describe your service, what you will deliver..." required style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none; resize: vertical;"></textarea>
+                </div>
+
+                <!-- Price -->
+                <div>
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Price ($)</label>
+                    <input type="number" placeholder="50" required style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none;">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" style="background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: 5px;">Publish Gig</button>
+
+            </form>
+        </div>
+
+    </main>
+
+</body>
+</html>

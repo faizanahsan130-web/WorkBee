@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - WorkBee</title>
+    <link rel="stylesheet" href="Css%20folder/browse-gigs.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="seller-dashboard.html">🐝 WorkBee</a>
+            </div>
+            
+            <div class="header-right-actions">
+                <a href="browse-gigs.html" class="nav-text-link">Browse Gigs</a>
+                <a href="messages.html" class="header-icon-btn" title="Messages">✉️</a>
+                <a href="notifications.html" class="header-icon-btn" title="Notifications">🔔</a>
+                <a href="client-dashboard.html" class="btn-switch-selling" style="background: #fef3c7; border-color: #f59e0b; color: #b45309;">Switch to Buying</a>
+                <a href="login.html" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seller Dashboard Main Container -->
+    <main class="main-layout" style="flex-direction: column; gap: 20px;">
+        
+        <!-- Seller Welcome Banner -->
+        <div class="dashboard-banner" style="background: linear-gradient(135deg, #d97706, #b45309);">
+            <div>
+                <h1>Seller Dashboard, Welcome Back!</h1>
+                <p>Manage your active gigs, track your earnings, and deliver outstanding work to your clients.</p>
+            </div>
+            <a href="create-gig.html" style="color: #b45309;">+ Create New Gig</a>
+        </div>
+
+        <!-- Quick Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span>NET INCOME</span>
+                <h3>$1,240</h3>
+            </div>
+            <div class="stat-card">
+                <span>ACTIVE ORDERS</span>
+                <h3>3</h3>
+            </div>
+            <div class="stat-card">
+                <span>COMPLETED GIGS</span>
+                <h3>18</h3>
+            </div>
+            <div class="stat-card">
+                <span>RATING</span>
+                <h3>4.9 ⭐</h3>
+            </div>
+        </div>
+
+        <!-- Active Gigs Section -->
+        <div class="orders-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0;">My Active Gigs</h3>
+                <a href="create-gig.html" style="color: #2563eb; text-decoration: none; font-weight: 600; font-size: 14px;">Add New Gig</a>
+            </div>
+            
+            <div style="overflow-x: auto;">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>GIG TITLE</th>
+                            <th>ORDERS IN QUEUE</th>
+                            <th>PRICE</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: 600;">I will build a responsive HTML/CSS website with Firebase</td>
+                            <td>2</td>
+                            <td>$50</td>
+                            <td><span class="status-badge delivery" style="background: #d1fae5; color: #059669;">Active</span></td>
+                            <td><a href="#" style="color: #2563eb; text-decoration: none; font-weight: 600;">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">I will integrate Vapi.ai voice bot for your business</td>
+                            <td>1</td>
+                            <td>$120</td>
+                            <td><span class="status-badge delivery" style="background: #d1fae5; color: #059669;">Active</span></td>
+                            <td><a href="#" style="color: #2563eb; text-decoration: none; font-weight: 600;">Edit</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

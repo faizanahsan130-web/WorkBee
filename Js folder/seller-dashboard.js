@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const tableRows = document.querySelectorAll('.orders-table tbody tr');
+    const sellerRows = document.querySelectorAll('.orders-table tbody tr');
 
-    tableRows.forEach(row => {
+    sellerRows.forEach(row => {
         row.addEventListener('mouseenter', () => {
             row.style.background = '#f8fafc';
         });

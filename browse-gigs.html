@@ -4,123 +4,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse Services - WorkBee</title>
-    <!-- CSS Path -->
     <link rel="stylesheet" href="Css%20folder/browse-gigs.css">
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header class="navbar">
-        <div class="logo">
-            <a href="index.html">🐝 WorkBee</a>
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="browse-gigs.html">🐝 WorkBee</a>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" placeholder="What service are you looking for today?">
+                <button>Search</button>
+            </div>
+
+            <!-- Right Nav Icons & Links (Fiverr Style) -->
+            <div class="header-right-actions">
+                <a href="notifications.html" class="header-icon-btn" title="Notifications">🔔</a>
+                <a href="messages.html" class="header-icon-btn notification-dot" title="Messages">✉️</a>
+                <a href="favorites.html" class="header-icon-btn" title="Favorites">❤️</a>
+                <a href="client-dashboard.html" class="nav-text-link">Orders</a>
+                <a href="seller-dashboard.html" class="btn-switch-selling">Switch to Selling</a>
+                <a href="login.html" class="btn-logout">Logout</a>
+            </div>
         </div>
-        <div class="search-box">
-            <input type="text" placeholder="What service are you looking for today?">
-            <button>Search</button>
-        </div>
-        <nav class="nav-links">
-            <a href="client-dashboard.html">Dashboard</a>
-            <a href="messages.html">Messages</a>
-            <a href="login.html" class="btn-logout">Logout</a>
-        </nav>
     </header>
 
-    <!-- Category Filter Bar -->
-    <div class="category-bar">
-        <button class="active">All Categories</button>
-        <button>Web Development</button>
-        <button>Graphic & Design</button>
-        <button>AI Services</button>
-        <button>Digital Marketing</button>
-        <button>Video & Animation</button>
+    <!-- Trending Sub-Header Bar -->
+    <div class="trending-bar">
+        <div class="trending-container">
+            <span class="trending-label">Trending 🔥</span>
+            <a href="#">AI Voice Bots</a>
+            <a href="#">Web Development</a>
+            <a href="#">UI/UX Design</a>
+            <a href="#">Google Apps Script</a>
+            <a href="#">Firebase Apps</a>
+        </div>
     </div>
 
-    <!-- Main Marketplace Content -->
-    <main class="container">
-        <h2>Explore Popular Services</h2>
+    <!-- Main Layout with Sidebar -->
+    <main class="main-layout">
 
-        <div class="gigs-grid">
+        <!-- Left Sidebar (Fiverr Style Filter Pills) -->
+        <aside class="sidebar-filters">
+            <h3>Explore</h3>
+            <div class="filter-pill active" data-category="all">Keep exploring</div>
+            <div class="filter-pill" data-category="Software Development">Software Development</div>
+            <div class="filter-pill" data-category="Automations & Agents">Automations & Agents</div>
+            <div class="filter-pill" data-category="UI/UX Design">UI/UX Design</div>
+        </aside>
 
-            <!-- Gig Card 1 -->
-            <div class="gig-card">
-                <div class="gig-image">
-                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&auto=format&fit=crop" alt="Web Development">
-                </div>
-                <div class="seller-info">
-                    <span class="seller-name">Faizan Ali</span>
-                    <span class="badge">Top Rated</span>
-                </div>
-                <h3 class="gig-title"><a href="gig-details.html">I will build a responsive HTML/CSS website with Firebase</a></h3>
-                <div class="rating">
-                    ⭐ <span>5.0</span> (24 reviews)
-                </div>
-                <div class="card-footer">
-                    <span>STARTING AT</span>
-                    <span class="price">$50</span>
+        <!-- Right Content Area -->
+        <section class="content-area">
+            <!-- Controls Bar: Results Count & Sorting -->
+            <div class="controls-bar">
+                <span class="results-count">Explore Popular Services</span>
+                
+                <div class="sort-box">
+                    <label for="sortGigs">Sort by:</label>
+                    <select id="sortGigs">
+                        <option value="recommended">Recommended</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
                 </div>
             </div>
 
-            <!-- Gig Card 2 -->
-            <div class="gig-card">
-                <div class="gig-image">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop" alt="AI Service">
-                </div>
-                <div class="seller-info">
-                    <span class="seller-name">Ahmad Hassan</span>
-                    <span class="badge">Level 2</span>
-                </div>
-                <h3 class="gig-title"><a href="gig-details.html">I will integrate Vapi.ai voice bot for your business</a></h3>
-                <div class="rating">
-                    ⭐ <span>4.9</span> (18 reviews)
-                </div>
-                <div class="card-footer">
-                    <span>STARTING AT</span>
-                    <span class="price">$120</span>
-                </div>
-            </div>
+            <!-- Gigs Grid -->
+            <div class="gigs-grid">
 
-            <!-- Gig Card 3 -->
-            <div class="gig-card">
-                <div class="gig-image">
-                    <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=500&auto=format&fit=crop" alt="UI/UX Design">
+                <!-- Gig Card 1 -->
+                <div class="gig-card" data-category="Software Development" data-price="50" data-rating="5.0">
+                    <a href="gig-details.html">
+                        <div class="gig-image">
+                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&q=80" alt="Web Dev">
+                            <span class="badge-tag">Top Rated</span>
+                        </div>
+                    </a>
+                    <div class="gig-info">
+                        <div class="seller-profile-row">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Faizan Ali" class="seller-avatar">
+                            <span class="seller-name">Faizan Ali</span>
+                            <span class="seller-level">Level 2</span>
+                        </div>
+                        <a href="gig-details.html" class="gig-title">I will build a responsive HTML/CSS website with Firebase</a>
+                        <div class="gig-rating">
+                            <span class="star">★</span> 5.0 <span class="reviews">(24)</span>
+                        </div>
+                        <div class="gig-footer">
+                            <span class="starting-text">STARTING AT</span>
+                            <span class="price">From $50</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="seller-info">
-                    <span class="seller-name">Sara Khan</span>
-                    <span class="badge">New Seller</span>
-                </div>
-                <h3 class="gig-title"><a href="gig-details.html">I will design professional UI/UX for mobile applications</a></h3>
-                <div class="rating">
-                    ⭐ <span>4.8</span> (9 reviews)
-                </div>
-                <div class="card-footer">
-                    <span>STARTING AT</span>
-                    <span class="price">$35</span>
-                </div>
-            </div>
 
-            <!-- Gig Card 4 -->
-            <div class="gig-card">
-                <div class="gig-image">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop" alt="Automation">
+                <!-- Gig Card 2 -->
+                <div class="gig-card" data-category="Automations & Agents" data-price="120" data-rating="4.9">
+                    <a href="gig-details.html">
+                        <div class="gig-image">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&q=80" alt="AI Voice Bot">
+                            <span class="badge-tag level-2">Pro</span>
+                        </div>
+                    </a>
+                    <div class="gig-info">
+                        <div class="seller-profile-row">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Ahmad Hassan" class="seller-avatar">
+                            <span class="seller-name">Ahmad Hassan</span>
+                            <span class="seller-level">Top Rated</span>
+                        </div>
+                        <a href="gig-details.html" class="gig-title">I will integrate Vapi.ai voice bot for your business</a>
+                        <div class="gig-rating">
+                            <span class="star">★</span> 4.9 <span class="reviews">(18)</span>
+                        </div>
+                        <div class="gig-footer">
+                            <span class="starting-text">STARTING AT</span>
+                            <span class="price">From $120</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="seller-info">
-                    <span class="seller-name">Usman Tariq</span>
-                    <span class="badge">Level 1</span>
-                </div>
-                <h3 class="gig-title"><a href="gig-details.html">I will setup Google Apps Script automations and forms</a></h3>
-                <div class="rating">
-                    ⭐ <span>5.0</span> (15 reviews)
-                </div>
-                <div class="card-footer">
-                    <span>STARTING AT</span>
-                    <span class="price">$40</span>
-                </div>
-            </div>
 
-        </div>
+                <!-- Gig Card 3 -->
+                <div class="gig-card" data-category="UI/UX Design" data-price="35" data-rating="4.8">
+                    <a href="gig-details.html">
+                        <div class="gig-image">
+                            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=500&q=80" alt="UI UX Design">
+                            <span class="badge-tag new-seller">New Seller</span>
+                        </div>
+                    </a>
+                    <div class="gig-info">
+                        <div class="seller-profile-row">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sara Khan" class="seller-avatar">
+                            <span class="seller-name">Sara Khan</span>
+                        </div>
+                        <a href="gig-details.html" class="gig-title">I will design professional UI/UX for mobile applications</a>
+                        <div class="gig-rating">
+                            <span class="star">★</span> 4.8 <span class="reviews">(9)</span>
+                        </div>
+                        <div class="gig-footer">
+                            <span class="starting-text">STARTING AT</span>
+                            <span class="price">From $35</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gig Card 4 -->
+                <div class="gig-card" data-category="Automations & Agents" data-price="45" data-rating="5.0">
+                    <a href="gig-details.html">
+                        <div class="gig-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80" alt="Automation">
+                            <span class="badge-tag">Pro</span>
+                        </div>
+                    </a>
+                    <div class="gig-info">
+                        <div class="seller-profile-row">
+                            <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Usman Tariq" class="seller-avatar">
+                            <span class="seller-name">Usman Tariq</span>
+                            <span class="seller-level">Level 2</span>
+                        </div>
+                        <a href="gig-details.html" class="gig-title">I will setup Google Apps Script automations and forms</a>
+                        <div class="gig-rating">
+                            <span class="star">★</span> 5.0 <span class="reviews">(15)</span>
+                        </div>
+                        <div class="gig-footer">
+                            <span class="starting-text">STARTING AT</span>
+                            <span class="price">From $45</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-    <!-- JS Script Link -->
-    <script src="js%20folder/browse-gigs.js"></script>
+    <!-- Professional Multi-Column Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Categories</h4>
+                <a href="#">Web Development</a>
+                <a href="#">AI Voice Bots</a>
+                <a href="#">UI/UX Design</a>
+                <a href="#">Digital Marketing</a>
+                <a href="#">Automation</a>
+            </div>
+            <div class="footer-column">
+                <h4>For Clients</h4>
+                <a href="#">How WorkBee Works</a>
+                <a href="#">Customer Success</a>
+                <a href="#">Trust & Safety</a>
+                <a href="#">Quality Guide</a>
+            </div>
+            <div class="footer-column">
+                <h4>For Freelancers</h4>
+                <a href="#">Become a Freelancer</a>
+                <a href="#">Community Hub</a>
+                <a href="#">Forum & Events</a>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <a href="#">About WorkBee</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div class="footer-logo-text">
+                    <span class="logo-mark">🐝 WorkBee</span>
+                    <p>© WorkBee International Ltd. 2026</p>
+                </div>
+                <div class="footer-socials">
+                    <span>🌐 English</span>
+                    <span>$ USD</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Js%20folder/browse-gigs.js"></script>
 </body>
 </html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a New Job | WorkBee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f5f7;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Theme */
+        .sidebar {
+            width: 260px;
+            background-color: #1a1a1a;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .logo-area {
+            font-size: 22px;
+            font-weight: bold;
+            color: #f39c12;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-links li a {
+            color: #bbb;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 6px;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active {
+            background-color: #f39c12;
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .header-title {
+            font-size: 26px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .form-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: #f39c12;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .btn-submit {
+            background-color: #f39c12;
+            color: #000;
+            border: none;
+            padding: 14px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: #d68910;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div>
+            <div class="logo-area">
+                🐝 WorkBee
+            </div>
+            <ul class="nav-links">
+                <li><a href="client-dashboard.html">Dashboard</a></li>
+                <li><a href="post-job.html" class="active">Post a Job</a></li>
+                <li><a href="my-jobs.html">My Posted Jobs</a></li>
+                <li><a href="proposals.html">Proposals</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="login.html" style="color: #e74c3c;">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="header-title">Post a New Project</h1>
+
+        <div class="form-card">
+            <form id="jobForm">
+                <div class="form-group">
+                    <label>Project Title</label>
+                    <input type="text" id="jobTitle" placeholder="e.g., Build a Python Automation Script" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="jobCategory">
+                        <option value="web-development">Web Development</option>
+                        <option value="ai-chatbot">AI Chatbot / Voice Agent</option>
+                        <option value="python-script">Python & Automation</option>
+                        <option value="content-writing">Content Writing & Scripting</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Budget ($)</label>
+                    <input type="number" id="jobBudget" placeholder="e.g., 150" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Project Description</label>
+                    <textarea id="jobDescription" placeholder="Detail se batayein ke aapko kya kaam karwana hai..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Publish Job</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
