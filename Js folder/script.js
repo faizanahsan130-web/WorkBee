@@ -926,3 +926,22 @@ Status  : Ready for Firebase Integration
 /*=====================================================
   End of WorkBee V3
 ======================================================*/
+document.addEventListener("DOMContentLoaded", function () {
+    const addDetailsBtn = document.querySelector(".primary-btn");
+    const progressBar = document.querySelector(".sidebar-card div div div"); // Progress bar fill element
+    const completionText = document.querySelector(".sidebar-card p");
+
+    // Example logic: Agar user details add kar le toh progress bar 100% ho jaye
+    addDetailsBtn.addEventListener("click", function () {
+        alert("Aap yahan apni profile details update karne ka form open kar sakte hain!");
+        
+        // Sample update simulation
+        if (progressBar) {
+            progressBar.style.width = "100%";
+            progressBar.style.backgroundColor = "#1dbf73";
+        }
+        if (completionText) {
+            completionText.textContent = "Your profile is complete, you're all set!";
+        }
+    });
+});

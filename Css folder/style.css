@@ -1927,3 +1927,87 @@ scroll-padding-top:90px;
 /*==========================
 End of Part 4
 ==========================*/
+/* Client Profile Specific Styles */
+.dashboard-section {
+    background-color: #f7f7f7;
+    min-height: 85vh;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.profile-card h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.profile-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.primary-btn {
+    background-color: #1dbf73;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.primary-btn:hover {
+    background-color: #19a463;
+}
+
+.sidebar-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.quick-links-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.quick-links-list li {
+    margin-bottom: 15px;
+}
+
+.quick-links-list a {
+    text-decoration: none;
+    color: #555;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.quick-links-list a:hover {
+    color: #1dbf73;
+}
+
+.quick-links-list i {
+    margin-right: 12px;
+    font-size: 16px;
+    color: #777;
+}
