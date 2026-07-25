@@ -1535,17 +1535,27 @@ gap:12px;
 .footer-grid ul li a{
 
 color:#cbd5e1;
-
+display: inline-block;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
 transition:var(--transition);
 
 }
 
-.footer-grid ul li a:hover{
+.footer-grid ul li a:hover {
+    color: var(--primary);
+    padding-left: 8px;
+}
 
-color:var(--primary);
-
-padding-left:8px;
-
+footer a:focus,
+footer a:active,
+.footer-grid ul li a:focus,
+.footer-grid ul li a:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
 }
 
 .social-links{
