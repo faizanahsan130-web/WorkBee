@@ -3,72 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Gig - WorkBee</title>
-    <link rel="stylesheet" href="Css%20folder/browse-gigs.css">
+    <title>Create an Advanced Gig - WorkBee</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .navbar {
+            background: #ffffff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1e293b;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-right a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .nav-right a:hover {
+            color: #2563eb;
+        }
+        .gig-card-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #2563eb;
+        }
+        h2 {
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+        .subtitle {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #334155;
+            font-size: 14px;
+        }
+        input[type="text"], input[type="number"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        .description-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ai-btn {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .pricing-box {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .tier-card {
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+        }
+        .tier-card span {
+            font-size: 13px;
+            font-weight: bold;
+            color: #1e293b;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .tier-card input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tier-card textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 13px;
+            resize: vertical;
+        }
+        .fast-delivery-box {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .fast-delivery-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: #92400e;
+            font-size: 14px;
+        }
+        .fast-delivery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .submit-btn {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #1d4ed8;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Main Navigation Header -->
-    <header class="main-header">
-        <div class="header-container">
-            <div class="logo">
-                <a href="seller-dashboard.html">🐝 WorkBee</a>
-            </div>
-            
-            <div class="header-right-actions">
-                <a href="seller-dashboard.html" class="nav-text-link">Dashboard</a>
-                <a href="messages.html" class="header-icon-btn" title="Messages">✉️</a>
-                <a href="notifications.html" class="header-icon-btn" title="Notifications">🔔</a>
-                <a href="login.html" class="btn-logout">Logout</a>
-            </div>
+    <header class="navbar">
+        <a href="seller-dashboard.html" class="logo">🐝 WorkBee</a>
+        <div class="nav-right">
+            <a href="seller-dashboard.html">Dashboard</a>
         </div>
     </header>
 
-    <!-- Create Gig Main Container -->
-    <main class="main-layout" style="max-width: 700px; margin: 20px auto; padding: 0 20px;">
-        
-        <div style="background: white; padding: 25px 30px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-            <h2 style="font-size: 20px; color: #0f172a; margin-bottom: 5px;">Create a New Gig</h2>
-            <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">Fill out the details below to publish your service on WorkBee.</p>
+    <div class="gig-card-container">
+        <h2>Create an Advanced Gig</h2>
+        <p class="subtitle">Fill out the details below to publish your service on WorkBee with expanded categories and flexible delivery.</p>
+
+        <form id="create-gig-form">
+            <div class="form-group">
+                <label for="gig-title">Gig Title</label>
+                <input type="text" id="gig-title" placeholder="e.g. I will build a responsive HTML/CSS website with Firebase" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gig-category">Category</label>
+                <select id="gig-category" required>
+                    <option value="">Select a category</option>
+                    <option value="web-dev">Web Development & Frontend</option>
+                    <option value="ai-bots">Automations & AI Voice Agents</option>
+                    <option value="python-desktop">Python & Desktop Software</option>
+                    <option value="database-backend">Database & Backend Architecture</option>
+                    <option value="ui-ux">UI/UX & Graphic Design</option>
+                    <option value="content-blogging">Technical Blogging & Content</option>
+                    <option value="digital-marketing">Digital Marketing & Outreach</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="description-header">
+                    <label for="gig-description">Description</label>
+                    <button type="button" id="ai-gen-btn" class="ai-btn">✨ Generate with AI</button>
+                </div>
+                <textarea id="gig-description" rows="5" placeholder="Describe your service, what you will deliver..." required></textarea>
+            </div>
+
+            <!-- Pricing Tiers with 1-30+ Days Delivery -->
+            <div class="pricing-box">
+                <label style="margin-bottom: 12px; display: block; font-weight: bold;">Pricing Tiers, Delivery Time (1-30+ Days) & Details</label>
+                <div class="pricing-grid">
+                    <!-- Basic Tier -->
+                    <div class="tier-card">
+                        <span>Basic Tier</span>
+                        <input type="number" id="price-basic" placeholder="Price ($)">
+                        <input type="number" id="time-basic" min="1" max="90" placeholder="Days (1 - 30+)">
+                        <textarea rows="3" id="desc-basic" placeholder="Basic features..."></textarea>
+                    </div>
+
+                    <!-- Standard Tier -->
+                    <div class="tier-card">
+                        <span>Standard Tier</span>
+                        <input type="number" id="price-standard" placeholder="Price ($)">
+                        <input type="number" id="time-standard" min="1" max="90" placeholder="Days (1 - 30+)">
+                        <textarea rows="3" id="desc-standard" placeholder="Standard features..."></textarea>
+                    </div>
+
+                    <!-- Premium Tier -->
+                    <div class="tier-card">
+                        <span>Premium Tier</span>
+                        <input type="number" id="price-premium" placeholder="Price ($)">
+                        <input type="number" id="time-premium" min="1" max="90" placeholder="Days (1 - 30+)">
+                        <textarea rows="3" id="desc-premium" placeholder="Premium features..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extra Fast Delivery Option -->
+            <div class="fast-delivery-box">
+                <div class="fast-delivery-header">
+                    ⚡ Extra Fast Delivery Option (Optional for Urgent Clients)
+                </div>
+                <div class="fast-delivery-grid">
+                    <div>
+                        <label for="fast-days" style="font-size: 13px;">Fast Delivery (Days):</label>
+                        <input type="number" id="fast-days" min="1" max="30" placeholder="e.g. 1 or 2 Days">
+                    </div>
+                    <div>
+                        <label for="fast-price" style="font-size: 13px;">Extra Charge ($):</label>
+                        <input type="number" id="fast-price" placeholder="e.g. Extra $20">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Publish Gig</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('ai-gen-btn').addEventListener('click', function() {
+            const titleInput = document.getElementById('gig-title').value.trim();
+            const descBox = document.getElementById('gig-description');
             
-            <form action="seller-dashboard.html" method="GET" style="display: flex; flex-direction: column; gap: 15px;">
-                
-                <!-- Gig Title -->
-                <div>
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Gig Title</label>
-                    <input type="text" placeholder="e.g. I will build a responsive HTML/CSS website with Firebase" required style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none;">
-                </div>
+            if(!titleInput) {
+                alert('Pehle please Gig Title likhein taake AI uske mutabiq description generate kar sake!');
+                return;
+            }
 
-                <!-- Category -->
-                <div>
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Category</label>
-                    <select required style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; background: white; outline: none;">
-                        <option value="">Select a category</option>
-                        <option value="software">Software Development</option>
-                        <option value="automations">Automations & AI Agents</option>
-                        <option value="uiux">UI/UX Design</option>
-                    </select>
-                </div>
+            descBox.value = `Professional Service Overview:\nI will expertly handle "${titleInput}" to ensure high-performance, clean structure, and complete client satisfaction.\n\nWhat's included:\n- Fully responsive layout\n- Optimized workflow & code\n- Post-delivery support`;
+        });
 
-                <!-- Description -->
-                <div>
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Description</label>
-                    <textarea rows="3" placeholder="Describe your service, what you will deliver..." required style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none; resize: vertical;"></textarea>
-                </div>
-
-                <!-- Price -->
-                <div>
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Price ($)</label>
-                    <input type="number" placeholder="50" required style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none;">
-                </div>
-
-                <!-- Submit Button -->
-                <button type="submit" style="background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: 5px;">Publish Gig</button>
-
-            </form>
-        </div>
-
-    </main>
-
+        document.getElementById('create-gig-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('gig-title').value;
+            alert(`Mubarak ho! Aapka gig "${title}" kamyabi ke sath publish ho gaya hai.`);
+            window.location.href = 'seller-dashboard.html';
+        });
+    </script>
 </body>
 </html>

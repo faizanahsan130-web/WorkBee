@@ -1,90 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Profile - WorkBee</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            padding-bottom: 40px;
+        }
+        .navbar {
+            background: #ffffff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1e293b;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-right a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .nav-right a:hover {
+            color: #2563eb;
+        }
+        .profile-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 25px;
+            padding: 0 20px;
+            align-items: start;
+        }
+        /* Left Sidebar Card */
+        .profile-sidebar {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .avatar-box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 12px auto;
+        }
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #2563eb;
+        }
+        .online-badge {
+            position: absolute;
+            bottom: 3px;
+            right: 3px;
+            width: 14px;
+            height: 14px;
+            background: #22c55e;
+            border: 2px solid #fff;
+            border-radius: 50%;
+        }
+        .profile-sidebar h1 {
+            font-size: 18px;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .profile-sidebar p.title {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            padding: 12px 0;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .stat-item span {
+            display: block;
+        }
+        .stat-value {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0f172a;
+        }
+        .stat-label {
+            font-size: 10px;
+            color: #94a3b8;
+        }
+        .meta-info {
+            text-align: left;
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .meta-info div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hire-btn {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 11px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .hire-btn:hover {
+            background: #1d4ed8;
+        }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Freelancer Profile | WorkBee</title>
-
-<link rel="stylesheet" href="Css folder/freelancer-profile.css">
-
+        /* Right Content Section */
+        .profile-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+        .card-box {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .card-box h3 {
+            font-size: 16px;
+            color: #0f172a;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bio-text {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.6;
+        }
+        /* Skills Tags */
+        .skills-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-tag {
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 600;
+            border: 1px solid #dbeafe;
+        }
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .portfolio-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-2px);
+            border-color: #2563eb;
+        }
+        .portfolio-card h4 {
+            font-size: 14px;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+        .portfolio-card p {
+            font-size: 12.5px;
+            color: #64748b;
+            line-height: 1.4;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="profile-container">
+    <header class="navbar">
+        <a href="seller-dashboard.html" class="logo">🐝 WorkBee</a>
+        <div class="nav-right">
+            <a href="seller-dashboard.html">Dashboard</a>
+        </div>
+    </header>
 
-    <div class="profile-card">
+    <div class="profile-container">
+        <!-- Left Sidebar -->
+        <div class="profile-sidebar">
+            <div class="avatar-box">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Profile Picture">
+                <span class="online-badge" title="Online"></span>
+            </div>
+            <h1>Jessica Taylor</h1>
+            <p class="title">Full Stack Developer & AI Integrator</p>
 
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Freelancer">
-
-        <h1>John Smith</h1>
-
-        <h3>Full Stack Developer</h3>
-
-        <p>⭐ 4.9 Rating</p>
-
-        <p>💰 $25 / Hour</p>
-
-        <p>📍 New York, USA</p>
-
-        <button id="hireBtn">
-            Hire Now
-        </button>
-
-    </div>
-
-    <div class="profile-details">
-
-        <h2>About Me</h2>
-
-        <p>
-            I am a professional Full Stack Developer with more than
-            6 years of experience in Web Development,
-            AI Automation and Mobile Apps.
-        </p>
-
-        <h2>Skills</h2>
-
-        <ul>
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>JavaScript</li>
-            <li>React JS</li>
-            <li>Node JS</li>
-            <li>Firebase</li>
-        </ul>
-
-        <h2>Portfolio</h2>
-
-        <div class="portfolio">
-
-            <div class="item">
-                Project 1
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value">⭐ 4.9</span>
+                    <span class="stat-label">Rating</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">48+</span>
+                    <span class="stat-label">Orders</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Success</span>
+                </div>
             </div>
 
-            <div class="item">
-                Project 2
+            <div class="meta-info">
+                <div>💰 <b>Hourly Rate:</b> $25 / hour</div>
+                <div>📍 Location: New York, USA</div>
+                <div>⚡ Response: Within 1 hour</div>
             </div>
 
-            <div class="item">
-                Project 3
-            </div>
-
-            <div class="item">
-                Project 4
-            </div>
-
+            <button class="hire-btn" onclick="alert('Direct order or message modal open hoga!')">Hire Me Now</button>
         </div>
 
+        <!-- Right Content Section -->
+        <div class="profile-content">
+            <!-- About Me -->
+            <div class="card-box">
+                <h3>👤 About Me</h3>
+                <p class="bio-text">
+                    Hello! I am a passionate Full-Stack Web Developer and AI Voice Bot Engineer with over 4 years of hands-on experience. I specialize in building responsive web applications using HTML, CSS, JavaScript, React, and Firebase, alongside deploying smart automated workflows with Vapi.ai and Python. Let's build something amazing together!
+                </p>
+            </div>
+
+            <!-- Skills -->
+            <div class="card-box">
+                <h3>🚀 Professional Skills</h3>
+                <div class="skills-flex">
+                    <span class="skill-tag">HTML5 / CSS3</span>
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">React JS</span>
+                    <span class="skill-tag">Node JS</span>
+                    <span class="skill-tag">Firebase Firestore</span>
+                    <span class="skill-tag">Python & Tkinter</span>
+                    <span class="skill-tag">AI Voice Agents</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                </div>
+            </div>
+
+            <!-- Portfolio Projects -->
+            <div class="card-box">
+                <h3>💼 Featured Portfolio Projects</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card">
+                        <h4>WorkBee Freelance Marketplace</h4>
+                        <p>A complete full-stack freelance platform built with HTML, CSS, JavaScript, and Firebase hosting.</p>
+                    </div>
+                    <div class="portfolio-card">
+                        <h4>Automated Voice Outreach Bot</h4>
+                        <p>Custom voice calling and scheduling agent built for automotive dealerships using Vapi.ai.</p>
+                    </div>
+                    <div class="portfolio-card">
+                        <h4>Inventory Tracking System</h4>
+                        <p>Desktop management software programmed in Python using Tkinter and SQLite3 database.</p>
+                    </div>
+                    <div class="portfolio-card">
+                        <h4>Automated Google Sheets Script</h4>
+                        <p>Custom Google Apps Script automation for tracking client inquiries and sending instant alerts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-</div>
-
-<script src="Js folder/freelancer-profile.js"></script>
-
 </body>
-
 </html>

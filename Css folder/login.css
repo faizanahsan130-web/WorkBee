@@ -81,6 +81,21 @@ body{
 .signup-link{
     margin-top:20px;
 }
+.forgot-password {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.forgot-password a {
+    color: #f39c12;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
 
 .signup-link a,
 .login-box a{

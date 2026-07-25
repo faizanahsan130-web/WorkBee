@@ -3,44 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - WorkBee</title>
+
+    <title>WorkBee | Create Account</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="Css%20folder/signup.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 </head>
+
 <body class="auth-body">
 
-    <div class="auth-container">
-        <div class="auth-logo">
-            <a href="browse-gigs.html">🐝 WorkBee</a>
-        </div>
-        <h2>Create Your Account</h2>
-        <p class="auth-subtitle">Join our freelance marketplace today</p>
+<div class="auth-container">
 
-        <form class="auth-form" id="signupForm">
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" id="signupName" placeholder="Enter your full name" required>
+    <div class="auth-card">
+
+        <div class="logo">🐝</div>
+
+        <h1>Create Account</h1>
+
+        <p>Join WorkBee and start your freelancing journey.</p>
+
+        <form id="signupForm" class="auth-form">
+
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="fullName" placeholder="Full Name" required>
             </div>
 
-            <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" id="signupEmail" placeholder="Enter your email" required>
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email Address" required>
             </div>
 
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="signupPassword" placeholder="Create a password" required>
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+
+                <span class="toggle-password">
+                    <i class="fa-solid fa-eye"></i>
+                </span>
             </div>
 
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" id="signupConfirmPassword" placeholder="Confirm your password" required>
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+                <span class="toggle-confirm-password">
+                    <i class="fa-solid fa-eye"></i>
+                </span>
             </div>
 
-            <button type="submit" class="auth-btn">Create Account</button>
+            <div class="remember-box">
+                <label>
+                    <input type="checkbox" id="terms" required>
+                    I agree to the <a href="#">Terms & Conditions</a>
+                </label>
+            </div>
+
+            <button type="submit" class="auth-btn">
+                Create Account
+            </button>
+
         </form>
+
+        <div id="message"></div>
+
+        <div class="auth-footer">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </div>
+
     </div>
 
-    <!-- JavaScript File -->
-    <script src="signup.js"></script>
+</div>
+
+<!-- JavaScript -->
+<script type="module" src="Js%20folder/signup.js"></script>
+
 </body>
 </html>

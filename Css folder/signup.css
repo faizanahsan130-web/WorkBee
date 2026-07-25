@@ -1,122 +1,204 @@
-/* Professional Authentication Styling (Signup / Login) */
-.auth-body {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+/* ===============================
+   WorkBee Signup Page
+================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 }
 
-.auth-container {
-    background: #ffffff;
-    padding: 45px 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 440px;
-    border: 1px solid rgba(226, 232, 240, 0.8);
+body.auth-body{
+    background:linear-gradient(135deg,#FFD54F,#FFC107);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
-.auth-logo {
-    text-align: center;
-    margin-bottom: 20px;
+.auth-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.auth-logo a {
-    font-size: 28px;
-    font-weight: 800;
-    color: #f59e0b;
-    text-decoration: none;
-    letter-spacing: -0.5px;
+.auth-card{
+    width:100%;
+    max-width:450px;
+    background:#fff;
+    border-radius:18px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+    animation:fadeIn .6s ease;
 }
 
-.auth-container h2 {
-    font-size: 24px;
-    color: #0f172a;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 8px;
+.logo{
+    text-align:center;
+    font-size:55px;
+    margin-bottom:10px;
 }
 
-.auth-subtitle {
-    font-size: 14px;
-    color: #64748b;
-    text-align: center;
-    margin-bottom: 30px;
+.auth-card h1{
+    text-align:center;
+    color:#222;
+    margin-bottom:10px;
 }
 
-.auth-form .form-group {
-    margin-bottom: 20px;
+.auth-card p{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
 }
 
-.auth-form label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: #334155;
-    margin-bottom: 8px;
+/* Form */
+
+.auth-form{
+    width:100%;
 }
 
-.auth-form input {
-    width: 100%;
-    padding: 13px 16px;
-    border: 1.5px solid #cbd5e0;
-    border-radius: 10px;
-    font-size: 14px;
-    outline: none;
-    background: #f8fafc;
-    color: #1e293b;
-    box-sizing: border-box;
-    transition: all 0.25s ease;
+.input-group{
+    position:relative;
+    margin-bottom:20px;
 }
 
-.auth-form input:focus {
-    border-color: #2563eb;
-    background: #ffffff;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+.input-group input{
+    width:100%;
+    padding:14px 45px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+    transition:.3s;
 }
 
-.auth-btn {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-    transition: all 0.25s ease;
-    margin-top: 10px;
+.input-group input:focus{
+    border-color:#FFC107;
+    box-shadow:0 0 8px rgba(255,193,7,.3);
 }
 
-.auth-btn:hover {
-    background: linear-gradient(135deg, #1d4ed8, #1e40af);
-    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.35);
-    transform: translateY(-1px);
+.input-group i:first-child{
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#777;
 }
 
-.auth-footer-links {
-    margin-top: 25px;
-    text-align: center;
-    font-size: 14px;
-    color: #64748b;
-    border-top: 1px solid #f1f5f9;
-    padding-top: 20px;
+.toggle-password,
+.toggle-confirm-password{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#777;
 }
 
-.auth-footer-links a {
-    color: #2563eb;
-    text-decoration: none;
-    font-weight: 600;
+/* Checkbox */
+
+.remember-box{
+    margin-bottom:20px;
+    font-size:14px;
 }
 
-.auth-footer-links a:hover {
-    text-decoration: underline;
+.remember-box label{
+    color:#555;
 }
 
-.auth-footer-links p {
-    margin-bottom: 12px;
+.remember-box input{
+    margin-right:8px;
+}
+
+.remember-box a{
+    color:#f39c12;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.remember-box a:hover{
+    text-decoration:underline;
+}
+
+/* Button */
+
+.auth-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#FFC107;
+    color:#fff;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.auth-btn:hover{
+    background:#f39c12;
+    transform:translateY(-2px);
+}
+
+/* Message */
+
+#message{
+    margin-top:15px;
+    text-align:center;
+    font-size:14px;
+    font-weight:500;
+}
+
+/* Footer */
+
+.auth-footer{
+    margin-top:25px;
+    text-align:center;
+    color:#555;
+}
+
+.auth-footer a{
+    color:#f39c12;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.auth-footer a:hover{
+    text-decoration:underline;
+}
+
+/* Animation */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* Responsive */
+
+@media(max-width:480px){
+
+    .auth-card{
+        padding:25px;
+    }
+
+    .auth-card h1{
+        font-size:28px;
+    }
+
+    .logo{
+        font-size:45px;
+    }
+
 }
